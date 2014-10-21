@@ -159,12 +159,13 @@ class GoPayView(TemplateView):
         )
         payment.save()
 
-        ctx = super(GoPayView, self).get_context_data(**kwargs)
-        ctx['form'] = PaymentForm(instance=payment, initial={
+        context = super(GoPayView, self).get_context_data(**kwargs)
+        context['order_id'] = self.kwargs.get('order_id', None)
+        context['form'] = PaymentForm(instance=payment, initial={
             'cps_email': order.email,
             'cps_phone': phone
         })
-        return ctx
+        return context
 
 
 class GetDeliveryVariants(TemplateView):

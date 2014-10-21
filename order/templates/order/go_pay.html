@@ -1,12 +1,22 @@
 {% extends CMS_TEMPLATE %}
 {% load widget_tweaks %}
 {% block content %}
-    <div class="container">
+    <div class="order-success">
+{% with 3 as step %}
+    {% include "order/steps.html" %}
+{% endwith %}
+    <div>
+        <h3>{% trans "Thank you!" %}</h3>
+        <div>{% trans "Your order created successfully" %}</div>
+{% if order_id %}
+        <div>{% trans "Order No:" %} {{ order_id }}</div>
+{% endif %}
     <form action="https://demomoney.yandex.ru/eshop.xml" method="post">
 {% for field in form %}
     {{ field|attr:"type:hidden" }}
 {% endfor %}
         <button type="submit" class="button">Оплатить</button>
     </form>
+    </div>
     </div>
 {% endblock %}

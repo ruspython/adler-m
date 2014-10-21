@@ -197,6 +197,7 @@ INSTALLED_APPS = (
     'superbanner',
     'server_connect',
     'yandex_money',
+    'seo',
 )
 
 LANGUAGES = (

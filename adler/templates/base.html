@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% page_attribute "title" %}{% endblock title %}</title>
-    <meta name="description" content="{% block meta_description %}{% page_attribute "meta_description" %}{% endblock %}">
+    <title>{% block title %}{% if request.current_page.seoextension.title %}{{ request.current_page.seoextension.title }}{% else %}{% page_attribute "title" %}{% endif %}{% endblock title %}</title>
+    <meta name="description" content="{% block meta_description %}{% if request.current_page.seoextension.description %}{{ request.current_page.seoextension.description }}{% else %}{% page_attribute "meta_description" %}{% endif %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{{ request.current_page.seoextension.keywords }}{% endblock %}">
     {% render_block "css" %}
     <script src="{% static "js/script.js" %}"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,900&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
