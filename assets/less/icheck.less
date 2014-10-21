@@ -1,0 +1,51 @@
+@import "bootstrap";
+
+
+@element-size: 24px;
+
+
+.icheckbox_fs,
+.iradio_fs {
+  display: inline-block;
+  *display: inline;
+  vertical-align: middle;
+//  margin: 0 10px 0 0;
+  padding: 0;
+  .square(@element-size);
+  background: data-uri("../data-images/icheck.png") no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.statuses_sprite(@initial-left: 0) {
+  .sprite-position(@index: 0) {
+    background-position: (-(@element-size * @index) + @initial-left) 0;
+  }
+  & {
+    .sprite-position();
+  }
+  &.hover {
+    .sprite-position(1);
+  }
+  &.checked {
+    .sprite-position(2);
+  }
+  &.disabled {
+    .sprite-position(3);
+    cursor: default;
+  }
+  &.checked.disabled {
+    .sprite-position(4);
+  }
+}
+
+.icheckbox_fs {
+  background-position: 0 0;
+  .statuses_sprite(1px);
+}
+
+.iradio_fs {
+  @iradio-sprite-shift: -(@element-size * 5);
+  background-position: @iradio-sprite-shift 0;
+  .statuses_sprite(@iradio-sprite-shift);
+}

@@ -1,0 +1,33 @@
+{% load staticfiles endless %}
+{% lazy_paginate 6 questions %}
+<ul class="questions list">
+{% for question in questions %}
+    <li class="faq">
+        <div class="question">
+            <span>{{ question.question|striptags }}</span>
+        </div>
+        <div class="answer">
+            <div class="answer__content">
+                {{ question.answer|safe }}
+            </div>
+        </div>
+    </li>
+{% empty %}
+    <p>вопросов не обнаружено :(</p>
+{% endfor %}
+</ul>
+{% show_more %}
+<script>
+$('.question').click(function(){
+    var $answer = $(this).siblings(".answer"),
+            $answerContent = $answer.children('.answer__content'),
+            animationDuration = 600;
+    if($answerContent.hasClass("display")){
+        $answer.stop().slideUp(animationDuration);
+        $answerContent.removeClass("display");
+    }else{
+        $answer.stop().slideDown(animationDuration);
+        $answerContent.addClass("display");
+    }
+})
+</script>

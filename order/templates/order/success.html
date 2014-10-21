@@ -1,0 +1,16 @@
+{% extends 'order/order_base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="order-success">
+{% with 3 as step %}
+    {% include "order/steps.html" %}
+{% endwith %}
+    <div>
+        <h3>{% trans "Thank you!" %}</h3>
+        <div>{% trans "Your order created successfully" %}</div>
+{% if order_id %}
+        <div>{% trans "Order No:" %} {{ order_id }}</div>
+{% endif %}
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends CMS_TEMPLATE %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container">
+    <form action="https://demomoney.yandex.ru/eshop.xml" method="post">
+{% for field in form %}
+    {{ field|attr:"type:hidden" }}
+{% endfor %}
+        <button type="submit" class="button">Оплатить</button>
+    </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,104 @@
+@import "bootstrap";
+@import "flexbox";
+@import "firm_style";
+
+
+html body input:-webkit-autofill,
+html body input:focus,
+html body input:active {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+:focus {
+  .placeholder(transparent);
+}
+
+.ajaxform {
+  padding: 10px 0;
+  & > * {
+    .transition(opacity .5s ease);
+  }
+  &.load {
+    position: relative;
+    &:after {
+      content: data-uri('../data-images/load.gif');
+      .square(64px);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -24px 0 0 -24px;
+    }
+    & > * {
+      opacity: .3;
+    }
+  }
+  &.callback_ajaxform {
+    min-height: 333px;
+    .flex-display();
+    .flex-direction(column);
+    .form-response {
+      margin: auto;
+    }
+  }
+  textarea {
+    width: 640px;
+    height: 142px;
+    resize: none;
+    padding: 10px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    height: 34px;
+    width: 468px;
+  }
+}
+
+// event signup
+.event_signup {
+  input[type=text] {
+    width: 218px;
+  }
+  #id_is_sharer {
+    .list-inline();
+    display: inline-block;
+    margin-left: 16px;
+  }
+  .form-group {
+    clear: left;
+    &.is_sharer {
+      .pull-left();
+    }
+    &.contract_number {
+      .pull-left();
+      clear: none;
+      margin: -44px 0 0 27px;
+      &.not_for_sharers {
+        display: none;
+      }
+    }
+  }
+  .event_signup_result {
+    margin-left: 8px;
+    color: @brand-info;
+    font-size: 18px;
+  }
+}
+.form-group {
+  input[type='text'],
+  input[type='password'],
+  input[type='email'],
+  textarea {
+    border: 1px solid #b2cce0;
+    border-radius: 3px;
+    background: #fdfdfd;
+    color: #a5bbcd;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 0 10px;
+  }
+  textarea { padding: 10px; }
+  .control-label {
+    display: block;
+  }
+}

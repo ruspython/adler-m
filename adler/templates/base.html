@@ -1,0 +1,169 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles i18n cart_tags catalog_tags %}<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% page_attribute "title" %}{% endblock title %}</title>
+    <meta name="description" content="{% block meta_description %}{% page_attribute "meta_description" %}{% endblock %}">
+    {% render_block "css" %}
+    <script src="{% static "js/script.js" %}"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,900&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="{% static "images/favicon.png" %}" type="image/x-icon">
+    <link rel="icon" href="{% static "images/favicon.png" %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+{% block extra_head %}{% endblock %}
+    {% render_block "js" %}
+</head>
+<body>
+{% cms_toolbar %}
+<div class="page">
+<div class="all">
+{% block header %}
+<header class="pagehead">
+    <div class="pagehead__fixed-part" id="fixed-head">
+        <div>
+        <nav class="pagehead__top">
+            <div class="container">
+                <div class="navbar-left top_menu">
+                    {% show_menu_below_id "info" 0 0 0 0 "nav/navbar.html" %}
+                </div>
+                {% language_chooser "nav/language_chooser.html" %}
+                <div class="pagehead__top-social">
+                    <ul class="nav navbar-nav navbar-right menu">
+                        <li><a class="blog" href="{% page_url "blog" %}">{% trans "Blog" %}</a></li>
+                        <li><a class="vk" href="{% page_url "blog" %}">{% trans "Vkontakte" %}</a></li>
+                    </ul>
+                </div>
+                <div class="pagehead__top-auth">
+{% if user.is_authenticated %}
+                    <div class="pagehead__top-auth__hello">
+                        <div class="hello">
+                            {% trans "Hello" %}
+                            <a href="{% page_url "personal" %}">{{ request.user }}</a>
+                        </div>
+                        <a href="{% url "account_logout" %}" class="logout">{% trans "Logout" %}</a>
+                    </div>
+{% else %}
+                    <ul class="nav navbar-nav menu">
+                        <li><a class="auth open-popup" href="{% url "account_login" %}">Вход</a></li>
+                        <li><a class="register open-popup" href="{% url "account_signup" %}">Регистрация</a></li>
+                    </ul>
+{% endif %}
+                </div>
+            </div>
+        </nav>
+        <div class="pagehead__middle">
+            <div class="pagehead__middle_links">
+                {% static_placeholder "logo" %}
+                <a href="#" class="pagehead__middle_links-csm show-catalog-menu" id="show-catalog-menu">
+                    <span class="some"></span>
+                    <span class="some"></span>
+                    <span class="some"></span>
+                </a>
+            </div>
+            <div class="pagehead__middle_slogan">
+                {% static_placeholder "header_slogan" %}
+            </div>
+            <div class="pagehead__middle_contact_us">
+                <div class="pagehead__middle_contact_us_phone">
+                    {% static_placeholder "header_phone" %}
+                </div>
+                <div class="pagehead__middle_contact_us_link">
+                    <a href="{% page_url "contact" %}">{% trans "Contact us" %}</a>
+                </div>
+            </div>
+            <hr class="pagehead__middle__mobile-separator">
+            <div class="pagehead__middle__mobile-menu_button">
+                <a href="#" id="show-catalog-menu-mobile">
+                    <span class="some"></span>
+                    <span class="some"></span>
+                    <span class="some"></span>
+                </a>
+            </div>
+            <div class="pagehead__middle_search">
+{% search_form %}
+            </div>
+            <div class="pagehead__middle_cart">
+                {% header_cart %}
+            </div>
+            <hr class="pagehead__middle__mobile-separator">
+        </div>
+        </div>
+    </div>
+{% block catalog_menu %}
+    <nav class="catalog-menu" id="catalog-menu">
+        <div class="container">
+            {% show_menu_below_id "catalog" 0 0 0 0 "nav/default.html" %}
+        </div>
+    </nav>
+{% endblock %}
+</header>
+{% endblock %}
+{% block section_menu %}
+    {% show_menu 3 0 0 1 "nav/section.html" %}
+{% endblock %}
+    <div class="container">
+{% block h1 %}
+        <h1>{% page_attribute "page_title" %}</h1>
+{% endblock h1 %}
+    </div>
+{% block content %}
+
+{% endblock content %}
+</div>
+{% block footer %}
+<footer class="pagefoot">
+    <div class="pagefoot-road">
+        <div class="pagefoot-road-center">
+            <div class="pagefoot-road-center__car" id="footer-car">
+                <audio id="car-sound" src="{% static "sound/car_sound.mp3" %}" preload="auto"></audio>
+            </div>
+        </div>
+    </div>
+    <div class="pagefoot-content">
+        <div class="pagefoot-content__info">
+            <div class="pagefoot-content__info_label">
+                {% static_placeholder "footer_label" %}
+            </div>
+            <div class="pagefoot-content__info_pay">
+                <h5>{% trans "We accept" %}<span class="m_320">:</span></h5>
+                <ul class="pagefoot-content__info_pay__systems">
+                    <li class="visa">Visa</li>
+                    <li class="mastercard">Mastercard</li>
+                    <li class="paypal">PayPal</li>
+                    <li class="separator"></li>
+                    <li class="webmoney">WebMoney</li>
+                    <li class="yandex">{% trans "Yandex.Money" %}</li>
+                </ul>
+            </div>
+            <div class="pagefoot-content__info_delivery">
+                <h5>{% trans "We deliver" %}<span class="m_320">:</span></h5>
+                {% show_menu_below_id "how2buy" 0 100 100 0 "nav/delivery.html" %}
+            </div>
+            <div class="pagefoot-content__info_social">
+                <a class="blog" href="{% page_url "blog" %}">{% trans "Blog" %}</a>
+                <a class="vk" href="{% page_url "blog" %}">{% trans "Vkontakte" %}</a>
+                <a class="contact" href="{% page_url "contact" %}">{% trans "Contact us" %}</a>
+            </div>
+            <div class="pagefoot-content__info_about">
+                {% show_menu_below_id "info" 0 0 0 0 "nav/default.html" %}
+            </div>
+        </div>
+        <div class="pagefoot-content__info">
+            <div class="pagefoot-content__info_copyright">
+                {% static_placeholder "footer_copyright" %}
+            </div>
+            <div class="pagefoot-content__info_developer">
+                {% static_placeholder "footer_developer" %}
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+</div>
+{#    <script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>#}
+{#    <script type="text/javascript">#}
+{#      VK.init({apiId: 4448410, onlyWidgets: true});#}
+{#    </script>#}
+</body>
+</html>

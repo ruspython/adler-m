@@ -1,0 +1,29 @@
+@import "bootstrap";
+
+
+.lang-chooser {
+  @lang-gap: 16px;
+  .pull-right();
+  border-left: 1px solid @gray-light;
+  padding-right: 7px;
+  padding-left: 7px;
+  & > li {
+    &.active {
+      a {
+        font-weight: bold;
+        color: @brand-primary;
+        text-decoration: none;
+        font-size: @font-size-base;
+        padding-left: @lang-gap/2;
+        padding-right: @lang-gap/2;
+      }
+    }
+    &:last-child {
+      margin-right: -8px;
+    }
+  }
+}
+
+.pagehead__top-social .navbar-right {
+  margin-right: 0!important; // пока дизайнер не придумает чего получше
+}

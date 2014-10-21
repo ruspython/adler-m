@@ -1,0 +1,36 @@
+{% load i18n %}
+{% if city.courier %}
+<div class="delivery-variants_item">
+    <label class="delivery-variants_item-label">
+        <input type="radio" name="delivery" value="courier">
+        <span>Курьером   -   250 руб., стоимость доставки при сумме заказа от 7500 руб.   -   0 рублей.</span>
+    </label>
+    <div class="note">{{ city.courier|safe }}</div>
+</div>
+{% endif %}
+{% if city.points %}
+<div class="delivery-variants_item">
+    <label class="delivery-variants_item-label">
+        <input type="radio" name="delivery" value="pickup">
+        <span>Самовывоз   -   150 руб., стоимость доставки при сумме заказа от 7500 руб.   -   0 рублей.</span>
+    </label>
+{% with city.pointaddress_set.all as points %}
+{% if points %}
+    <ul>
+{% for point in points %}
+        <li>
+            <label>
+                <input type="radio" name="point" value="{{ point.id }}"{% if forloop.first %} checked{% endif %}>
+                {{ point }}
+            </label>
+            <a class="direction_map open-popup" href="{% url "order:get_direction_map" point.id %}">{% trans "direction map" %}</a>
+        </li>
+{% endfor %}
+    </ul>
+{% endif %}
+{% endwith %}
+    <div class="note">{{ city.points|safe }}</div>
+    <div class="warning">Внимание! Пункты самовывоза не являются складом. На самовывозе вы сможете<br>
+        получить только тот товар, на который оформили заказ.</div>
+</div>
+{% endif %}

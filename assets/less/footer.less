@@ -1,0 +1,189 @@
+@import "bootstrap";
+@import "firm_style";
+@import "car";
+
+
+.pagefoot {
+  .brand-primary-gradient();
+  color: @footer-color;
+  margin-top: 44px;
+
+  a {
+    color: white;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .menu {
+    .list-unstyled;
+    li {
+      padding: 0 0 12px;
+    }
+  }
+  &-road {
+    height: 46px;
+    margin: -46px 0 0;
+    overflow: hidden;
+    background: transparent;
+    &-center {
+      .container;
+      position: relative;
+      &__car {
+        background: data-uri('../images/car.png');
+        .size(102px, 44px);
+        position: absolute;
+        left: 15px;
+        top: 2px;
+        &.starts {
+          .animation(car-starts 29s);
+        }
+      }
+    }
+  }
+  &-content {
+    .container;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    @media (min-width: @screen-sm-min) {
+      padding-top: 40px;
+      padding-bottom: 26px;
+    }
+    font-size: 12px;
+    &__info {
+      .make-row();
+      &_label {
+        .make-md-column(3);
+        .hidden-xs;
+        .hidden-sm;
+      }
+      &_pay {
+        .make-xs-column(12);
+        .make-sm-column(4);
+        .make-md-column(3);
+        &__systems {
+          .list-inline;
+          margin-left: 0;
+          li {
+            .size(39px; 23px);
+            .text-hide();
+            line-height: 23px;
+            &.visa { background: data-uri('../data-images/visa.png'); }
+            &.mastercard { background: data-uri('../data-images/mastercard.png'); }
+            &.paypal { background: data-uri('../data-images/paypal.png'); }
+            &.webmoney { background: data-uri('../data-images/webmoney.png'); }
+            &.yandex { background: data-uri('../data-images/yandex.money.png'); }
+            &.separator {
+              .hidden-xs;
+              .size(auto; 8px);
+              display: block;
+              clear: both;
+            }
+            @media (max-width: @screen-xs-max) {
+              & + li {
+                margin-left: 12px;
+              }
+            }
+          }
+        }
+      }
+      &_delivery {
+        .make-xs-column(9);
+        .make-sm-column(4);
+        .make-md-column(3);
+        @media (max-width: @screen-xs-max) {
+          a { font-size: 16px; }
+        }
+      }
+      &_about {
+        .make-xs-column(12);
+        .make-sm-column(3);
+        .make-sm-column-pull(1);
+        .make-md-column(2);
+        .make-md-column-pull(1);
+        a {
+          color: @footer-color;
+        }
+        @media (max-width: @screen-xs-max) {
+          .clearfix();
+          .menu {
+            .list-inline;
+            li+li:before {
+              content: '|';
+              margin: 0 5px 0 -5px;
+            }
+          }
+        }
+      }
+      &_social {
+        .make-xs-column(3);
+        .make-sm-column(1);
+        .make-sm-column-push(3);
+        .make-md-column(1);
+        .make-md-column-push(2);
+        .text-right();
+        @media (max-width: @screen-xs-max) {
+          padding-top: 20px;
+        }
+        a {
+          .pull-right();
+          clear: right;
+          text-decoration: none;
+          margin-bottom: 18px;
+          &.blog {
+            font-size: @font-size-base;
+            @media (max-width: @screen-xs-max) {
+              font-size: 18px;
+            }
+            font-weight: 900;
+            &:hover { text-decoration: underline; }
+          }
+          &.vk {
+            .text-hide();
+            @media (max-width: @screen-xs-max) {
+              .size(30px; 16px);
+              background: data-uri('../data-images/vk-mobile.png');
+            }
+            @media (min-width: @screen-sm-min) {
+              .size(19px; 11px);
+              background: data-uri('../data-images/vk.png');
+            }
+          }
+          &.contact {
+            .text-hide();
+            .size(25px; 15px);
+            @media (max-width: @screen-xs-max) {
+              .size(32px; 20px);
+            }
+            background: data-uri('../data-images/email.png');
+            background-size: 100% 100%;
+          }
+        }
+      }
+      &_copyright {
+        .make-xs-column(6);
+        color: white;
+      }
+      &_developer {
+        .make-xs-column(6);
+        .text-right();
+      }
+      h5 {
+        font-weight: 400;
+        font-size: 12px;
+        margin: 0 0 12px;
+        line-height: @line-height-base;
+        @media (max-width: @screen-xs-max) {
+          font-size: 18px;
+        }
+        .m_320 {
+            display: none;
+            @media (max-width: @screen-xs-max) {
+              display: inline-block;
+
+          }
+        }
+      }
+    }
+  }
+}

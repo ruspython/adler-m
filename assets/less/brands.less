@@ -1,0 +1,46 @@
+@import "bootstrap";
+@import "firm_style";
+@import "flexbox";
+
+.brands-list {
+  .make-row(20px);
+  .brand {
+    margin-bottom: 30px;
+    .make-sm-column(4);
+    .make-xs-column(6);
+    .make-md-column(2);
+    .flex-display();
+    @media (max-width: @screen-xs-max) {
+      margin-bottom: 10px;
+      height: 90px;
+      padding: 0 6px;
+
+    }
+    .brand-xs {
+      @media (max-width: @screen-xs-max) {
+        height: 100%;
+        width: 100%;
+        border: 1px solid #b2cce0;
+        img {
+        @media (max-width: @screen-xs-max) {
+          max-width: 90%;
+          }
+        }
+      }
+    }
+    img {
+      .img-responsive();
+      margin: auto;
+    }
+  }
+}
+
+.brand {
+  .make-row();
+  .description {
+    .make-md-column(9);
+  }
+  .logo {
+    .make-md-column(3);
+  }
+}

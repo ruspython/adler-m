@@ -1,0 +1,97 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n staticfiles %}
+{% block content %}
+<div class="subscriptions">
+    <div class="attention-note">
+        {% trans "Without changing field, you sign up for all the updates. If you want to set up a subscription, select the desired field." %}
+    </div>
+    <form class="" method="post" action="">
+        {% csrf_token %}
+        <div class="top_subscription_header">
+            <div>Масштаб:</div>
+            <div>Марка автомобиля:</div>
+            <div>Производитель:</div>
+        </div>
+        <ul class="subscription-list">
+            <li>
+                <div class="inner_subscription_header">
+                    <div><span>Масштаб:</span></div>
+                    <div><span>Марка автомобиля:</span></div>
+                    <div><span>Производитель:</span></div>
+                </div>
+                <div class="select2-wrap">
+                <div class="select2">
+                    <select>
+                        <option>{% trans "All" %}</option>
+{% for scale in scales %}
+                        <option>{{ scale }}</option>
+{% endfor %}
+                    </select>
+                </div>
+                <div class="select2">
+                    <select>
+                        <option>{% trans "All" %}</option>
+{% for brand in brands %}
+                        <option>{{ brand }}</option>
+{% endfor %}
+                    </select>
+                </div>
+                <div class="select2">
+                    <select>
+                        <option>{% trans "All" %}</option>
+{% for manufacturer in manufacturers %}
+                        <option>{{ manufacturer }}</option>
+{% endfor %}
+                    </select>
+                </div>
+                </div>
+            </li>
+            <li>
+                <div class="inner_subscription_header">
+                    <div><span>Масштаб:</span></div>
+                    <div><span>Марка автомобиля:</span></div>
+                    <div><span>Производитель:</span></div>
+                </div>
+                <div class="select2-wrap">
+                <div class="select2">
+                    <select>
+                        <option>{% trans "All" %}</option>
+{% for scale in scales %}
+                        <option>{{ scale }}</option>
+{% endfor %}
+                    </select>
+                </div>
+                <div class="select2">
+                    <select>
+                        <option>{% trans "All" %}</option>
+{% for brand in brands %}
+                        <option>{{ brand }}</option>
+{% endfor %}
+                    </select>
+                </div>
+                <div class="select2">
+                    <select>
+                        <option>{% trans "All" %}</option>
+{% for manufacturer in manufacturers %}
+                        <option>{{ manufacturer }}</option>
+{% endfor %}
+                    </select>
+                </div>
+                </div>
+            </li>
+        </ul>
+    <div class="unsubscribe">
+        <label>
+            <input type="checkbox">
+            <span>{% trans "Unsubscribe from newsletters" %}</span>
+        </label>
+    </div>
+    <button class="button">{% trans "Subscribe" %}</button>
+    </form>
+<script>
+    $(function(){
+        $(".select2 select").select2();
+    })
+</script>
+</div>
+{% endblock %}

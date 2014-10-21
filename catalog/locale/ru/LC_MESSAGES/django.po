@@ -1,0 +1,466 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-17 09:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: admin.py:41
+msgid "characteristics"
+msgstr "характеристики"
+
+#: admin.py:45 models.py:17 models.py:80
+msgid "tags"
+msgstr "теги"
+
+#: admin.py:46
+msgid "catalog"
+msgstr "каталог"
+
+#: admin.py:47
+msgid "statuses"
+msgstr "статусы"
+
+#: cms_app.py:10
+msgid "Adler Catalog App"
+msgstr "Каталог"
+
+#: cms_plugins.py:8 cms_plugins.py:19
+msgid "Adler-M"
+msgstr "Адлер-М"
+
+#: cms_plugins.py:9
+msgid "Model types Plugin"
+msgstr "Типы моделей"
+
+#: cms_plugins.py:20
+msgid "Catalog index Plugin"
+msgstr "Индекс каталога"
+
+#: cms_toolbar.py:12 views.py:246
+msgid "Catalog"
+msgstr "Каталог"
+
+#: cms_toolbar.py:13
+msgid "Edit items"
+msgstr "Редактировать товары"
+
+#: cms_toolbar.py:14
+msgid "XML import from file"
+msgstr "Импорт товаров из файла XML"
+
+#: cms_toolbar.py:15
+msgid "1C import"
+msgstr "Импорт товаров из 1С"
+
+#: forms.py:11 templates/catalog/catalog_filter.html:9
+msgid "Scale"
+msgstr "Масштаб"
+
+#: forms.py:12 templates/catalog/catalog_filter.html:36
+msgid "Type"
+msgstr "Тип"
+
+#: forms.py:13 templates/catalog/catalog_filter.html:27
+msgid "Manufacturer"
+msgstr "Производитель"
+
+#: forms.py:18
+msgid "Catalogues"
+msgstr "Каталоги"
+
+#: forms.py:19
+msgid "Magazines"
+msgstr "Журналы"
+
+#: forms.py:20
+msgid "Books"
+msgstr "Книги"
+
+#: forms.py:24 templates/catalog/search_form.html:5
+msgid "Search"
+msgstr ""
+
+#: menu.py:9
+msgid "catalog menu"
+msgstr "меню каталога"
+
+#: menu.py:13
+msgid "All catalog"
+msgstr "Весь каталог"
+
+#: menu.py:14 views.py:161 templates/catalog/index_plugin.html:5
+msgid "Novelties"
+msgstr "Новинки"
+
+#: menu.py:15 models.py:27 views.py:175 templates/catalog/item.html:56
+#: templates/catalog/item_card.html:39
+msgid "Pre-order"
+msgstr "Предзаказ"
+
+#: menu.py:16
+msgid "Promo and sales"
+msgstr "Акции и распродажи"
+
+#: menu.py:17 models.py:28 views.py:199
+msgid "Back in stock"
+msgstr "Снова в продаже"
+
+#: menu.py:18 views.py:210
+msgid "Accessories"
+msgstr "Аксессуары"
+
+#: menu.py:19 views.py:227
+msgid "Literature"
+msgstr "Литература"
+
+#: models.py:10 models.py:16
+msgid "tag"
+msgstr "тег"
+
+#: models.py:26
+msgid "Novelty"
+msgstr "новинка"
+
+#: models.py:29 views.py:188 templates/catalog/index_plugin.html:7
+msgid "Sale"
+msgstr "Акция"
+
+#: models.py:30
+msgid "On the way"
+msgstr "В пути"
+
+#: models.py:31
+msgid "In stock"
+msgstr "В наличии"
+
+#: models.py:32
+msgid "Few"
+msgstr "Несколько штук"
+
+#: models.py:33
+msgid "Not available"
+msgstr "Нет в продаже"
+
+#: models.py:59
+msgid "Model"
+msgstr "Модель"
+
+#: models.py:60
+msgid "Accessory"
+msgstr "Аксессуар"
+
+#: models.py:61
+msgid "Book"
+msgstr "Книга"
+
+#: models.py:63
+msgid "section"
+msgstr "раздел"
+
+#: models.py:64
+msgid "slug"
+msgstr ""
+
+#: models.py:65
+msgid "article"
+msgstr "артикул"
+
+#: models.py:66
+msgid "model name"
+msgstr "наименование"
+
+#: models.py:67
+msgid "model brand"
+msgstr "марка автомобиля"
+
+#: models.py:68 models.py:216
+msgid "model type"
+msgstr "тип"
+
+#: models.py:69
+msgid "comment"
+msgstr "комментарий"
+
+#: models.py:70
+msgid "note"
+msgstr "примечание"
+
+#: models.py:71
+msgid "series"
+msgstr "серия"
+
+#: models.py:72
+msgid "scale"
+msgstr "масштаб"
+
+#: models.py:73
+msgid "manufacturer"
+msgstr "производитель"
+
+#: models.py:74
+msgid "color"
+msgstr "цвет"
+
+#: models.py:75
+msgid "material"
+msgstr "материал"
+
+#: models.py:76
+msgid "weight"
+msgstr "вес"
+
+#: models.py:77
+msgid "length"
+msgstr "длина"
+
+#: models.py:78
+msgid "width"
+msgstr "ширина"
+
+#: models.py:79
+msgid "height"
+msgstr "высота"
+
+#: models.py:81
+msgid "quantity"
+msgstr "количество"
+
+#: models.py:82
+msgid "price"
+msgstr "цена"
+
+#: models.py:83
+msgid "minimal price"
+msgstr "минимальная цена"
+
+#: models.py:84
+msgid "new before"
+msgstr "дата окончания статуса «Новинка»"
+
+#: models.py:85
+msgid "novelty"
+msgstr "новинка"
+
+#: models.py:86
+msgid "not available"
+msgstr "нет в продаже"
+
+#: models.py:87
+msgid "back in stock"
+msgstr "снова в продаже"
+
+#: models.py:88
+msgid "promo action"
+msgstr "акция"
+
+#: models.py:89
+msgid "sale"
+msgstr "распродажа"
+
+#: models.py:90
+msgid "on the way"
+msgstr "в пути"
+
+#: models.py:91
+msgid "without image"
+msgstr "без изображения"
+
+#: models.py:92
+msgid "just updated"
+msgstr ""
+
+#: models.py:187 models.py:194
+msgid "catalog item"
+msgstr "товар"
+
+#: models.py:188
+msgid "catalog items"
+msgstr "товары"
+
+#: models.py:193
+msgid "image file"
+msgstr "файл изображения"
+
+#: models.py:200
+msgid "item photo"
+msgstr "фотография модели"
+
+#: models.py:201
+msgid "item photos"
+msgstr "фотографии модели"
+
+#: models.py:205
+msgid "type"
+msgstr "тип"
+
+#: models.py:206
+#, fuzzy
+msgid "image"
+msgstr "файл изображения"
+
+#: models.py:207
+msgid "ordering"
+msgstr "сортировка"
+
+#: models.py:217
+msgid "model types"
+msgstr "типы моделей"
+
+#: utils.py:58
+msgid "all"
+msgstr "все"
+
+#: views.py:110
+#, python-format
+msgid "Tag: %s"
+msgstr "Тег: %s"
+
+#: views.py:248
+#, python-format
+msgid "Change %s"
+msgstr "Изменить %s"
+
+#: templates/admin/catalog/1c_import.html:6
+#: templates/admin/catalog/catalog_import.html:6
+msgid "Home"
+msgstr "Домой"
+
+#: templates/catalog/accessories_filter.html:3
+#: templates/catalog/catalog_filter.html:6
+msgid "Reset all fields"
+msgstr "Сбросить все поля"
+
+#: templates/catalog/accessories_filter.html:12
+#: templates/catalog/books_filter.html:6
+#: templates/catalog/catalog_filter.html:75
+msgid "Apply"
+msgstr "Применить"
+
+#: templates/catalog/catalog_filter.html:11
+#: templates/catalog/catalog_filter.html:20
+#: templates/catalog/catalog_filter.html:29
+#: templates/catalog/catalog_filter.html:38
+msgid "All"
+msgstr "все"
+
+#: templates/catalog/catalog_filter.html:18
+msgid "Car brand"
+msgstr "Марка автомобиля"
+
+#: templates/catalog/catalog_filter.html:47
+msgid "Material"
+msgstr "Материал"
+
+#: templates/catalog/catalog_filter.html:50
+msgid ""
+"<p><b>Metal</b> (die-cast) - Body, cab and axle components of large-scale "
+"models made by this technology, are made of metal, but rather a zinc alloy. "
+"The remaining parts are usually molded from plastic or other materials. "
+"These scale models are considered traditional.</p>"
+msgstr ""
+"<p><b>Металл</b> (die-cast) - кузов, кабина и несущие элементы масштабных "
+"моделей, выполненных по этой технологии, выполнены из металла, а точнее "
+"цинкового сплава. Остальные детали, как правило, отливаются из пластика и "
+"других материалов. Такие масштабные модели считаются традиционными.</p>"
+
+#: templates/catalog/catalog_filter.html:51
+msgid ""
+"<p><b>Resin</b> (resin) - is a special model \"resin\". Model made from this "
+"material looks no different from the models of metal. However, the model "
+"\"resin\" allows for better work through various small parts. Consequently, "
+"the model of \"resin\" generally have better detailing compared with models "
+"from a metal.</p>"
+msgstr ""
+"<p><b>Смола</b> (resin) - это специальная модельная «смола». Модели, "
+"выполненные из этого материала внешне ничем не отличаются от моделей из "
+"металла. Однако модельная  «смола» позволяет лучше прорабатывать "
+"различныемелкие детали. Вследствие этого модели из «смолы» в основном имеют "
+"лучшую деталировку по сравнению с моделями из металла.</p>"
+
+#: templates/catalog/catalog_filter.html:63
+msgid "Other"
+msgstr "Прочие"
+
+#: templates/catalog/catalog_filter.html:70
+msgid "Show not available models"
+msgstr "Показывать модели, которых нет в наличии"
+
+#: templates/catalog/index_plugin.html:6
+msgid "Soon"
+msgstr "Скоро"
+
+#: templates/catalog/item.html:3
+msgid "Scale model"
+msgstr "Масштабная модель"
+
+#: templates/catalog/item.html:11
+msgid "Back "
+msgstr "Назад "
+
+#: templates/catalog/item.html:11
+msgid "to catalog"
+msgstr "в каталог"
+
+#: templates/catalog/item.html:23
+msgid "Tags"
+msgstr "Теги"
+
+#: templates/catalog/item.html:44
+msgid "Description"
+msgstr "Описание"
+
+#: templates/catalog/item.html:52 templates/catalog/item.html.py:63
+msgid "Q-ty"
+msgstr "Кол-во"
+
+#: templates/catalog/item.html:55 templates/catalog/item.html.py:66
+#: templates/catalog/item_card.html:28
+msgid "r"
+msgstr "р"
+
+#: templates/catalog/item.html:67 templates/catalog/item_card.html:33
+msgid "Buy"
+msgstr "Купить"
+
+#: templates/catalog/item.html:72
+msgid "Model is in my collection"
+msgstr "Модель<br>добавлена в коллекцию"
+
+#: templates/catalog/item.html:74
+msgid "Add to my collection"
+msgstr "Добавить<br>в коллекцию"
+
+#: templates/catalog/item.html:77
+msgid "Added to favorites"
+msgstr "Модель добавлена<br>в отложенные товары"
+
+#: templates/catalog/item.html:79
+msgid "Add to favorites"
+msgstr "В отложенные<br>товары"
+
+#: templates/catalog/item.html:94
+msgid "Similar models"
+msgstr "Похожие модели"
+
+#: templates/catalog/items.html:3
+msgid "Scale models"
+msgstr "Масштабные модели"
+
+#: templates/catalog/search_form.html:4
+msgid "Find!"
+msgstr ""

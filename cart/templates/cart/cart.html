@@ -1,0 +1,180 @@
+{% extends CMS_TEMPLATE %}
+{% load thumbnail staticfiles i18n sekizai_tags cms_tags %}
+{% block content %}
+<div class="container">
+{% if items %}
+    <form id="cart" action="{% url "order:auth" %}">
+    {% csrf_token %}
+    <div class="cp-list">
+        <div class="cp-list-header">
+            <div class="cp-list-header__item photo"><div class="tb">{% trans "Photo" %}</div></div>
+            <div class="cp-list-header__item name"><div class="tb">{% trans "Item name" %}</div></div>
+            <div class="cp-list-header__item status"><div class="tb">{% trans "Status" %}</div></div>
+            <div class="cp-list-header__item price"><div class="tb">{% trans "Price" %}</div></div>
+            <div class="cp-list-header__item quantity"><div class="tb">
+                <span class="md-sh">{% trans "Quantity" %}</span>
+                <span class="sm-sh">{% trans "Q-ty" %}</span>
+            </div></div>
+            <div class="cp-list-header__item discount"><div class="tb">
+                <span class="quest-value">{% trans "Discount" %}
+                    <div class="liter">?
+                        <div class="tip">На некоторые товары из нашего ассортимента накопительная скидка не распространяется.</div>
+                    </div>
+                </span>
+            </div></div>
+            <div class="cp-list-header__item sum"><div class="tb">{% trans "Sum" %}</div></div>
+            <div class="cp-list-header__item check"><div class="tb"></div></div>
+        </div>
+        <div class="cp-list-body">
+{% for item in items %}
+    <div class="cp-list-body-tr">
+            <div class="cp-list-body-tr__item photo"><div class="tb">
+{% thumbnail item.item.get_main_image.file "x130" crop="center" as im %}
+                <div class="image"><img src="{{ im.url }}"></div>
+{% empty %}
+                <div class="no-image"></div>
+{% endthumbnail %}
+            </div></div>
+            <div class="cp-list-body-tr__item name"><div class="tbn">
+                <h5 class="cart__item-title"><a href="{{ item.item.get_absolute_url }}">{{ item.item.full_name }}</a></h5>
+                    <ul class="item-proprs">
+{% if item.item.manufacturer %}
+                        <li class="manufacturer"><span>{% trans "Manufacturer" %}:</span> {{ item.item.manufacturer }}</li>
+{% endif %}
+{% if item.item.scale %}
+                        <li class="scale"><span>{% trans "Scale" %}:</span> {{ item.item.scale }}</li>
+{% endif %}
+{% if item.item.slug %}
+                        <li class="article"><span>{% trans "Article" %}:</span> {{ item.item.slug }}</li>
+{% endif %}
+                    </ul>
+            </div></div>
+            <div class="cp-list-body-tr__item status"><div class="tb">
+                <div class="{{ item.item.get_status4cart }}"{% if item.quantity > 0 %} title="{% trans "In stock" %}: {{ item.quantity }}"{% endif %}>
+                    {{ item.item.get_status4cart_string }}
+                </div>
+            </div></div>
+            <div class="cp-list-body-tr__item price"><div class="tb">
+                <span class="price">{{ item.get_price }} {% trans "r" %}</span>
+            </div></div>
+            <div class="cp-list-body-tr__item quantity"><div class="tb">
+                <div class="tooltip" data-toggle="tooltip" title="{% trans "Available in stock" %}: {{ item.item.quantity }}"></div>
+                <input class="qty" data-id="{{ item.id }}" data-min="1" data-max="{{ item.item.quantity }}" name="quantity[{{ item.id }}]" value="{{ item.quantity }}">
+            </div></div>
+            <div class="cp-list-body-tr__item discount"><div class="tb">
+                <span class="discount">2%</span>
+            </div></div>
+            <div class="cp-list-body-tr__item sum"><div class="tb">
+                <span class="sum">{{ item.get_total_price }} {% trans "r" %}</span>
+            </div></div>
+            <div class="cp-list-body-tr__item check"><div class="tb">
+                <button type="button" class="remove" data-id="{{ item.id }}"></button>
+            </div></div>
+        </div>
+{% endfor %}
+        </div>
+    </div>
+{# footer cart #}
+    <div class="cart-footer">
+        <div class="cart-footer__links">
+            <p><a href="{% url "catalog:item-list" %}" class="back">{% trans "Back to catalog" %}</a></p>
+            <div>
+                <a href="#"  class="discounts"><span>{% trans "About discounts" %}</span></a>
+                <div class="about_discounts">
+                    {% static_placeholder "cart_about_discounts" %}
+                </div>
+            </div>
+        </div>
+        <div class="cart-footer__total">
+{#            <p>{% trans "Total weight" %}: <span class="total-weight"><span id="total-weight">{{ total_weight }}</span> {% trans "kg" %}</span></p>#}
+            <p class="total_price">{% trans "Total price" %}: <span class="total-price"><span id="total-price">{{ total_price }}</span> {% trans "r" %}</span></p>
+            <button type="submit" class="button">{% trans "Checkout" %}</button>
+        </div>
+    </div>
+    </form>
+{% else %}
+    {% trans "Cart is empty" %}
+{% endif %}
+</div>
+{% addtoblock "js" %}
+    <script>
+    $(function(){
+        $('.discounts').click(function(ev){
+            ev.preventDefault();
+            var $this = $(this);
+            var $content = $(this).siblings('.about_discounts'),
+                    animationDuration = 600;
+            if($content.hasClass('show')){
+                $content.stop().slideUp(animationDuration);
+                $content.removeClass('show');
+                $this.removeClass('show');
+            }else {
+                $content.stop().slideDown(animationDuration);
+                $content.addClass('show');
+                $this.addClass('show');
+            }
+        });
+        if($('.about_discounts').children('.cms_placeholder').css('display') == 'block') {
+            $('.about_discounts').show();
+        }
+        var $cart = $('#cart'),
+            refresh = function(){
+                var total_weight = 0,
+                    total_price = 0;
+                $cart.find('.cart_row').each(function(){
+                    var $this = $(this),
+                        $sum = $this.find('.sum'),
+                        $multiplier = $this.find('.multiplier'),
+                        price = parseFloat($this.find('.price').text()),
+                        weight = parseFloat($this.find('.weight').text().replace(',', '.')),
+                        quantity = parseInt($this.find('input.qty').val()),
+                        sum = price * quantity;
+                    total_weight += weight * quantity;
+                    total_price += sum;
+                    $sum.text(sum);
+                    $multiplier.text(quantity)
+                });
+                $('#total-weight').text(total_weight);
+                $('#total-price').text(total_price);
+            };
+        $cart
+            .on('click', 'button.remove', function(e){
+                e.preventDefault();
+                window.location.href = '{% url "cart:remove_from_cart" %}?id=' + $(this).data('id');
+            })
+            .on('change keyup', 'input.qty', function(){
+                var $this = $(this),
+                        input = $this[0],
+                        value = $this.val(),
+                        minValue = $this.data('min'),
+                        maxValue = $this.data('max'),
+                        recount = {};
+                if (value < minValue || isNaN(value)) {
+                    $this.val(input.defaultValue);
+                    return false
+                } else if (value > maxValue) {
+                    $this.siblings('.tooltip').tooltip('show');
+                } else {
+                    $cart
+                        .addClass('load')
+                        .find('input.qty')
+                        .each(function(){
+                            var $this = $(this);
+                            recount[$this.data('id')] = $this.val();
+                        });
+                    $cart
+                        .find('[type=submit]')
+                        .attr('disabled', true);
+                    $.get('{% url "cart:cart_refresh" %}', recount, function(){
+                        $('#cart').removeClass('load');
+                        $cart
+                            .find('[type=submit]')
+                            .removeAttr('disabled');
+                    });
+                    refresh();
+                }
+            });
+    });
+    </script>
+{% endaddtoblock %}
+{% endblock %}

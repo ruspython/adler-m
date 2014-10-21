@@ -1,0 +1,18 @@
+{% load menu_tags %}
+        <ul class="menu">
+{% for child in children %}
+{% if child.children %}
+        <li class="{% if child.selected or child.ancestor %}active{% endif %} dropdown">
+	        <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}" class="dropdown-toggle" data-toggle="dropdown">
+{{ child.get_menu_title }}
+                <b class="caret"></b>
+            </a>
+            {% show_menu from_level to_level extra_inactive extra_active "nav/submenu.html" "" "" child %}
+        </li>
+{% else %}
+        <li{% if child.selected or child.ancestor %} class="active"{% endif %}>
+	        <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
+        </li>
+{% endif %}
+{% endfor %}
+        </ul>

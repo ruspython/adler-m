@@ -1,0 +1,31 @@
+@import "bootstrap";
+@import "firm_style";
+
+.select_city {
+  margin-bottom: 36px;
+  label {
+    display: block;
+  }
+  .selectBox-dropdown {
+    min-width: 492px;
+  }
+}
+
+.partners-list {
+  .make-row();
+  li {
+    .make-md-column(8);
+    &:before {
+      top: 6px;
+    }
+    div {
+      color: #8193a1;
+      margin-bottom: 1px;
+      &.name { color: #000000; }
+    }
+  }
+  .hide();
+  &.selected {
+    .show();
+  }
+}

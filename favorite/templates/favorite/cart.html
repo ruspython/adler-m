@@ -1,0 +1,80 @@
+{% extends CMS_TEMPLATE %}
+{% load thumbnail staticfiles i18n %}
+{% block content %}
+<div class="container">
+{% if items %}
+    <form action="{% url "favorite:action" %}" method="post">
+    {% csrf_token %}
+    <div class="cp-list favorite">
+        <div class="cp-list-header">
+            <div class="cp-list-header__item photo"><div class="tb">{% trans "Photo" %}</div></div>
+            <div class="cp-list-header__item name"><div class="tb">{% trans "Item name" %}</div></div>
+            <div class="cp-list-header__item status favorite"><div class="tb">{% trans "Status" %}</div></div>
+            <div class="cp-list-header__item price favorite"><div class="tb">{% trans "Price" %}</div></div>
+            <div class="cp-list-header__item check"><div class="tb"><span class="select_all" id="select_all_items">{% trans "Select all" %}</span></div></div>
+        </div>
+        <div class="cp-list-body">
+{% for item in items %}
+    <div class="cp-list-body-tr">
+            <div class="cp-list-body-tr__item photo"><div class="tb">
+{% thumbnail item.item.get_main_image.file "x130" crop="center" as im %}
+                <div class="image"><img src="{{ im.url }}"></div>
+{% empty %}
+                <div class="no-image"></div>
+{% endthumbnail %}
+            </div></div>
+            <div class="cp-list-body-tr__item name favorite"><div class="tbn">
+                <h5 class="cart__item-title"><a href="{{ item.item.get_absolute_url }}">{{ item.item.full_name }}</a></h5>
+                    <ul class="item-proprs">
+{% if item.item.manufacturer %}
+                        <li class="manufacturer"><span>{% trans "Manufacturer" %}:</span> {{ item.item.manufacturer }}</li>
+{% endif %}
+{% if item.item.scale %}
+                        <li class="scale"><span>{% trans "Scale" %}:</span> {{ item.item.scale }}</li>
+{% endif %}
+{% if item.item.slug %}
+                        <li class="article"><span>{% trans "Article" %}:</span> {{ item.item.slug }}</li>
+{% endif %}
+                        <li class="add_to_cart"><a href="#" class="add_to_cart_button button">{% trans "Add to cart" %}</a></li>
+                    </ul>
+            </div></div>
+            <div class="cp-list-body-tr__item status favorite"><div class="tb">
+                <div class="{{ item.item.get_status4cart }}"{% if item.quantity > 0 %} title="{% trans "In stock" %}: {{ item.quantity }}"{% endif %}>
+                    {{ item.item.get_status4cart_string }}
+                </div>
+            </div></div>
+            <div class="cp-list-body-tr__item price favorite"><div class="tb">
+                <span class="price">{{ item.item.price }} {% trans "r" %}</span>
+            </div></div>
+
+            <div class="cp-list-body-tr__item check favorite"><div class="tb">
+                <input type="checkbox" name="item" value="{{ item.item_id }}" class="check_input">
+                <button type="button" class="remove visible-xs" data-id="{{ item.id }}"></button>
+            </div></div>
+        </div>
+{% endfor %}
+        </div>
+    </div>
+    <div class="cart-footer favorite">
+        <p class="hidden-xs">{% trans "Selected items" %}:
+            <button type="submit" class="btn-link" name="remove">{% trans "Remove" %}</button> |
+            <button type="submit" class="btn-link" name="add2cart">{% trans "Add to cart" %}</button>
+        </p>
+        <div class="visible-xs">
+            <button class="btn-block button">{% trans "Add all to cart" %}</button>
+            <a href="#" class="remove_all"><span>{% trans "Remove all" %}</span></a>
+        </div>
+    </div>
+    </form>
+    <script>
+    $(function(){
+        $('#select_all_items').click(function(){
+            $('.favorite .check_input').iCheck('check')
+        })
+    })
+    </script>
+{% else %}
+    {% trans "List is empty" %}
+{% endif %}
+</div>
+{% endblock %}

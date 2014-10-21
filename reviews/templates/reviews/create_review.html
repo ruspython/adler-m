@@ -1,0 +1,33 @@
+{% extends request.is_ajax|yesno:"faq/ajax_base.html,faq/base.html" %}
+{% load widget_tweaks %}
+{% block form_content %}
+<form method="post" class="ajaxform" id="review_form" action="{% url 'reviews:create_review' %}">
+    {% csrf_token %}
+{% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+{% endif %}
+{% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+{% include "includes/_form_fields.html" %}
+                <div class="form-group">
+                    <button type="submit" class="button btn">Отправить</button>
+                    <span id="event_signup_result" class="event_signup_result"></span>
+                </div>
+</form>
+{% if request.is_ajax %}
+    <script>
+    $('#review_form').ajaxForm({
+        beforeSubmit: function(){
+            $('.ajaxform').addClass('load')
+        },
+        success: function(data){
+            $('.ajaxform')
+                    .html(data)
+                    .removeClass('load')
+            setTimeout(function(){
+                $.fancybox.close()
+            }, 5000)
+        }
+    })
+    </script>
+{% endif %}
+{% endblock %}

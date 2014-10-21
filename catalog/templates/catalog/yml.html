@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="{{ now|date:"Y-m-d H:i" }}">
+    <shop>
+        <name>Adler M</name>
+        <company>Adler M</company>
+        <url>http://{{ site }}</url>
+        <platform>Django-CMS</platform>
+        <version>3.0.4</version>
+        <agency>El-fidel</agency>
+        <email>admin@el-fidel.com</email>
+
+        <currencies>
+            <currency id="RUR" rate="1" plus="0"/>
+        </currencies>
+
+        <categories>
+            <category id="1">Модели</category>
+            <category id="2">Аксессуары</category>
+            <category id="3">Литература</category>
+        </categories>
+
+        <local_delivery_cost>250</local_delivery_cost>
+
+
+
+        <offers>
+{% for item in items %}
+            <offer available="true">
+                <url>http://{{ site }}{{ item.get_absolute_url }}</url>
+                <price>{{ item.price }}</price>
+                <currencyId>RUR</currencyId>
+{% if item.section == 'accessory' %}
+                <categoryId>2</categoryId>
+{% elif item.section == 'book' %}
+                <categoryId>3</categoryId>
+{% else %}
+                <categoryId>1</categoryId>
+{% endif %}
+{% if item.get_main_image %}
+                <picture>http://{{ site }}{{ item.get_main_image }}</picture>
+{% endif %}
+                <name>{{ item.full_name }}</name>
+            </offer>
+{% endfor %}
+        </offers>
+
+    </shop>
+</yml_catalog>

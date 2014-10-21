@@ -1,0 +1,8 @@
+{% load menu_tags %}
+        <ul class="menu">
+{% for child in children %}
+        <li{% if child.selected or child.ancestor %} class="active"{% endif %}>
+	        <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}{% if child.attr.reverse_id %}#{{ child.attr.reverse_id }}{% endif %}">{{ child.get_menu_title }}</a>
+        </li>
+{% endfor %}
+        </ul>

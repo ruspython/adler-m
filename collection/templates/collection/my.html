@@ -1,0 +1,16 @@
+{% extends CMS_TEMPLATE %}
+{% load thumbnail staticfiles i18n cms_tags %}
+{% block h1 %}
+    <div class="collection_head">
+        <h1>{% page_attribute "page_title" %}</h1>
+        <div class="our_filter_is_cool">
+        Найдите нужную модель<br>
+с помощью фильтров
+        </div>
+    </div>
+{% endblock h1 %}
+{% block content %}
+{% with True as allow_upload %}
+{% include "collection/list.html" %}
+{% endwith %}
+{% endblock %}

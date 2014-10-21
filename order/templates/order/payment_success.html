@@ -1,0 +1,13 @@
+{% extends 'order/order_base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="order-success">
+    <div>
+        <h3>{% trans "Thank you!" %}</h3>
+        <div>{% trans "Order successfully paid" %}</div>
+{% if order_id %}
+        <div>{% trans "Order No:" %} {{ order_id }}</div>
+{% endif %}
+    </div>
+    </div>
+{% endblock %}

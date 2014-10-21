@@ -1,0 +1,18 @@
+{% load i18n  %}
+<div class="xs-total-cost">
+    Общая сумма заказа: <span>22000 рублей</span>
+</div>
+<div class="order-step">
+    <div class="step first{% if step == 1 %} active{% endif %}">
+        <span>{% trans "Step 1." %}</span>
+        {% trans "Authorization" %}
+    </div>
+    <div class="step second{% if step == 2 %} active{% endif %}">
+        <span>{% trans "Step 2." %}</span>
+        {% trans "Input data" %}
+    </div>
+    <div class="step third{% if step == 3 %} active{% endif %}">
+        <span>{% trans "Step 3." %}</span>
+        {% trans "Completion" %}
+    </div>
+</div>

@@ -1,0 +1,72 @@
+@import "bootstrap";
+@import "firm_style";
+@import "flexbox";
+
+.brands-plugin {
+  .user-select (none);
+  height: 180px;
+  .container();
+  .flex-display();
+  .hidden-xs();
+  &__slogan {
+    width: 320px;
+    .pull-left();
+    font-size: 26px;
+    .text-center();
+    color: #000000;
+    margin: auto;
+    .hidden-xs();
+    .hidden-sm();
+  }
+  &_wrap {
+    position: relative;
+    .size(660px; 66px);
+    .pull-left();
+    margin: auto;
+    @media (min-width: @screen-md-min) {
+      width: 900px;
+    }
+  }
+  &-gallery {
+    .size(100%; 66px);
+    margin: auto;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    .gallery-slider-list {
+      height: 100%;
+      width: 100%;
+      .slide {
+        .pull-left();
+        .size(200px; 66px);
+        @media (min-width: @screen-sm-min) {
+          width: 165px;
+        }
+        .flex-display();
+        a {
+          margin: auto;
+          img { .img-responsive(); }
+        }
+      }
+    }
+  }
+   &__button {
+     position: absolute;
+     top: 21px;
+     .size(20px; 27px);
+     border: 0;
+     background: center no-repeat;
+     &:active,
+     &:focus {
+       outline: none;
+     }
+     &.prev {
+       left: -20px;
+       background-image: data-uri('../data-images/main-arrow-left.png');
+     }
+     &.next {
+       right: -20px;
+       background-image: data-uri('../data-images/main-arrow-right.png');
+     }
+   }
+}

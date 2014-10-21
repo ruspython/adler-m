@@ -1,0 +1,47 @@
+@import "bootstrap";
+@import "firm_style";
+
+
+.wrap_subscription_create {
+  background: #edf1f4;
+  padding-bottom: 44px;
+  .subscription_create {
+    .container();
+    &-form {
+      @media (min-width: @screen-md-min ) {
+        margin-left: 170px;
+      }
+      label {
+        @media (max-width: @screen-xs-max ) {
+          display: block;
+        }
+        color: #8193a1;
+        font-size: 16px;
+      }
+      .subscription_input {
+        @media (min-width: @screen-md-min ) {
+          width: 264px;
+        }
+        @media (max-width: @screen-sm-max ) {
+          width: 250px;
+        }
+        @media (max-width: @screen-xs-max ) {
+          margin-left: 0 !important;
+          width: 195px;
+        }
+        margin: 0 20px;
+        display: inline-block;
+        height: 34px;
+        border: 1px solid #a5bbcd;
+        border-radius: 4px;
+        height: 34px;
+        padding: 3px 13px;
+        font-size: 14px;
+        background: #fff;
+        color: #a5bbcd;
+        font-weight: 700;
+        &:focus, &:active { outline: none; }
+      }
+    }
+  }
+}

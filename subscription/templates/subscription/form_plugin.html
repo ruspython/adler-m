@@ -1,0 +1,11 @@
+{% load i18n %}
+<div class="wrap_subscription_create">
+<div class="subscription_create">
+<form action="{% url "subscription:create" %}" method="post" class="subscription_create-form">
+    {% csrf_token %}
+    <label>{% trans "Notify about new arrivals" %}</label>
+    <input type="email" name="email" class="subscription_input" placeholder="{% trans "email" %}">
+    <button type="submit" class="button">{% trans "Subscribe" %}</button>
+</form>
+</div>
+</div>

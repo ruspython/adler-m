@@ -1,0 +1,52 @@
+@import "bootstrap";
+@import "firm_style";
+
+.reviews-list {
+  margin-top: 38px;
+  .review {
+    width: 444px;
+    margin-bottom: 32px;
+    .clearfix();
+    .photo {
+      height: 70px;
+      width: 70px;
+      .pull-left();
+      margin-right: 38px;
+      background: #e2e2e2;
+    }
+    .b-message {
+      width: 330px;
+      .pull-left();
+      .message {
+        border: 1px solid #b2cce0;
+        padding: 18px;
+        border-radius: 4px;
+        margin-bottom: 14px;
+        .answer {
+          .text-right();
+          margin-top: 8px;
+        }
+      }
+      .date {
+        .pull-right();
+        margin-right: 18px;
+        color: #8193a1;
+        font-size: @font-size-small;
+      }
+      .name {
+        position: relative;
+        float: left;
+        &:after {
+          position: absolute;
+          background: url('../images/hrd.png') center center no-repeat;
+          top: -16px;
+          height: 16px;
+          width: 16px;
+          display: block;
+          content: "";
+          right: -20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{% load thumbnail staticfiles %}
+            <div class="catalog_detail__view-gallery">
+                <div class="main-photo" id="main-photo">
+{% thumbnail item.get_main_image.file "570x570" as im %}
+                    <img src="{{ im.url }}" alt="{{ item.full_name }}">
+{% empty %}
+                    <img src="{% static "images/no-photo.jpg" %}" alt="{{ item.full_name }}">
+{% endthumbnail %}
+                </div>
+{% with item.itemimage_set.all as gallery %}
+{% if gallery|length > 1 %}
+                <div class="gallery">
+                    <div class="gallery__slider" id="item-gallery">
+                        <div class="gallery__slider-list">
+{% for image in gallery %}
+{% thumbnail image.file "107x75" crop="center" as im %}
+                            <a href="{{ image.file.url }}" class="slide" data-index="{{ forloop.counter0 }}" style="background-image: url({{ im.url }})"></a>
+{% endthumbnail %}
+{% endfor %}
+                        </div>
+                    </div>
+{% if gallery|length > 5 %}
+                    <button type="button" class="gallery__button prev"></button>
+                    <button type="button" class="gallery__button next"></button>
+{% endif %}
+                </div>
+{% endif %}
+{% endwith %}
+            </div>

@@ -1,0 +1,29 @@
+<div class="direction_map" id="direction_map"></div>
+<script>
+ymaps.ready(function(){
+    var point = {{ point.map|safe }},
+        latlng = point.latlng.split(","),
+        zoom = point.zoom,
+        map = new ymaps.Map(
+            'direction_map',
+            {
+                center: latlng,
+                zoom: zoom
+            }
+        ),
+        placemark = new ymaps.GeoObject({
+            geometry: {
+                type: "Point",
+                coordinates: latlng
+            }
+        });
+    map.geoObjects.add(placemark)
+})
+</script>
+<style>
+    .direction_map {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+{{ point }}

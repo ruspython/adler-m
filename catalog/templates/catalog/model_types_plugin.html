@@ -1,0 +1,15 @@
+{% load cms_tags %}
+<div class="model_types">
+<div class="model_types_inner">
+{% for type in types %}
+{% render_model_block type %}
+<a href="{{ type.get_absolute_url }}" class="model_types__item">
+    <div class="model_types__item_b-image">
+        <img src="{{ type.image.url }}">
+    </div>
+    <h5><span>{{ type.name }}</span></h5>
+</a>
+{% endrender_model_block %}
+{% endfor %}
+</div>
+</div>

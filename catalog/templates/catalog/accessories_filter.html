@@ -1,0 +1,15 @@
+{% load i18n widget_tweaks %}
+<form class="catalog-filter" method="get" action="">
+    <button class="catalog-filter__reset" id="filter-reset" type="reset">{% trans "Reset all fields" %}</button>
+    <fieldset class="catalog-filter_params">
+{% for field in form %}
+        <div class="catalog-filter_params-variant">
+            <label>{{ field.label }}</label>
+            {{ field }}
+        </div>
+{% endfor %}
+        <div class="catalog-filter_params-variant">
+            <button type="submit" class="button submit">{% trans "Apply" %}</button>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,39 @@
+@import "bootstrap";
+@import "firm_style";
+
+
+.b-faq {
+  .add_question {
+    margin-bottom: 32px;
+  }
+  .questions {
+    .faq {
+      &:before { top: 9px; }
+      .question {
+        color: @brand-primary;
+        font-weight: 500;
+        font-size: 18px;
+        cursor: pointer;
+        span {
+          border-bottom: 1px dashed;
+        }
+      }
+      .answer {
+        display: none;
+        .perspective-origin(top);
+        .perspective(1000px);
+        &__content {
+          margin-top: 12px;
+          .transform-origin(top);
+          .rotateX(-90deg);
+          .opacity(0);
+          .transition(all .6s ease);
+          &.display {
+            .opacity(1);
+            .rotateX(0deg);
+          }
+        }
+      }
+    }
+  }
+}

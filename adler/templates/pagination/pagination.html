@@ -1,0 +1,31 @@
+{% if is_paginated %}
+<div class="wrap-pagination">
+<ul class="pagination">
+{% if page_obj.has_previous %}
+    <li><a href="{{ first_page.url }}" class="p_begin"></a></li>
+{#    <li><a href="{{ prev_page.url }}">назад</a></li>#}
+{% endif %}
+{% for page in visible_pages %}
+    <li{% if page.is_current %} class="current"{% endif %}>
+    {% if page.is_current %}
+        <span>{{ page.text }}</span>
+    {% else %}
+        <a href="{{ page.url }}">{{ page.text }}</a>
+    {% endif %}
+
+    </li>
+{% endfor %}
+{% if page_obj.has_next %}
+{#    <li><a href="{{ next_page.url }}">вперёд</a></li>#}
+    <li><a href="{{ last_page.url }}" class="p_end"></a></li>
+{% endif %}
+</ul>
+<form class="strict_page" method="get">
+    {% for k, v in get_params %}
+        <input type="hidden" name="{{ k }}" value="{{ v }}">
+    {% endfor %}
+    <button class="strict_page_button" type="submit">Перейти на страницу</button>
+    <input type="text" class="strict_page_input" name="page" value="{{ page_obj.number }}">
+</form>
+</div>
+{% endif %}

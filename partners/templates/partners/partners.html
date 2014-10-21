@@ -1,0 +1,43 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n sekizai_tags staticfiles utils %}
+{% block content %}
+{% regroup partners by city as city_list %}
+<div class="container">
+    <form class="select_city form-inline">
+        <div class="form-group">
+            <label>{% trans "Your city" %}:</label>
+            <select class="selectBox" id="select-city">
+{% for city in city_list %}
+                <option value="{{ city.grouper.id }}"{% if forloop.first %} selected{% endif %}>{{ city.grouper }}</option>
+{% endfor %}
+            </select>
+        </div>
+    </form>
+
+{% for city in city_list %}
+    <ul class="list partners-list{% if forloop.first %} selected{% endif %}" data-city="{{ city.grouper.id }}">
+{% for partner in city.list %}
+        <li>
+            <div class="name">{{ partner.name }}</div>
+{% if partner.phone %}
+            <div class="phone">{% trans "phone:" %} {{ partner.phone }}</div>
+{% endif %}
+{% if partner.address %}
+            <div class="address">{% trans "address:" %} {{ partner.address|safe }}</div>
+{% endif %}
+{% if partner.email %}
+            <div class="email">{% trans "email:" %} <a href="mailto:{{ partner.email }}">{{ partner.email }}</a></div>
+{% endif %}
+{% if partner.website %}
+            <div class="website">{% trans "website:" %} <a target="_blank" href="{{ partner.website|site_url }}">{{ partner.website }}</a></div>
+{% endif %}
+        </li>
+{% endfor %}
+    </ul>
+{% endfor %}
+
+</div>
+{% addtoblock "js" %}
+    <script src="{% static "js/partners.js" %}"></script>
+{% endaddtoblock %}
+{% endblock %}

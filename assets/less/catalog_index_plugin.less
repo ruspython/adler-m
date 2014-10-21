@@ -1,0 +1,103 @@
+@import "bootstrap";
+@import "firm_style";
+@import "flexbox";
+
+
+@catalog-index-menu-width: 170px;
+
+
+.catalog-index {
+  background: #edf1f4;
+  padding: 60px 0 50px 0;
+  &-content {
+    .container();
+    padding-left: 0;
+    padding-right: 0;
+    &__types {
+      border: none !important;
+      .pull-left();
+      .nav();
+      .nav-tabs();
+      @media (min-width: @screen-sm-min) {
+        width: @catalog-index-menu-width;
+        padding-right: @grid-gutter-width / 2;
+      }
+      .type {
+        float: none;
+        margin: 0;
+        &.active, &:hover,&:focus {
+          a {
+            color: @brand-primary !important;
+            background: #fdfdfd;
+            border: none !important;
+            box-shadow: 0 2px 1px rgba(0,0,0,.27);
+          }
+        }
+        a {
+          font-weight: bold;
+          color: #8193a1;
+          font-size: 16px;
+          border: none;
+          border-radius: 7px;
+          margin-bottom: 20px;
+          .text-center();
+        }
+      }
+    }
+    &__items {
+      .tab-content();
+      .pull-left();
+      @media (min-width: @screen-sm-min) {
+        width: @container-sm - @catalog-index-menu-width;
+      }
+      @media (min-width: @screen-md-min) {
+        width: @container-md - @catalog-index-menu-width;
+      }
+      @media (min-width: @screen-lg-min) {
+        width: @container-lg - @catalog-index-menu-width;
+      }
+      .tab-pane {
+        .make-row(0);
+        .catalog_list__item {
+          padding: 0;
+          width: 50%;
+          margin: 0;
+          &-card {
+            &-title,
+            &-props,
+            &-price {
+              padding-left: 10px;
+              padding-right: 10px;
+            }
+          }
+
+          @media (min-width: @screen-sm-min) {
+            width: 33.33%;
+            height: 323px;
+            &.first-item {
+              width: 66.66%;
+            }
+          }
+          @media (min-width: @screen-md-min) {
+            width: 20%;
+            &.first-item {
+              width: 40%;
+            }
+            height: 290px;
+          }
+          @media (min-width: @screen-lg-min) {
+            height: 330px;
+          }
+//          &.first-item {
+//            .make-md-column(4; 0px);
+//          }
+//          .make-xs-column(2; 0px);
+//          .make-sm-column(2; 0px);
+//          .make-md-column(2; 0px);
+//          .make-lg-column(2; 0px);
+      }
+    }
+
+    }
+  }
+}

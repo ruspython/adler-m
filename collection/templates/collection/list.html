@@ -1,0 +1,142 @@
+
+<div class="my-collections">
+
+{% load i18n utils %}
+<form class="catalog-filter" method="get" action="{% url "catalog:item-list" %}">
+    <div class="catalog-filter__reset"><a href="#">Сбросить все поля</a> </div>
+    <fieldset class="catalog-filter_params">
+        <div class="catalog-filter_params-variant">
+            <label for="cf_scale">{% trans "Scale" %}</label>
+            <select name="scale" id="cf_scale">
+                <option value="">{% trans "All" %}</option>
+{% for scale in scales %}
+                <option{% if filter_values.scale == scale %} selected{% endif %}>{{ scale }}</option>
+{% endfor %}
+            </select>
+        </div>
+        <div class="catalog-filter_params-variant">
+            <label for="cf_brand">{% trans "Car brand" %}</label>
+            <select name="brand" id="cf_brand">
+                <option value="">{% trans "All" %}</option>
+{% for car_brand in car_brands %}
+                <option{% if filter_values.brand == car_brand %} selected{% endif %}>{{ car_brand }}</option>
+{% endfor %}
+            </select>
+        </div>
+        <div class="catalog-filter_params-variant">
+            <label for="cf_manufacturer">{% trans "Manufacturer" %}</label>
+            <select name="manufacturer" id="cf_manufacturer">
+                <option value="">{% trans "All" %}</option>
+{% for manufacturer in manufacturers %}
+                <option{% if filter_values.manufacturer == manufacturer %} selected{% endif %}>{{ manufacturer }}</option>
+{% endfor %}
+            </select>
+        </div>
+        <div class="catalog-filter_params-variant">
+            <label for="cf_type">{% trans "Type" %}</label>
+            <select name="type" id="cf_type">
+                <option value="">{% trans "All" %}</option>
+{% for car_type in car_types %}
+                <option{% if filter_values.type == car_type %} selected{% endif %}>{{ car_type }}</option>
+{% endfor %}
+            </select>
+        </div>
+    </fieldset>
+    <fieldset class="catalog-filter_params">
+        <div class="catalog-filter_params-variant materials">
+            <label>{% trans "Material" %}: <span>?</span></label>
+{% for material in materials %}
+            <label class="material">
+                <input type="checkbox" name="material" value="{{ material }}"{% ifequal material|in_list:filter_values.material True %} checked{% endifequal %}>
+                {{ material|capfirst }}
+            </label>
+{% endfor %}
+            <label class="material">
+                <input type="checkbox" name="material" value="other"{% if 'other'|in_list:filter_values.material %} checked{% endif %}>
+                {% trans "Other" %}
+            </label>
+        </div>
+{#        <div class="catalog-filter_params-variant">#}
+{#            <label>#}
+{#                <input type="checkbox" name="show_not_available" value="true"{% if filter_values.show_not_available %} checked{% endif %}>#}
+{#                {% trans "Show not available models" %}#}
+{#            </label>#}
+{#        </div>#}
+        <div class="catalog-filter_params-variant catalog-filter_params-variant__button">
+            <button type="submit" class="button submit">{% trans "Apply" %}</button>
+        </div>
+    </fieldset>
+</form>
+
+
+
+
+{% with collection.collectionitem_set.all as items %}
+    <div class="collection">
+{% for item in items %}
+{% with item.id as collection_item_id %}
+{% with item.catalog_product as item %}
+{% with True as from_catalog %}
+    {% include "collection/item.html" %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% if forloop.counter|divisibleby:4 %}<div class="clearfix visible-md visible-sm"></div>{% endif %}
+{% if forloop.counter|divisibleby:6 %}<div class="clearfix visible-lg"></div>{% endif %}
+{% if forloop.counter|divisibleby:2 %}<div class="clearfix visible-xs"></div>{% endif %}
+{% endfor %}
+    </div>
+{% endwith %}
+{% with collection.uploadedcollectionitem_set.all as items %}
+{% if items %}
+    <h3 class="uploaded">{% trans "Uploaded models" %}</h3>
+    <div class="collection my_collection">
+{% for item in items %}
+{% with True as custom %}
+    {% include "collection/item.html" %}
+{% endwith %}
+{% if forloop.counter|divisibleby:4 %}<div class="clearfix visible-md visible-sm"></div>{% endif %}
+{% if forloop.counter|divisibleby:6 %}<div class="clearfix visible-lg"></div>{% endif %}
+{% if forloop.counter|divisibleby:2 %}<div class="clearfix visible-xs"></div>{% endif %}
+{% endfor %}
+    </div>
+    <hr>
+{% endif %}
+{% endwith %}
+{% if allow_upload %}
+<br>
+<div class="create_item">
+    <a href="{% url "collection:create" %}" class="button popup" id="upload-collection-item">{% trans "Upload" %}</a>
+</div>
+{% endif %}
+
+<div class="collection_footer">
+    {% include 'includes/share.html' %}
+    <div class="my_link">
+        <label>{% trans "Link" %}:</label>
+        <a href="{{ collection.get_absolute_url }}">adler-m.ru{{ collection.get_absolute_url }}</a>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $(".popup").click(function(e){
+            e.preventDefault();
+            var $href = $(this).attr("href");
+            $.fancybox({
+                href: $href,
+                type: 'ajax',
+                fitToView: false,
+                helpers:  {
+                    overlay : {
+                        locked: false,
+                        css : {
+                            'background-color' : 'rgba(0,0,0,.21)'
+                        }
+                    }
+                }
+            });
+        })
+    })
+</script>
+</div>

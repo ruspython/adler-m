@@ -1,0 +1,17 @@
+@import "bootstrap";
+
+
+.ui-autocomplete {
+  background: white;
+  .list-unstyled();
+  .box-shadow(rgba(0,0,0,.3) 2px 2px 8px);
+  z-index: 4999;
+  max-width: 400px;
+  li {
+    cursor: pointer;
+    padding: 2px 8px;
+    &:hover {
+      background: @gray-lighter;
+    }
+  }
+}

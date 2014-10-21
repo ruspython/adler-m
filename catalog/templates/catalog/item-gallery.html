@@ -1,0 +1,20 @@
+{% load thumbnail %}
+{% with item.itemimage_set.all as gallery %}
+{% if gallery|length > 1 %}
+                            <div class="gallery-slider item-card-gallery">
+                                <div class="gallery-slider-list">
+{% for image in gallery %}
+{% thumbnail image.file "38x30" crop="center" as im %}
+                                    <div class="slide">
+                                        <img src="{{ im.url }}">
+                                    </div>
+{% endthumbnail %}
+{% endfor %}
+                                </div>
+                            </div>
+{% if gallery|length > 3 %}
+                            <button type="button" class="gallery__button prev"></button>
+                            <button type="button" class="gallery__button next"></button>
+{% endif %}
+{% endif %}
+{% endwith %}

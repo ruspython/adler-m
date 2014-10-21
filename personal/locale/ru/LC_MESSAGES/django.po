@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-22 05:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: cms_app.py:8
+msgid "Personal data App"
+msgstr "Персональные данные"
+
+#: models.py:8
+msgid "first name"
+msgstr "имя"
+
+#: models.py:9
+msgid "second name"
+msgstr "отчество"
+
+#: models.py:10
+msgid "last name"
+msgstr "фамилия"
+
+#: models.py:11
+msgid "email"
+msgstr "e-mail"
+
+#: models.py:12
+msgid "zipcode"
+msgstr "почтовый индекс"
+
+#: models.py:13
+msgid "city"
+msgstr "город"
+
+#: models.py:14
+msgid "street"
+msgstr "улица"
+
+#: models.py:15
+msgid "house"
+msgstr "дом"
+
+#: models.py:16
+msgid "building"
+msgstr "корпус"
+
+#: models.py:17
+msgid "apartment"
+msgstr "квартира"
+
+#: models.py:18
+msgid "phone"
+msgstr "телефон"
+
+#: models.py:24
+msgid "user profile"
+msgstr "профиль пользователя"
+
+#: models.py:25
+msgid "user profiles"
+msgstr "профили пользователей"
+
+#: templates/personal/profile_delete.html:5
+#: templates/personal/profile_edit.html:38
+msgid "Delete account"
+msgstr "Удалить аккаунт"
+
+#: templates/personal/profile_delete.html:10
+msgid "Are you sure you want to delete your account?"
+msgstr "Вы уверены, что хотите удалить свой аккаунт?"
+
+#: templates/personal/profile_delete.html:15
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/personal/profile_edit.html:35
+msgid "Change password"
+msgstr "Сменить пароль"
+
+#: templates/personal/profile_edit.html:43
+msgid "Save"
+msgstr "Сохранить"

@@ -1,0 +1,101 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n staticfiles thumbnail %}
+{% block content %}
+<div class="orders_list">
+    <div class="orders_list__top_thead">
+        <div class="orders_list__top_thead-number"><div class="tb">№</div></div>
+        <div class="orders_list__top_thead-date"><div class="tb">{% trans "Date of the order" %}</div></div>
+        <div class="orders_list__top_thead-cost"><div class="tb">{% trans "Cost" %}</div></div>
+        <div class="orders_list__top_thead-payment"><div class="tb">{% trans "Type of payment" %}</div></div>
+        <div class="orders_list__top_thead-delivery"><div class="tb">{% trans "Type of delivery" %}</div></div>
+        <div class="orders_list__top_thead-carrier"><div class="tb">{% trans "Carrier" %}</div></div>
+        <div class="orders_list__top_thead-numpack"><div class="tb">{% trans "Number of package" %}</div></div>
+        <div class="orders_list__top_thead-status"><div class="tb">{% trans "Status of order" %}</div></div>
+    </div>
+    <div class="orders_list__body">
+{% for order in orders %}
+        <div class="orders_list__body-order">
+            <div class="orders_list__body__item">
+            <div class="orders_list__body__item-number"><div class="tb"><h4 class="order-number">{{ order.id }}</h4></div></div>
+            <div class="orders_list__body__item-date"><div class="tb"><h4>{{ order.add_time|date:"j.m.y" }}</h4></div></div>
+            <div class="orders_list__body__item-cost"><div class="tb"><h4>{{ order.total_price }} {% trans "r" %}</h4></div></div>
+            <div class="orders_list__body__item-payment"><div class="tb">Банковская карта</div></div>
+            <div class="orders_list__body__item-delivery"><div class="tb">Почта</div></div>
+            <div class="orders_list__body__item-carrier"><div class="tb">Почта России</div></div>
+            <div class="orders_list__body__item-numpack"><div class="tb">
+                <h4>321654987</h4>
+                <a href="#" class="hid-xs">Проверить статус</a>
+                <a href="#" class="vis-xs">Проверить</a>
+            </div></div>
+            <div class="orders_list__body__item-status"><div class="tb">Отправлен</div></div>
+            <div class="orders_list__body__item-question"><div class="tb"><a href="#">Задать вопрос</a></div></div>
+            <div class="orders_list__body__item-check"><div class="tb"><input type="checkbox"></div></div>
+        </div>
+        <div class="orders_list__body__inner">
+            <div class="orders_list__body__inner__head">
+                <div class="orders_list__body__inner__head-foto">{% trans "Foto" %}</div>
+                <div class="orders_list__body__inner__head-title">{% trans "Item title" %}</div>
+                <div class="orders_list__body__inner__head-price">{% trans "Price" %}</div>
+                <div class="orders_list__body__inner__head-quantity">
+                    <span class="hid-sm">{% trans "Quantity" %}</span>
+                    <span class="vis-sm">{% trans "Q-ty" %}</span>
+
+                </div>
+                <div class="orders_list__body__inner__head-discount">{% trans "Discount" %}</div>
+                <div class="orders_list__body__inner__head-sum">{% trans "Sum" %}</div>
+                <div class="orders_list__body__inner__head-check"></div>
+            </div>
+{% for item in order.orderitem_set.all %}
+            <div class="orders_list__body__inner-item">
+                <div class="orders_list__body__inner-item-foto">
+{% thumbnail item.item.image "184x130" crop="center" as im %}
+                    <a href="{{ item.item.get_absolute_url }}"><img src="{{ im.url }}"></a>
+{% empty %}
+                    <img src="{% static "images/no-photo.jpg" %}">
+{% endthumbnail %}
+                </div>
+                <div class="orders_list__body__inner-item-title">
+                    <h5><a href="{{ item.item.get_absolute_url }}">{{ item.name }}</a></h5>
+                    <ul class="proprs">
+                        <li class="manufacturer"><span>{% trans "manufacturer" %}:</span> {{ item.manufacturer }}</li>
+                        <li class="scale"><span>{% trans "scale" %}:</span> {{ item.scale }}</li>
+                        <li class="article"><span>{% trans "article" %}:</span> {{ item.article }}</li>
+                    </ul>
+                </div>
+                <div class="orders_list__body__inner-item-price"><h4>{{ item.price }} {% trans "r" %}</h4></div>
+                <div class="orders_list__body__inner-item-quantity"><h4>{{ item.quantity }}</h4></div>
+                <div class="orders_list__body__inner-item-discount"><h4>{{ item.discount|default_if_none:"" }}</h4></div>
+                <div class="orders_list__body__inner-item-sum">
+                    <a class="collection"></a>
+                    <h4>{{ item.get_total_price }} {% trans "r" %}</h4>
+                </div>
+                <div class="orders_list__body__inner-item-check"><input type="checkbox"></div>
+            </div>
+{% endfor %}
+        </div>
+        </div>
+{% endfor %}
+    </div>
+<script>
+    $(function(){
+        $(".orders_list__body__item-number").click(function(){
+            var $this = $(this);
+            var $h4 = $this.find(".order-number");
+            var $inner_block = $this.parent(".orders_list__body__item").siblings(".orders_list__body__inner");
+            if($inner_block.hasClass("open")){
+                $h4.removeClass("open");
+                $this.removeClass("open");
+                $($inner_block).removeClass("open").slideUp();
+            }
+            else {
+                $h4.addClass("open");
+                $this.addClass("open");
+                $($inner_block).addClass("open").slideDown();
+            }
+
+        })
+    })
+</script>
+
+</div>
+{% endblock %}

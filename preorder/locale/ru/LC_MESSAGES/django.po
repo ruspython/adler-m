@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-21 10:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: cms_app.py:8
+msgid "PreOrder App"
+msgstr "Предзаказ"
+
+#: models.py:8
+msgid "catalog item"
+msgstr "товар"
+
+#: models.py:9
+msgid "user"
+msgstr "пользователь"
+
+#: models.py:10
+msgid "add time"
+msgstr "добавить время"
+
+#: models.py:16
+msgid "pre-order item"
+msgstr "предзаказанный товар"
+
+#: models.py:17
+msgid "pre-order items"
+msgstr "предзаказанные товары"
+
+#: templates/preorder/list.html:12
+msgid "Photo"
+msgstr "Фото"
+
+#: templates/preorder/list.html:13
+msgid "Item name"
+msgstr "Наименование товара"
+
+#: templates/preorder/list.html:14
+msgid "Price"
+msgstr "Цена"
+
+#: templates/preorder/list.html:15
+msgid "Status"
+msgstr "Статус"
+
+#: templates/preorder/list.html:32
+msgid "Manufacturer"
+msgstr "Производитель"
+
+#: templates/preorder/list.html:35
+msgid "Scale"
+msgstr "Масштаб"
+
+#: templates/preorder/list.html:38
+msgid "Article"
+msgstr "Артикул"
+
+#: templates/preorder/list.html:44
+msgid "r"
+msgstr "р"
+
+#: templates/preorder/list.html:63
+msgid "Selected items"
+msgstr "Выбранные товары"
+
+#: templates/preorder/list.html:64
+msgid "Cancel pre-order"
+msgstr "Отменить предзаказ"
+
+#: templates/preorder/list.html:67
+msgid "Select all"
+msgstr "Выбрать все"
+
+#: templates/preorder/list.html:68
+msgid "Cancel all"
+msgstr "Отменить все"

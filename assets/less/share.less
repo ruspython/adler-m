@@ -1,0 +1,49 @@
+@import "firm_style";
+@import "bootstrap";
+
+
+.share {
+  margin-bottom: 4px;
+  .clearfix();
+  .yashare-auto-init { float: left }
+  label {
+      font-size: 16px;
+      color: #8193a1;
+      margin-right: 14px;
+      .pull-left();
+    }
+  a {
+    display: inline-block;
+    margin-right: 16px;
+    .b-share-icon_vkontakte {
+      background: data-uri("../data-images/big_vk.png") 0 0 no-repeat;
+      height: 15px;
+      width: 27px;
+      vertical-align: -3px;
+      &:hover {
+        background: data-uri("../data-images/big_vk_hover.png") 0 0 no-repeat;
+      }
+    }
+    &.b-share__handle {
+      padding: 0 !important;
+    }
+    .b-share-icon_twitter {
+      background: data-uri("../data-images/big_tw.png") 0 0 no-repeat;
+      height: 15px;
+      width: 19px;
+      vertical-align: -3px;
+      &:hover {
+        background: data-uri("../data-images/big_tw_hover.png") 0 0 no-repeat;
+      }
+    }
+    .b-share-icon_facebook {
+      background: data-uri("../data-images/big_fb.png") 0 0px no-repeat;
+      width: 9px;
+      height: 20px;
+      vertical-align: -3px;
+      &:hover {
+        background: data-uri("../data-images/big_fb_hover.png") 0 0px no-repeat;
+      }
+    }
+  }
+}

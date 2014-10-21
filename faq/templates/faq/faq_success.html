@@ -1,0 +1,5 @@
+{% extends request.is_ajax|yesno:"faq/ajax_base.html,faq/base.html" %}
+{% block form_content %}
+Спасибо за вопрос.<br> Скоро на него ответит наш менеджер.
+
+{% endblock %}

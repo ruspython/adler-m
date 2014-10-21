@@ -1,0 +1,15 @@
+{% extends CMS_TEMPLATE %}
+{% load endless staticfiles i18n sekizai_tags %}
+{% lazy_paginate questions %}
+{% block content %}
+<div class="container">
+    <div class="b-faq">
+        <a href="{% url "faq:create_faq" %}" class="button add_question open-popup" id="add_question">{% trans 'Ask question' %}</a>
+        {% include 'faq/faq_page.html' %}
+    </div>
+</div>
+{% addtoblock "js" %}
+<script src="{% static "endless_pagination/js/endless-pagination.js" %}"></script>
+<script>$(function(){$.endlessPaginate();})</script>
+{% endaddtoblock %}
+{% endblock %}

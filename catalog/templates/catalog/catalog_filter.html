@@ -1,0 +1,78 @@
+{% load i18n utils %}
+<form class="catalog-filter" method="get" action="{% url "catalog:item-list" %}">
+{% if q %}
+    <input type="hidden" name="q" value="{{ q }}">
+{% endif %}
+    <button class="catalog-filter__reset" id="filter-reset" type="reset">{% trans "Reset all fields" %}</button>
+    <fieldset class="catalog-filter_params">
+        <div class="catalog-filter_params-variant">
+            <label for="cf_scale">{% trans "Scale" %}</label>
+            <select name="scale" id="cf_scale">
+                <option value="">{% trans "All" %}</option>
+{% for scale in scales %}
+                <option{% if filter_values.scale == scale %} selected{% endif %}>{{ scale }}</option>
+{% endfor %}
+            </select>
+        </div>
+        <div class="catalog-filter_params-variant">
+            <label for="cf_brand">{% trans "Car brand" %}</label>
+            <select name="brand" id="cf_brand">
+                <option value="">{% trans "All" %}</option>
+{% for car_brand in car_brands %}
+                <option{% if filter_values.brand == car_brand %} selected{% endif %}>{{ car_brand }}</option>
+{% endfor %}
+            </select>
+        </div>
+        <div class="catalog-filter_params-variant">
+            <label for="cf_manufacturer">{% trans "Manufacturer" %}</label>
+            <select name="manufacturer" id="cf_manufacturer">
+                <option value="">{% trans "All" %}</option>
+{% for manufacturer in manufacturers %}
+                <option{% if filter_values.manufacturer == manufacturer %} selected{% endif %}>{{ manufacturer }}</option>
+{% endfor %}
+            </select>
+        </div>
+        <div class="catalog-filter_params-variant">
+            <label for="cf_type">{% trans "Type" %}</label>
+            <select name="type" id="cf_type">
+                <option value="">{% trans "All" %}</option>
+{% for car_type in car_types %}
+                <option{% if filter_values.type == car_type %} selected{% endif %}>{{ car_type }}</option>
+{% endfor %}
+            </select>
+        </div>
+    </fieldset>
+    <fieldset class="catalog-filter_params">
+        <div class="catalog-filter_params-variant materials">
+            <label>{% trans "Material" %}:
+                <div class="question">?
+                    <div class="tip">
+                        {% trans "<p><b>Metal</b> (die-cast) - Body, cab and axle components of large-scale models made by this technology, are made of metal, but rather a zinc alloy. The remaining parts are usually molded from plastic or other materials. These scale models are considered traditional.</p>" %}
+                        {% trans '<p><b>Resin</b> (resin) - is a special model "resin". Model made from this material looks no different from the models of metal. However, the model "resin" allows for better work through various small parts. Consequently, the model of "resin" generally have better detailing compared with models from a metal.</p>' %}
+                    </div>
+                </div>
+            </label>
+{% for material in materials %}
+            <label class="material">
+                <input type="checkbox" name="material" value="{{ material }}"{% ifequal material|in_list:filter_values.material True %} checked{% endifequal %}>
+                {{ material|capfirst }}
+            </label>
+{% endfor %}
+            <label class="material">
+                <input type="checkbox" name="material" value="other"{% if 'other'|in_list:filter_values.material %} checked{% endif %}>
+                {% trans "Other" %}
+            </label>
+        </div>
+        <div class="catalog-filter_params-variant">
+{% if filter_show_all %}
+            <label>
+                <input type="checkbox" name="show_not_available" value="true"{% if filter_values.show_not_available %} checked{% endif %}>
+                {% trans "Show not available models" %}
+            </label>
+{% endif %}
+        </div>
+        <div class="catalog-filter_params-variant">
+            <button type="submit" class="button submit">{% trans "Apply" %}</button>
+        </div>
+    </fieldset>
+</form>

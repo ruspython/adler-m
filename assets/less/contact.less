@@ -1,0 +1,63 @@
+@import "bootstrap";
+@import "firm_style";
+@import "common";
+
+
+.contact-page {
+  .container;
+  &__info {
+    .pull-left();
+    margin-right: 60px;
+    margin-bottom: 26px;
+  }
+  &__separator {
+    clear: both;
+  }
+  &-places {
+    .make-row();
+    &__list {
+      .make-sm-column(6);
+      .show-on-map {
+        cursor: pointer;
+      }
+    }
+    &__map {
+      .make-sm-column(6);
+      height: 490px;
+    }
+  }
+  dl {
+    overflow: hidden;
+    * {
+      line-height: 25px;
+    }
+    dt {
+      color: #8193a1;
+      font-weight: 400;
+      .pull-left();
+      margin-right: 3px;
+      clear: left;
+    }
+    dd {
+      .pull-left();
+      white-space: nowrap;
+    }
+  }
+}
+
+.feedback {
+  .alter-background;
+  padding-bottom: 80px;
+  margin-bottom: -95px;
+  &-form {
+    .container;
+    .form-control {
+      max-width: 490px;
+      padding: 0;
+      border: none;
+    }
+    textarea.form-control {
+      max-width: 660px;
+    }
+  }
+}

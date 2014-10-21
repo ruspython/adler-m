@@ -1,0 +1,91 @@
+@import "bootstrap";
+@import "firm_style";
+
+
+.subscriptions {
+  .container();
+  .attention-note {
+    @media (max-width: @screen-xs-max) { width: 90%; }
+    font-size: 16px;
+    color: #8193a1;
+    width: 84%;
+    margin-bottom: 26px;
+  }
+  .top_subscription_header {
+    .hidden-xs();
+    .clearfix();
+    width: 84%;
+    & >div {
+      .pull-left();
+      width: 26%;
+      margin-bottom: 18px;
+      color: #000000;
+    }
+    & >div + div { margin-left: 20px; }
+  }
+
+  .subscription-list {
+    .list-inline();
+    margin-bottom: 0;
+    li {
+      @media (max-width: @screen-xs-max) {
+        border-top: 1px solid #a5bbcd;
+        padding: 19px 0 10px 0 !important;
+        margin-bottom: 0 !important;
+        width: 100%;
+        &:last-child { border-bottom: 1px solid #a5bbcd; }
+      }
+      width: 84%;
+      margin-bottom: 20px;
+      .inner_subscription_header {
+        .visible-xs();
+        .pull-left();
+        width: 38%;
+        & > div {
+          height: 34px;
+          margin-bottom: 10px;
+          line-height: 34px;
+          text-align: right;
+          margin-right: 20px;
+          & > span {
+            line-height: 15px;
+            display: inline-block;
+          }
+        }
+      }
+      .select2-wrap {
+        @media (max-width: @screen-xs-max) {
+          width: 62%;
+          .pull-left();
+          .clearfix();
+        }
+      }
+      .select2 {
+        @media (max-width: @screen-xs-max) {
+          float: none !important;
+          margin-bottom: 10px;
+          margin-left: 0 !important;
+          width: auto !important;
+          &:last-child { margin-bottom: 0 !important; }
+        }
+        .pull-left();
+        width: 26%;
+        .select2-container {
+          width: 90%;
+        }
+      }
+      .select2 + .select2 { margin-left: 20px; }
+    }
+  }
+  .unsubscribe {
+    margin-bottom: 20px;
+    label {
+      font-weight: normal;
+      cursor: pointer;
+      margin: 0;
+      &> span {
+        vertical-align: -1px;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n staticfiles %}
+{% block content %}
+    <div class="container">
+        <form action="{% url "subscription:create" %}" method="post">
+            {% csrf_token %}
+            <p>{% trans "Notify about new arrivals" %}</p>
+{% include "includes/_form_fields.html" %}
+            <button type="submit" class="button">{% trans "Subscribe" %}</button>
+        </form>
+    </div>
+{% endblock %}

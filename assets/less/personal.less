@@ -1,0 +1,82 @@
+@import "bootstrap";
+@import "firm_style";
+
+.profile_edit {
+  .user-select(none);
+  .container();
+  .personal-list {
+    .list-unstyled();
+    li {
+      .personal_item {
+        padding: 12px 0;
+        .clearfix();
+        margin-bottom: 0;
+        width: 100%;
+        max-width: 492px;
+        border-bottom: 1px solid #B2CCDF;
+        .personal_usually_show { .clearfix; }
+        label {
+          .pull-left();
+           color: #8193a1;
+           font-weight: normal;
+           padding-right: 4px;
+           margin: 0;
+        }
+        .personal_item__value {
+          color: #222222;
+        }
+
+        .change {
+          .btn();
+          .btn-link();
+          .pull-right();
+           padding: 0;
+           font-size: 12px;
+           height: 19px;
+           margin-right: 10px;
+           width: 20px;
+           color: #8193a1;
+           text-decoration: underline;
+           &:active, &:focus { outline: none !important; }
+           background: data-uri("../data-images/personal_edit_320.png");
+           text-indent: -9999px;
+           @media (min-width: @screen-sm-min) {
+            background: none;
+            width: auto;
+            height: auto;
+            text-indent: 0;
+            margin-right: 0;
+          }
+        }
+
+        .personal_item_edit {
+          margin: 15px 0;
+          clear: both;
+          display: none;
+          input {
+            width: 100%;
+            border-color: #B2CCDF;
+            @media (min-width: @screen-sm-min) {
+              width: 322px;
+            }
+        }
+        }
+      }
+      }
+  }
+  .personal_link {
+    &.change_pass {
+      margin: 20px 0;
+    }
+    &.delete_acc {
+      margin: 0 0 24px 0;
+    }
+    a { text-decoration: underline; }
+  }
+  .submit_save {
+    @media (max-width: 528px) {
+      .btn-block();
+    }
+
+  }
+}

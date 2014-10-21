@@ -1,0 +1,36 @@
+{% load cms_tags %}
+<div class="superbanner">
+<div class="superbanner_slider">
+<div class="superbanner_slider_content">
+{% for banner in banners %}
+    <div class="slide" style="background-image: url({{ banner.image.url }})">
+{% render_model_block banner %}
+    <div class="container">
+        <div class="slide_content">
+            <h4 style="color: {{ banner.color_title }}">{{ banner.title }}</h4>
+{% if banner.subtitle %}
+            <h5 style="color: {{ banner.color_title }}">{{ banner.subtitle }}</h5>
+{% endif %}
+{% if banner.description %}
+            <div class="description" style="color: {{ banner.color_description }}">{{ banner.description }}</div>
+{% endif %}
+{% if banner.button_text %}
+            <a class="button" href="{{ banner.button_link }}" style="color: {{ banner.color_button_text }}; background-color: {{ banner.color_button }}">
+                {{ banner.button_text }}
+            </a>
+{% endif %}
+        </div>
+    </div>
+{% endrender_model_block %}
+    </div>
+{% endfor %}
+</div>
+</div>
+<button class="superbanner_arrow prev"></button>
+<button class="superbanner_arrow next"></button>
+<div class="superbanner_nav">
+{% for banner in banners %}
+    <div class="superbanner_nav_item{% if forloop.first %} selected{% endif %}"><div></div></div>
+{% endfor %}
+</div>
+</div>

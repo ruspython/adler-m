@@ -1,0 +1,16 @@
+{% load i18n %}
+<div class="teaser">
+{% if link %}<a href="{{ link }}">{% endif %}
+    <h4>{{ object.title|safe }}</h4>
+{% if object.image %}
+    <div class="teaser-image">
+        <div class="teaser-image_holder">
+            <img src="{{ object.image.url }}" alt="{{ object.title }}">
+        </div>
+    </div>
+{% endif %}
+{% if object.description %}
+    <div class="description">{{ object.description|safe }}</div>
+{% endif %}
+{% if link %}</a>{% endif %}
+</div>

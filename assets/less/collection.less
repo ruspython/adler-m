@@ -1,0 +1,178 @@
+@import "firm_style";
+@import "bootstrap";
+
+
+.collection_head {
+  .clearfix();
+  h1 { .pull-left(); width: 50%; }
+  .our_filter_is_cool {
+    .pull-right();
+    .text-right();
+    width: 50%;
+    margin-top: 54px;
+    font-size: 12px;
+    color: #abbfd0;
+    line-height: 21px;
+  }
+}
+
+.my-collections {
+  .container();
+  h3.uploaded {
+    font-weight: normal;
+    margin-bottom: 24px;
+    border-top: 1px solid #b2ccdf;
+    padding-top: 32px;
+
+  }
+  .catalog-filter {
+    &_params-variant__button { .pull-right(); }
+    &__reset {
+      .pull-right();
+      a {
+        font-size: 12px;
+        border-bottom: 1px dashed #abbfd0;
+        color: #abbfd0;
+        &:hover {
+          text-decoration: none;
+          border-bottom-color: transparent;
+        }
+      }
+    }
+  }
+  .collection {
+    .make-row();
+    .item {
+      .make-xs-column(6; 20px);
+      .make-md-column(4; 20px);
+      .make-sm-column(3; 20px);
+      .make-lg-column(2; 20px);
+      padding-bottom: 32px;
+      &:hover {
+        text-decoration: none;
+      }
+      h4 {
+        color: #222222;
+        font-weight: 500;
+        font-size: 14px;
+      }
+      .manufacturer, .scale {
+        font-size: 12px;
+        color: @brand-gray;
+      }
+      .main-image {
+          position: relative;
+          display: block;
+          padding-top: 71%;
+          overflow: hidden;
+          height: 0;
+        .image {
+          position: absolute;
+          top: 0;
+          .square(100%);
+          img {
+            .img-responsive();
+          }
+        }
+      }
+      img {
+        .img-responsive();
+      }
+    }
+    .clearfix();
+    padding-bottom: 26px;
+    .item {
+      position: relative;
+      .rest_item {
+        .opacity(0);
+        .transition(opacity .6s ease);
+        position: absolute;
+        top: 0;
+        right: 10px;
+        background: #ebebeb;
+        padding: 9px 9px 5px 9px;
+        .action {
+          border: 0;
+          &:focus, &:active { outline: none !important; }
+          &.edit_item {
+            background: data-uri("../data-images/personal_edit_320.png") 0 0 no-repeat;
+            height: 19px;
+            width: 20px;
+            display: inline-block;
+            margin-right: 9px;
+            &:hover {
+              background: data-uri("../data-images/col_edit_hover.png") 0 0 no-repeat;
+            }
+          }
+          &.delete_item {
+            background: data-uri("../data-images/close.png") 0 0 no-repeat;
+            height: 19px;
+            width: 20px;
+            display: inline-block;
+            &:hover {
+              background: data-uri("../data-images/col_del_hover.png") 0 0 no-repeat;
+            }
+          }
+        }
+      }
+      &:hover {
+        .rest_item {
+          .opacity(1);
+        }
+      }
+    }
+    .create_item { clear: both; }
+  }
+  .collection_footer {
+    padding-top: 32px;
+    label {
+      font-size: 16px;
+      color: #8193a1;
+      margin-right: 14px;
+    }
+    .share {
+      margin-bottom: 4px;
+      a {
+        display: inline-block;
+        margin-right: 16px;
+        &.vk {
+          background: data-uri("../data-images/big_vk.png") 0 0 no-repeat;
+          height: 15px;
+          width: 27px;
+          &:hover { background: data-uri("../data-images/big_vk_hover.png") 0 0 no-repeat; }
+        }
+        &.tw {
+          background: data-uri("../data-images/big_tw.png") 0 0 no-repeat;
+          height: 15px;
+          width: 19px;
+          &:hover { background: data-uri("../data-images/big_tw_hover.png") 0 0 no-repeat; }
+        }
+        &.fb {
+          background: data-uri("../data-images/big_fb.png") 0 0px no-repeat;
+          width: 9px;
+          height: 20px;
+          vertical-align: -3px;
+          &:hover { background: data-uri("../data-images/big_fb_hover.png") 0 0px no-repeat; }
+        }
+      }
+    }
+    .my_link {
+      a { text-decoration: underline; }
+    }
+  }
+}
+
+.delete_collection_item {
+  padding-top: 32px;
+}
+
+.image_preview_widget {
+  .clearfix();
+  img {
+    .pull-left();
+    margin-right: 16px;
+  }
+  .labels {
+    .pull-left();
+  }
+}

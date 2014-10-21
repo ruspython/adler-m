@@ -1,0 +1,90 @@
+@import "bootstrap";
+@import "flexbox";
+@import "firm_style";
+
+
+// Layouts
+html, body {
+  height: 100%;
+  background: @page-background;
+}
+.almost_fix() {
+  @media (min-width: @screen-md-min) {
+    margin: auto;
+    max-width: 1100px;
+  }
+  @media (min-width: @screen-lg-min) {
+    max-width: 1232px;
+  }
+  overflow-x: hidden;
+}
+.page {
+  min-height: 100%;
+//  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  .flex-display();
+  .flex-direction(column);
+  .justify-content(space-between);
+  background: white;
+  .almost_fix();
+}
+
+.all {
+  padding-bottom: 51px;
+}
+
+.alter-background {
+  background: @alter-background;
+  clear: both;
+}
+
+.sb_layout {
+  .container;
+  .middle {
+    .make-row();
+    .content,
+    .sidebar {
+      .make-sm-column(6);
+      img {
+        .img-responsive();
+      }
+    }
+    .content {
+      .make-lg-column(7);
+    }
+    .sidebar {
+      .make-lg-column(5);
+    }
+  }
+}
+
+
+// ленивая постраничка
+.endless_more {
+  font-size: 16px;
+  text-decoration: none;
+  border-bottom: 1px dashed;
+  color: #8193a1;
+  font-weight: bold;
+  &:hover {
+    color: #8193a1;
+    text-decoration: none;
+    border-bottom: transparent;
+  }
+}
+
+// кнопки
+.button {
+  .btn;
+  color: @brand-white;
+  .brand-primary-gradient();
+  &:hover {
+    color: @brand-white;
+    .brand-primary-reverse-gradient();
+  }
+  border: none;
+  padding: 8px 30px;
+  font-weight: bold;
+}
+
+

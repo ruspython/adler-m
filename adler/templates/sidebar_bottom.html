@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+{% block title %}{% page_attribute 'title' %}{% endblock title %}
+{% block content %}
+<div class="sb_layout">
+    <div class="middle">
+        <div class="content">
+            {% placeholder "content" %}
+        </div>
+        <aside class="sidebar">
+            {% placeholder "sidebar" %}
+        </aside>
+    </div>
+    <div class="bottom">
+        {% placeholder "bottom" %}
+    </div>
+</div>
+{% endblock content %}

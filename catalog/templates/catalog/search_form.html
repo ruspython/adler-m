@@ -1,0 +1,28 @@
+{% load i18n widget_tweaks %}
+                <form class="pagehead__middle_search-form" method="get" action="{% url "catalog:item-list" %}">
+                    {% render_field form.q placeholder=form.q.label type="search" %}
+                    <button type="submit">{% trans "Find!" %}</button>
+                    <button type="button" class="show_search">{% trans "Search" %}</button>
+                </form>
+                <script>
+                    $(function(){
+                        $('#id_q').autocomplete({
+                            source: function( request, response ) {
+                                $.ajax({
+                                    url: "{% url "catalog:suggest" %}",
+                                    dataType: "json",
+                                    data: {
+                                        q: request.term
+                                    },
+                                    success: function( data ) {
+                                        response( data );
+                                    }
+                                });
+                            },
+                            minLength: 2,
+                            position: {
+                                my : "right top", at: "right bottom"
+                            }
+                        })
+                    })
+                </script>

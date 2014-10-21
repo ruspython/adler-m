@@ -1,0 +1,24 @@
+@import "bootstrap";
+@import "firm_style";
+
+// меню раздела
+.section_menu {
+  .list-inline;
+  margin-top: 36px;
+  li {
+    a {
+      display: inline-block;
+      font-weight: 300;
+      border: 1px solid transparent;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: underline;
+    }
+    &.active a,
+    a:hover {
+      color: @brand-red;
+      border-color: @brand-red;
+      text-decoration: none;
+    }
+  }
+}

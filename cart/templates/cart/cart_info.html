@@ -1,0 +1,68 @@
+{% load thumbnail staticfiles i18n %}
+{% block content %}
+<div class="container">
+{% if items %}
+    {% csrf_token %}
+    <div class="cp-list">
+        <div class="cp-list-header">
+            <div class="cp-list-header__item photo"><div class="tb">{% trans "Photo" %}</div></div>
+            <div class="cp-list-header__item name"><div class="tb">{% trans "Item name" %}</div></div>
+            <div class="cp-list-header__item status"><div class="tb">{% trans "Status" %}</div></div>
+            <div class="cp-list-header__item price"><div class="tb">{% trans "Price" %}</div></div>
+            <div class="cp-list-header__item quantity"><div class="tb">
+                <span class="md-sh">{% trans "Quantity" %}</span>
+                <span class="sm-sh">{% trans "Q-ty" %}</span>
+            </div></div>
+            <div class="cp-list-header__item discount"><div class="tb">{% trans "Discount" %}</div></div>
+            <div class="cp-list-header__item sum"><div class="tb">{% trans "Sum" %}</div></div>
+        </div>
+        <div class="cp-list-body">
+{% for item in items %}
+    <div class="cp-list-body-tr">
+            <div class="cp-list-body-tr__item photo"><div class="tb">
+{% thumbnail item.item.get_main_image.file "x130" crop="center" as im %}
+                <div class="image"><img src="{{ im.url }}"></div>
+{% empty %}
+                <div class="no-image"></div>
+{% endthumbnail %}
+            </div></div>
+            <div class="cp-list-body-tr__item name"><div class="tbn">
+                <h5 class="cart__item-title"><a href="{{ item.item.get_absolute_url }}">{{ item.item.full_name }}</a></h5>
+                    <ul class="item-proprs">
+{% if item.item.manufacturer %}
+                        <li class="manufacturer"><span>{% trans "Manufacturer" %}:</span> {{ item.item.manufacturer }}</li>
+{% endif %}
+{% if item.item.scale %}
+                        <li class="scale"><span>{% trans "Scale" %}:</span> {{ item.item.scale }}</li>
+{% endif %}
+{% if item.item.slug %}
+                        <li class="article"><span>{% trans "Article" %}:</span> {{ item.item.slug }}</li>
+{% endif %}
+                    </ul>
+            </div></div>
+            <div class="cp-list-body-tr__item status"><div class="tb">
+                <div class="{{ item.item.get_status4cart }}"{% if item.quantity > 0 %} title="{% trans "In stock" %}: {{ item.quantity }}"{% endif %}>
+                    {{ item.item.get_status4cart_string }}
+                </div>
+            </div></div>
+            <div class="cp-list-body-tr__item price"><div class="tb">
+                <span class="price">{{ item.get_price }} {% trans "r" %}</span>
+            </div></div>
+            <div class="cp-list-body-tr__item quantity"><div class="tb">
+                {{ item.quantity }}
+            </div></div>
+            <div class="cp-list-body-tr__item discount"><div class="tb">
+                <span class="discount">2%</span>
+            </div></div>
+            <div class="cp-list-body-tr__item sum"><div class="tb">
+                <span class="sum">{{ item.get_total_price }} {% trans "r" %}</span>
+            </div></div>
+        </div>
+{% endfor %}
+        </div>
+    </div>
+{% else %}
+    {% trans "Cart is empty" %}
+{% endif %}
+</div>
+{% endblock %}

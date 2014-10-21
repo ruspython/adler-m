@@ -1,0 +1,42 @@
+{% extends CMS_TEMPLATE %}
+{% load cms_tags thumbnail staticfiles blog_tags i18n %}
+{% block content %}
+<div class="blog-list">
+<div class="blog-list_content">
+<ul class="blog-list_content_items">
+{% for article in blog %}
+{% render_model_block article %}
+    <li class="item">
+
+{% thumbnail article.get_image "190" as im %}
+         <a href="{{ article.get_absolute_url }}" class="anons_item-photo"><img src="{{ im.url }}" ></a>
+{% empty %}
+         <a href="{{ article.get_absolute_url }}" class="anons_item-photo"><img src="{% static "images/no-photo-190x134.jpg" %}"></a>
+{% endthumbnail %}
+        <div class="anons_item-text_content">
+            <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+            <div class="date">{{ article.date }}</div>
+            <article class="announce">{{ article.announce|default_if_none:article.text|default_if_none:''|truncatechars:220|safe }}</article>
+{% with article.get_all_tags as tags %}
+{% if tags %}
+    <div class="tags">
+    <span>{% trans "Tags" %}:</span>
+{% for tag in tags %}
+    <a href="?tag={{ tag }}">{{ tag }}</a>
+{% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+        </div>
+
+    </li>
+{% endrender_model_block %}
+{% endfor %}
+</ul>
+<div class="blog-list_content_filters">
+    {% blog_tag_list %}
+    {% blog_archive %}
+</div>
+</div>
+</div>
+{% endblock %}

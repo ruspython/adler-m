@@ -1,0 +1,22 @@
+{% load thumbnail staticfiles i18n %}
+<div class="blog-plugin">
+    <div class="blog-plugin-header">
+        <h2>{% if blog_plugin_title %}{% trans blog_plugin_title %}{% else %}{% trans "Site news" %}{% endif %}</h2>
+    </div>
+    <div class="blog-plugin-list">
+{% for article in articles %}
+        <a href="{{ article.get_absolute_url }}" class="item-news">
+{% thumbnail article.get_image "190x120" crop="center" as im %}
+        <img src="{{ im.url }}">
+{% empty %}
+        <img src="{% static "images/blog_no-photo.png" %}">
+{% endthumbnail %}
+            <div class="item-news_h4">
+                <h4>{{ article.title }}</h4>
+                <span class="news-date">{{ article.date|date:'d.m.y' }}</span>
+            </div>
+        </a>
+{% endfor %}
+    </div>
+    <a href="{% url "blog:article-list" %}" class="all_news">{% trans "All news" %}</a>
+</div>

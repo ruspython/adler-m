@@ -1,0 +1,37 @@
+{% extends 'order/order_base.html' %}
+{% load i18n cms_tags %}
+{% block content %}
+    <div class="order-auth">
+{% with 1 as step %}
+    {% include "order/steps.html" %}
+        <div class="order-auth_select">
+            <div class="order-auth_select-login">
+            <div class="order-auth_select-login_block">
+                <h2>{% trans "Login or register" %}</h2>
+
+                <form class="login" method="POST" action="{% url 'order:auth' %}">
+                <a class="secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" context "order password remind" %}</a>
+{% if form.non_field_errors %}
+    <div class="alert alert-danger">
+        {{ form.non_field_errors }}
+    </div>
+{% endif %}
+                    {% csrf_token %}
+{% include "includes/_form_fields.html" %}
+{% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+{% endif %}
+                    <button class="button primaryAction" type="submit">{% trans "Sign In" %}</button>
+                    <a href="{% url "account_signup" %}?next={% url "order:create" %}" class="reg_now">{% trans "Sign up" %}</a>
+                </form>
+            </div>
+            </div>
+            <div class="order-auth_select-no_reg">
+                <h2>{% trans "Buy without registration" %}</h2>
+                {% static_placeholder "buy_without_registration" %}
+                <a href="{% url "order:create" %}" class="button">{% trans "Buy" %}</a>
+            </div>
+        </div>
+{% endwith %}
+    </div>
+{% endblock %}

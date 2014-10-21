@@ -1,0 +1,28 @@
+{% load thumbnail %}
+<div class="brands-plugin">
+    <h2 class="brands-plugin__slogan">{{ instance.label_text|safe }}</h2>
+    <div class="brands-plugin_wrap">
+    <div class="gallery-slider brands-plugin-gallery">
+        <div class="gallery-slider-list">
+{% for brand in brands %}
+{% thumbnail brand.image "145x65" format="PNG" as im  %}
+            <div class="slide">
+                <a href="{{ brand.get_absolute_url }}"><img src="{{ im.url }}"></a>
+            </div>
+{% endthumbnail %}
+{% endfor %}
+        </div>
+    </div>
+    <button type="button" class="brands-plugin__button prev"></button>
+    <button type="button" class="brands-plugin__button next"></button>
+    </div>
+<script>
+    $('.gallery-slider').iosSlider({
+      snapToChildren: true,
+      desktopClickDrag: true,
+      infiniteSlider: true,
+      navNextSelector: $(".brands-plugin__button.next"),
+      navPrevSelector: $(".brands-plugin__button.prev")
+    });
+</script>
+</div>

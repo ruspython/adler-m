@@ -1,0 +1,7 @@
+{% load i18n %}
+<a class="pagehead__middle_cart-link" href="{% url "cart:cart" %}">
+    {% trans "Cart" %}
+{% if positions_count > 0 %}
+    <span class="count">{{ positions_count }}</span>
+{% endif %}
+</a>

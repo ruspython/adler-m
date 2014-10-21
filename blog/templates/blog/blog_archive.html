@@ -1,0 +1,12 @@
+{% load i18n %}
+<div class="news-archive">
+<h3>{% trans "News archive" %}</h3>
+{% for month_list in month_lists %}
+    <ul>
+{% for month in month_list %}
+        <li><a href="{% url "blog:archive_month" month|date:"Y" month|date:"m" %}">{{ month|date:"F Y"|lower }}</a></li>
+{% endfor %}
+    </ul>
+{% endfor %}
+<div class="all_archive"><a href="{% url "blog:archive" %}">{% trans "Entire archive" %}</a></div>
+</div>

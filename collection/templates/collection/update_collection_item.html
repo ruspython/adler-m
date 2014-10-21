@@ -1,0 +1,4 @@
+{% extends "collection/upload_collection_item_form.html" %}
+{% load i18n %}
+{% block form_action %}{% url "collection:update" object.id %}{% endblock %}
+{% block submit_button_text %}{% trans "Save" %}{% endblock %}

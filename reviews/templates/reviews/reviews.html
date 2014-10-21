@@ -1,0 +1,15 @@
+{% extends CMS_TEMPLATE %}
+{% load endless staticfiles i18n sekizai_tags %}
+{% lazy_paginate reviews %}
+{% block content %}
+<div class="container">
+    <div class="b-review">
+        <a href="{% url "reviews:create_review" %}" class="button add_question open-popup" id="add_review">{% trans 'Add review' %}</a>
+        {% include 'reviews/review_page.html' %}
+    </div>
+</div>
+{% addtoblock "js" %}
+<script src="{% static "endless_pagination/js/endless-pagination.js" %}"></script>
+<script>$(function(){$.endlessPaginate();})</script>
+{% endaddtoblock %}
+{% endblock %}

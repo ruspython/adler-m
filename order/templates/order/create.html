@@ -1,0 +1,171 @@
+{% extends 'order/order_base.html' %}
+{% load i18n staticfiles cart_tags widget_tweaks sekizai_tags humanize pytils_numeral %}
+{% block content %}
+    <div class="order-make">
+    {% cart_info %}
+{% with 2 as step %}
+    {% include "order/steps.html" %}
+{% endwith %}
+        <form method="post" action="{% url "order:create" %}" class="order-make-form">
+        {% csrf_token %}
+        <h3 class="h_round"><div class="round"><span>1</span></div><span class="h_round-span">Проверьте и заполните персональные данные</span></h3>
+        <fieldset class="order-make-form_personal">
+        {{ form.non_field_errors }}
+
+        {% with form.client_name as field %}
+        {% include "includes/_horizontal_form_field.html" %}
+        {% endwith %}
+
+        {% with form.client_second_name as field %}
+        {% include "includes/_horizontal_form_field.html" %}
+        {% endwith %}
+
+        {% with form.client_last_name as field %}
+        {% include "includes/_horizontal_form_field.html" %}
+        {% endwith %}
+
+        {% with form.address_city as field %}
+        {% include "includes/_horizontal_form_field.html" %}
+        {% endwith %}
+
+
+        <div class="form-group {{ field.html_name }}{% if field.errors %} has-error has-feedback{% endif %}">
+            <label class="control-label" for="{{ field.id_for_label }}">{% trans "Address" %}:</label>
+            <div class="form-field">
+
+                {% if form.address_street.errors %}{{ form.address_street.errors }}{% endif %}
+                {% render_field form.address_street placeholder=form.address_street.label  class="form-control new_value street" %}
+
+                {% if form.address_house.errors %}{{ form.address_house.errors }}{% endif %}
+                {% render_field form.address_house placeholder=form.address_house.label class="form-control new_value house"  %}
+
+                {% if form.address_building.errors %}{{ form.address_building.errors }}{% endif %}
+                {% render_field form.address_building placeholder=form.address_building.label  class="form-control new_value building" %}
+
+                {% if form.address_flat.errors %}{{ form.address_flat.errors }}{% endif %}
+                {% render_field form.address_flat placeholder=form.address_flat.label class="form-control new_value flat" %}
+
+            </div>
+        </div>
+
+        <div class="form-group {{ field.html_name }}{% if field.errors %} has-error has-feedback{% endif %}">
+            <label class="control-label" for="{{ field.id_for_label }}">{% trans "zipcode make order" %}:</label>
+            <div class="form-field">
+                {% if form.address_zipcode.errors %}{{ form.address_zipcode.errors }}{% endif %}
+                {% render_field form.address_zipcode placeholder=form.address_zipcode.label  class="form-control new_value zipcode" %}
+                <label class="zipcode">{% trans "Field is required <br> Only in the case of postal delivery." %}</label>
+            </div>
+        </div>
+
+        <div class="form-group {{ form.phone.html_name }}{% if form.phone.errors %} has-error has-feedback{% endif %}">
+            <label class="control-label" for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+            <div class="form-field">
+                {{ form.phone|attr:"required"|add_class:"form-control"|add_class:"maskedinput" }}
+{% if form.phone.errors %}
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+                {{ form.phone.errors }}
+{% endif %}
+            </div>
+        </div>
+
+        {% with form.email as field %}
+        {% include "includes/_horizontal_form_field.html" %}
+        {% endwith %}
+
+        </fieldset>
+
+
+        <fieldset class="order-make-form_payment">
+            <h3 class="h_round">
+                <div class="round"><span>2</span></div>
+                <span class="h_round-span onestring">Возможные спообы оплаты</span>
+            </h3>
+            <div class="payment-variants">
+                <div class="payment-variants_item">
+                    <label class="payment-variants_item-label">
+                        <input type="radio" name="payment" value="cash" checked>
+                        <span>Наличными</span>
+                    </label>
+                </div>
+                <div class="payment-variants_item">
+                    <label class="payment-variants_item-label">
+                        <input type="radio" name="payment" value="cc">
+                        <span>Кредитная карта</span>
+                    </label>
+                </div>
+                <div class="payment-variants_item">
+                    <label class="payment-variants_item-label">
+                        <input type="radio" name="payment" value="bank">
+                        <span>Банковский перевод</span>
+                    </label>
+                </div>
+                <div class="payment-variants_item">
+                    <label class="payment-variants_item-label">
+                        <input type="radio" name="payment" value="paypal">
+                        <span>PayPal</span>
+                    </label>
+                </div>
+                <div class="payment-variants_item">
+                    <label class="payment-variants_item-label">
+                        <input type="radio" name="payment" value="yandex">
+                        <span>Яндекс.Деньги</span>
+                    </label>
+                </div>
+                <div class="payment-variants_item">
+                    <label class="payment-variants_item-label">
+                        <input type="radio" name="payment" value="webmoney">
+                        <span>WebMoney</span>
+                    </label>
+                </div>
+
+
+            </div>
+        </fieldset>
+
+
+
+
+        <fieldset class="order-make-form_delivery">
+        <h3 class="h_round">
+            <div class="round"><span>3</span></div>
+            <span class="h_round-span">Возможные способы доставки
+            <span id="delivery-location" class="delivery-location">в город
+                <span id="delivery-location-name" data-delivery-source="{% url "order:get_delivery_variants" %}"></span>
+            </span>
+            </span>
+        </h3>
+            <div class="delivery-variants">
+                <div class="delivery-variants_item">
+                    <label class="delivery-variants_item-label">
+                        <input type="radio" name="delivery" value="post" checked>
+                        <span>Почта России</span>
+                    </label>
+                    <div class="note">Доставка почтой — это доставка почтой. Она везде работает</div>
+                </div>
+                <div id="delivery-variants"></div>
+            </div>
+        </fieldset>
+
+        <div class="total_cost">Общая сумма заказа: <span>{{ total_price|intcomma }} рубл{{ total_price|choose_plural:"ь,я,ей" }}</span></div>
+
+        <div class="form-group personal_item comment {{ field.html_name }}{% if field.errors %} has-error has-feedback{% endif %}">
+            <label for="id_comment" class="comment control-label" for="{{ field.id_for_label }}">{% trans "comment for order" %}:</label>
+            <div class="form-field">
+                {% if form.comment.errors %}{{ form.comment.errors }}{% endif %}
+                {% render_field form.comment placeholder=form.comment.label  class="form-control new_value comment" %}
+            </div>
+        </div>
+        <div class="subscribe_new_items">
+            <label><input type="checkbox"><span>{% trans "Get notified of new arrivals" %}</span></label>
+        </div>
+               <button type="submit" class="button checkout">{% trans "Checkout" context "Create order" %}</button>
+        </form>
+    </div>
+
+
+
+{% addtoblock "js" %}
+    <script src="http://api-maps.yandex.ru/2.1/?load=package.standard&lang=ru-RU"></script>
+    <script src="{% static "js/order.js" %}"></script>
+{% endaddtoblock %}
+{% endblock %}

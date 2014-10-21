@@ -1,0 +1,107 @@
+@import "bootstrap";
+@import "firm_style";
+@import "flexbox";
+
+
+@blog-index-width-header: 170px;
+
+.blog-plugin {
+  .container();
+  .clearfix();
+  padding-top: 18px;
+  @media (min-width: @screen-sm-min) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EBEBEB;
+  }
+  @media (min-width: @screen-md-min) {
+    padding-top: 42px;
+    padding-bottom: 36px;
+  }
+  &-header {
+    @media (min-width: @screen-md-min) {
+      .pull-left();
+      width: @blog-index-width-header;
+      padding-right: @grid-gutter-width / 2;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #000000;
+      @media (min-width: @screen-sm-min) {
+        font-size: 26px;
+      }
+    }
+  }
+  &-list {
+    .clearfix();
+    @media (min-width: @screen-md-min) {
+      width: @container-md - @blog-index-width-header - 30px;
+      .pull-left();
+    }
+    @media (min-width: @screen-lg-min) {
+      width: @container-lg - @blog-index-width-header - 30px;
+    }
+    .make-row(0);
+    .item-news {
+      margin-bottom: 10px;
+      text-decoration: none;
+      .pull-left();
+      .clearfix();
+      .make-xs-column(12; 0px);
+      .make-sm-column(6);
+      @media (min-width: @screen-xs-min) {
+        padding-left: 0;
+      }
+      &:hover h4 {
+        text-decoration: underline;
+      }
+      img {
+        .img-responsive();
+        .pull-left();
+        width: 150px;
+        margin-right: 10px;
+        @media (min-width: @screen-sm-min) {
+          width: 166px;
+          margin-right: 20px;
+        }
+        @media (min-width: @screen-md-min) {
+          width: 190px;
+        }
+      }
+      &_h4 {
+        @media (max-width: 340px ) {
+          width: 130px;
+        }
+        width: 158px;
+        .pull-left();
+        h4 {
+        margin-top: 0;
+        color: #222222;
+        font-size: 14px;
+        font-weight: bold;
+        @media (min-width: @screen-md-min) {
+          margin-top: 4px;
+        }
+        @media (min-width: @screen-lg-min) {
+          width: 190px;
+        }
+        }
+        .news-date {
+          font-size: 12px;
+          color: #8193a1;
+        }
+      }
+    }
+  }
+  .all_news {
+    color: #000000;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+    @media (min-width: @screen-sm-min) {
+      .pull-right();
+    }
+  }
+}

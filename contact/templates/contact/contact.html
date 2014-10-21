@@ -1,0 +1,62 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n cms_tags widget_tweaks sekizai_tags staticfiles %}
+{% block content %}
+    <div class="contact-page">
+        <div class="contact-page-common">
+{% for info in no_map %}
+{% render_model_block info %}
+            <div class="contact-page__info">
+                <h2>{{ info.name }}</h2>
+                {{ info.description|safe }}
+            </div>
+{% endrender_model_block %}
+{% endfor %}
+        </div>
+        <hr class="contact-page__separator">
+        <div class="contact-page-places">
+            <div class="contact-page-places__list">
+{% for office in with_map %}
+{% render_model_block office %}
+                <div class="contact-page__info">
+                    <h2 class="show-on-map" data-office="{{ office.id }}">{{ office.name }}</h2>
+                    {{ office.description|safe }}
+                </div>
+{% endrender_model_block %}
+{% endfor %}
+            </div>
+            <div class="contact-page-places__map" id="offices-map">
+            </div>
+        </div>
+    </div>
+    {% placeholder "content" %}
+<div class="feedback">
+    <form method="post" class="feedback-form">
+        <h2>{% trans "Feedback" %}</h2>
+        {% csrf_token %}
+{% if form.non_field_errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+{% endif %}
+{% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+{% include "includes/_form_fields.html" %}
+        <div class="form-group">
+            <button type="submit" class="button">отправить</button>
+            <span id="event_signup_result" class="event_signup_result"></span>
+        </div>
+    </form>
+</div>
+{% addtoblock "js" %}
+{% with with_map as offices %}
+{% if offices %}
+    <script type="application/json" id="officesData">({
+{% for office in offices %}'{{ office.id }}':{
+        'showImmediate':{{ office.show_immediately|lower }},
+        'map':{{ office.map|safe }},
+        'name':'{{ office.name }}'
+    }{% if not forloop.last %},{% endif %}
+{% endfor %}})</script>
+    <script src="http://api-maps.yandex.ru/2.1/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script src="{% static "js/offices.js" %}"></script>
+{% endif %}
+{% endwith %}
+{% endaddtoblock %}
+{% endblock %}

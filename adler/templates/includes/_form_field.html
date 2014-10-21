@@ -1,0 +1,15 @@
+{% load widget_tweaks %}
+        <div class="form-group {{ field.html_name }}{% if field.errors %} has-error has-feedback{% endif %}">
+{% if field|field_type == 'booleanfield' %}
+            <div class="checkbox"><label>{{ field }} {{ field.label }}</label></div>
+{% else %}
+            <label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+{% with field.field.required|yesno:"required," as attr %}
+            {{ field|attr:attr|add_class:"form-control" }}
+{% endwith %}
+{% if field.errors %}
+            <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+            {{ field.errors }}
+{% endif %}
+{% endif %}
+        </div>

@@ -1,0 +1,18 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n %}
+
+{% block h1 %}
+    <h1>{% trans "Delete account" %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <p>{% trans 'Are you sure you want to delete your account?' %}</p>
+
+        <form method="post" action="{% url 'personal:profile_delete' %}">
+            {% csrf_token %}
+            <input type="hidden" name="delete_confirm" value="Y">
+            <button type="submit" class="button">{% trans 'Delete' %}</button>
+        </form>
+    </div>
+{% endblock %}

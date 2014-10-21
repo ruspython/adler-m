@@ -1,0 +1,22 @@
+{% extends "admin/catalog/catalog_import.html" %}
+{% block content %}
+    <div id="content-main">
+        <p>Импорт произведён успешно.</p>
+{% if items_without_images %}
+    <style>
+    .warning_no_image_articles {
+        width: 333px;
+        height: 400px;
+    }
+    </style>
+    <div class="warning_no_image">
+        <h3>У некоторых моделей нет фотографий</h3>
+        <p>Ниже перечислены артикулы таких моделей:</p>
+        <textarea class="warning_no_image_articles">
+{% for item in items_without_images %}{{ item.slug }}
+{% endfor %}
+        </textarea>
+    </div>
+{% endif %}
+    </div>
+{% endblock %}

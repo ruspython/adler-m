@@ -1,0 +1,81 @@
+@import "bootstrap";
+@import "common";
+
+
+.how2buy {
+  &-pay-methods {
+    padding-bottom: 40px;
+    .teaser_line {
+      @media (max-width: @screen-xs-max) {
+        &:before,
+        &:after {
+          .hide();
+        }
+      }
+      @media (min-width: @screen-sm-min) {
+        .make-row(21px);
+      }
+      .teaser {
+        .make-xs-column(6, 21px);
+        .make-sm-column(4, 21px);
+        .make-md-column(2, 21px);
+        &-image {
+          height: 81px;
+        }
+      }
+    }
+  }
+
+  &-area {
+    .alter-background;
+    padding: 30px 0 24px;
+    label {
+      display: block;
+    }
+    .select2-container {
+      width: 100%!important;
+      &.form-control {
+        padding: 0;
+        border: 0;
+      }
+      @media (min-width: @screen-sm-min) {
+        width: 491px!important;
+      }
+    }
+    .city-select {
+      .hide();
+      &.selected {
+        .show();
+      }
+    }
+  }
+
+  &-delivery {
+    h3 {
+      color: @brand-primary;
+    }
+    h5 {
+      line-height: 20px;
+      margin: 0;
+    }
+    .list {
+      li {
+        margin-bottom: 13px;
+      }
+    }
+    .note {
+      font-size: 12px;
+      color: #8193a1;
+      b {
+        font-weight: 400;
+        color: black;
+      }
+    }
+    .delivery-variant {
+      .hide();
+      &.selected {
+        .show();
+      }
+    }
+  }
+}

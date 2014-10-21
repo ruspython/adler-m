@@ -1,0 +1,32 @@
+{% extends CMS_TEMPLATE %}
+{% load staticfiles i18n cms_tags sekizai_tags %}
+{% block h1 %}{% endblock %}
+{% block content %}
+<div class="blog-detail">
+{% if blog %}
+{% render_model_block blog %}
+    <div class="catalog_detail">
+        <div class="catalog_detail__back">
+            <a href="{% url "blog:article-list" %}">{% trans "Back to blog" %}</a>
+        </div>
+{% if blog.get_item_list|length_is:1 %}
+{% include "blog/_article_detail_one_model.html" %}
+{% else %}
+{% include "blog/_article_detail_several_models.html" %}
+{% endif %}
+
+    <div class="blog_footer">
+{% with blog.get_related_articles as articles %}
+{% with "Related news" as blog_plugin_title %}
+        {% include 'blog/blog_plugin.html' %}
+{% endwith %}
+{% endwith %}
+    </div>
+    </div>
+{% endrender_model_block %}
+{% endif %}
+</div>
+{% addtoblock "js" %}
+    <script src="{% static "js/catalog.js" %}"></script>
+{% endaddtoblock %}
+{% endblock %}

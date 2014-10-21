@@ -1,0 +1,21 @@
+{% extends CMS_TEMPLATE %}
+{% load thumbnail staticfiles %}
+{% block content %}
+<div class="container">
+<div class="brands-list">
+{% for brand in brands %}
+    <div class="brand">
+    <a href="{{ brand.get_absolute_url }}">
+
+            <div class="brand-xs">
+            {% thumbnail brand.image "145x65" format="PNG" as im %}
+                <img src="{{ im.url }}" alt="{{ brand.name }}" title="{{ brand.name }}">
+            {% endthumbnail %}
+            </div>
+
+    </a>
+    </div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

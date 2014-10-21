@@ -1,0 +1,7 @@
+{% load i18n %}
+<form class="form-inline">
+{% for field in form %}
+    <label>{{ field }} {{ field.label }}</label>
+{% endfor %}
+    <button class="button" type="submit">{% trans "Apply" %}</button>
+</form>

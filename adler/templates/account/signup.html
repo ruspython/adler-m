@@ -1,0 +1,25 @@
+{% extends request.is_ajax|yesno:"account/base_ajax.html,account/base.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block h1 %}
+    <div class="container">
+        <h1>{% trans "Sign Up" %}</h1>
+    </div>
+{% endblock %}
+
+{% block auth_content %}
+    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+    <form class="signup ajaxform" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+{% include "includes/_form_fields.html" %}
+{% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+{% endif %}
+        <button class="button" type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </form>
+{% endblock %}

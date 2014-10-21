@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-03 06:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: cms_app.py:8
+msgid "Adler Reviews App"
+msgstr "Отзывы"
+
+#: models.py:8 models.py:23
+msgid "add time"
+msgstr "время создания"
+
+#: models.py:9
+msgid "your name"
+msgstr "ваше имя"
+
+#: models.py:10
+msgid "review text"
+msgstr "текст сообщения"
+
+#: models.py:17
+msgid "review"
+msgstr "отзыв"
+
+#: models.py:18
+msgid "reviews"
+msgstr "отзывы"
+
+#: models.py:24
+msgid "author"
+msgstr "автор"
+
+#: models.py:25 models.py:32
+msgid "comment"
+msgstr "комментарий"
+
+#: models.py:33
+msgid "comments"
+msgstr "комментарии"
+
+#: templates/reviews/_entry.html:8
+msgid "reply"
+msgstr "ответить"
+
+#: templates/reviews/reviews.html:7
+msgid "Add review"
+msgstr "Оставить отзыв"

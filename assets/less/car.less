@@ -1,0 +1,64 @@
+@import "bootstrap";
+
+
+.car_starts() {
+  0% { top: 3px; }
+  2% { top: 2px; }
+  2.5% { top: 3px; }
+  3% { top: 2px; }
+  3.5% { top: 3px; }
+  4% { top: 2px; }
+  4.5% { top: 3px; }
+  5% { top: 2px; }
+  8% { top: 3px; }
+  8.5% { top: 2px; }
+  9% { top: 3px; }
+  9.5% { top: 2px; }
+  10% {
+    left: 15px;
+  }
+  25% {
+    left: 150%;
+    .rotateY(0);
+  }
+  26% {
+    .rotateY(180deg);
+  }
+  40% {
+    .rotateY(180deg);
+    left: -50%;
+  }
+  41% {
+    .rotateY(0);
+  }
+  70% {
+    left: 150%;
+    .rotateY(0);
+  }
+  71% {
+    .rotateY(180deg);
+  }
+  85% {
+    left: -50%;
+    .rotateY(180deg);
+  }
+  86% {
+    .rotateY(0);
+    .skew(0; 0);
+  }
+  90.5% {
+    left: 15px;
+    .skew(-25deg; 0);
+  }
+  91.5% {
+    .skew(0; 0);
+  }
+}
+
+
+
+@-webkit-keyframes car-starts { .car_starts; }
+@-moz-keyframes car-starts { .car_starts; }
+@-ms-keyframes car-starts { .car_starts; }
+@-o-keyframes car-starts { .car_starts; }
+@keyframes car-starts { .car_starts; }

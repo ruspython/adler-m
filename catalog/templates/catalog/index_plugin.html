@@ -1,0 +1,27 @@
+{% load i18n %}
+<div class="catalog-index">
+    <div class="catalog-index-content">
+        <ul class="catalog-index-content__types" role="tablist">
+            <li class="active type"><a href="#catalog_new" role="tab" data-toggle="tab">{% trans "Novelties" %}</a></li>
+            <li class="type"><a href="#catalog_soon" role="tab" data-toggle="tab">{% trans "Soon" %}</a></li>
+            <li class="type"><a href="#catalog_sale" role="tab" data-toggle="tab">{% trans "Sale" %}</a></li>
+        </ul>
+        <div class="catalog-index-content__items">
+            <div class="tab-pane active" id="catalog_new">
+{% for item in new %}
+{% include "catalog/item_card.html" %}
+{% endfor %}
+            </div>
+            <div class="tab-pane" id="catalog_soon">
+{% for item in soon %}
+{% include "catalog/item_card.html" %}
+{% endfor %}
+            </div>
+            <div class="tab-pane" id="catalog_sale">
+{% for item in sale %}
+{% include "catalog/item_card.html" %}
+{% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

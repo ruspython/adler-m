@@ -1,0 +1,31 @@
+@import "firm_style";
+@import "bootstrap";
+
+
+.order-step {
+  margin-bottom: 50px;
+  .clearfix();
+  .step {
+    float: left;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 60px;
+    font-size: 16px;
+    &.active {
+      border: 1px solid #B2CCDF;
+      & ~ .step {
+        color: #b2b2b2;
+      }
+    }
+    span {
+      font-size: 12px;
+      color: #8193a1;
+      padding-right: 25px;
+    }
+    a {
+      color: #222222;
+      text-decoration: underline;
+      &:hover { text-decoration: none; }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{% extends CMS_TEMPLATE %}
+{% load thumbnail staticfiles i18n %}
+{% block content %}
+<div class="container">
+{% if items %}
+    <form action="{% url "preorder:action" %}" method="post">
+    {% csrf_token %}
+
+
+    <div class="cp-list preorder">
+        <div class="cp-list-header">
+            <div class="cp-list-header__item photo"><div class="tb">{% trans "Photo" %}</div></div>
+            <div class="cp-list-header__item name"><div class="tb">{% trans "Item name" %}</div></div>
+            <div class="cp-list-header__item price preorder"><div class="tb">{% trans "Price" %}</div></div>
+            <div class="cp-list-header__item quantity preorder"><div class="tb">{% trans "Quantity" %}</div></div>
+            <div class="cp-list-header__item status preorder"><div class="tb">{% trans "Status" %}</div></div>
+            <div class="cp-list-header__item check"><div class="tb"><span class="select_all"></span></div></div>
+        </div>
+        <div class="cp-list-body">
+{% for item in items %}
+    <div class="cp-list-body-tr">
+            <div class="cp-list-body-tr__item photo"><div class="tb">
+{% thumbnail item.item.get_main_image.file "x130" crop="center" as im %}
+                <div class="image"><img src="{{ im.url }}"></div>
+{% empty %}
+                <div class="no-image"></div>
+{% endthumbnail %}
+            </div></div>
+            <div class="cp-list-body-tr__item name preorder"><div class="tbn">
+                <h5 class="cart__item-title"><a href="{{ item.item.get_absolute_url }}">{{ item.item.full_name }}</a></h5>
+                    <ul class="item-proprs">
+{% if item.item.manufacturer %}
+                        <li class="manufacturer"><span>{% trans "Manufacturer" %}:</span> {{ item.item.manufacturer }}</li>
+{% endif %}
+{% if item.item.scale %}
+                        <li class="scale"><span>{% trans "Scale" %}:</span> {{ item.item.scale }}</li>
+{% endif %}
+{% if item.item.slug %}
+                        <li class="article"><span>{% trans "Article" %}:</span> {{ item.item.slug }}</li>
+{% endif %}
+                    </ul>
+            </div></div>
+
+            <div class="cp-list-body-tr__item price preorder"><div class="tb">
+                <span class="price">{{ item.item.price }} {% trans "r" %}</span>
+            </div></div>
+
+            <div class="cp-list-body-tr__item quantity preorder"><div class="tb">
+                {{ item.quantity }}
+            </div></div>
+
+            <div class="cp-list-body-tr__item status preorder"><div class="tb">
+                <div>
+                    поступит когда-нибудь
+                </div>
+            </div></div>
+
+            <div class="cp-list-body-tr__item check preorder"><div class="tb">
+                <input type="checkbox" name="item" value="{{ item.item_id }}" class="check_input">
+                <button type="button" class="remove" data-id="{{ item.id }}"></button>
+            </div></div>
+        </div>
+{% endfor %}
+        </div>
+    </div>
+
+    <div class="cart-footer preorder">
+        <p class="preoder_cancel">{% trans "Selected items" %}:
+            <button type="submit" class="btn-link" name="cancel">{% trans "Cancel pre-order" %}</button>
+        </p>
+        <div class="f_links">
+            <div><a href="#" class="select_all">{% trans "Select all" %}</a></div>
+            <div><a href="#" class="cancel_all">{% trans "Cancel all" %}</a></div>
+        </div>
+    </div>
+    </form>
+{% else %}
+    <p>У вас нет предзаказанных моделей</p>
+{% endif %}
+</div>
+{% endblock %}

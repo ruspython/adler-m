@@ -1,0 +1,108 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n thumbnail staticfiles sekizai_tags cms_tags %}
+{% block title %}{% trans "Scale model" %} {{ item.full_name }}{% endblock %}
+{% block meta_description %}{{ item.get_meta_description }}{% endblock %}
+{% block h1 %}{% endblock %}
+{% block content %}
+<div class="container">
+{% render_model_block item %}
+    <div class="catalog_detail">
+        <div class="catalog_detail__back">
+            <a href="{{ list_url }}">{% trans "Back " %}<br class="visible-md visible-lg">{% trans "to catalog" %}</a>
+        </div>
+
+        <div class="catalog_detail_content">
+        <div class="catalog_detail__title">
+            <h1>{{ item.full_name }}</h1>
+        </div>
+
+        <div class="catalog_detail__view">
+{% include "catalog/_catalog_detail_gallery.html" %}
+{% if item.tags.all %}
+            <div class="catalog_detail__view-tags">
+                <h4>{% trans "Tags" %}:</h4>
+{% for tag in item.tags.all %}
+                <a class="tag-name" href="{% url "catalog:item-list" %}?tag={{ tag }}">{{ tag }}</a>
+{% endfor %}
+            </div>
+{% endif %}
+        </div>
+        <div class="catalog_detail__details">
+            <dl class="catalog_detail__details-properties dl-horizontal">
+{% for property in item.get_properties %}
+                <dt>{{ property.name }}:</dt>
+{% if property.code == 'color' %}
+                <dd><a href="{% url "catalog:item-list" %}?color={{ property.value }}">{{ property.value }}</a></dd>
+{% elif property.code == 'manufacturer' %}
+                <dd><a href="{% url "catalog:item-list" %}?manufacturer={{ property.value }}">{{ property.value }}</a></dd>
+{% else %}
+                <dd>{{ property.value }}</dd>
+{% endif %}
+{% endfor %}
+            </dl>
+{% if item.note %}
+            <h4>{% trans "Description" %}:</h4>
+            <article class="catalog_detail__details-description">{{ item.note }}</article>
+{% endif %}
+{% if item.get_status == 'pre_order' %}
+            <form class="catalog_detail__details-buy" action="{% url "preorder:add_from_form" %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="item_id" value="{{ item.id }}">
+                <div class="catalog_detail__details-buy_qty">
+                    <label>{% trans "Q-ty" %}</label>
+                    <input value="1" name="quantity" class="qty" min="1" max="{{ item.quantity }}">
+                </div>
+                <div class="catalog_detail__details-buy_price">{{ item.price }} {% trans "r" %}</div>
+                <button type="submit" class="catalog_detail__details-buy_button button">{% trans "Pre-order" %}</button>
+            </form>
+{% elif item.price %}
+            <form class="catalog_detail__details-buy" action="{% url "cart:add2cart" %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="item_id" value="{{ item.id }}">
+                <div class="catalog_detail__details-buy_qty">
+                    <label>{% trans "Q-ty" %}</label>
+                    <input value="1" name="quantity" class="qty" min="1" max="{{ item.quantity }}">
+                </div>
+                <div class="catalog_detail__details-buy_price">{{ item.price }} {% trans "r" %}</div>
+                <button type="submit" class="catalog_detail__details-buy_button button">{% trans "Buy" %}</button>
+            </form>
+{% endif %}
+            <div class="catalog_detail__details-lists">
+{% if item.in_collection %}
+                <a class="catalog_detail__details-lists_link collection added" href="{% url "collection:my" %}">{% trans "Model is in my collection" %}</a>
+{% else %}
+                <a class="catalog_detail__details-lists_link collection" href="{% url "collection:add" item.id %}">{% trans "Add to my collection" %}</a>
+{% endif %}
+{% if in_favorite %}
+                <a class="catalog_detail__details-lists_link favorites added" href="{% url "favorite:list" %}">{% trans "Added to favorites" %}</a>
+{% else %}
+                <a class="catalog_detail__details-lists_link favorites" href="{% url "favorite:add" item.id %}">{% trans "Add to favorites" %}</a>
+{% endif %}
+            </div>
+            <div class="catalog_detail__vk">
+                <div id="vk_like"></div>
+                <script type="text/javascript">
+                VK.Widgets.Like("vk_like", {type: "mini"});
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endrender_model_block %}
+{% if item.get_similar %}
+    <div class="similar">
+        <h2>{% trans "Similar models" %}</h2>
+        <div class="catalog_list">
+{% for similar in item.get_similar %}
+{% with similar as item %}
+    {% include "catalog/item_card.html" %}
+{% endwith %}
+{% endfor %}
+        </div>
+    </div>
+{% endif %}
+</div>
+{% addtoblock "js" %}
+    <script src="{% static "js/catalog.js" %}"></script>
+{% endaddtoblock %}
+{% endblock %}

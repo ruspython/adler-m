@@ -1,0 +1,33 @@
+{% extends request.is_ajax|yesno:"collection/ajax_base.html,collection/base.html" %}
+{% load widget_tweaks i18n %}
+{% block form_content %}
+<form method="post" class="ajaxform" id="create_collection_item_form" action="{% block form_action %}{% url 'collection:create' %}{% endblock %}" enctype="multipart/form-data">
+    {% csrf_token %}
+{% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+{% endif %}
+{% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+{% include "includes/_form_fields.html" %}
+                <div class="form-group">
+                    <button type="submit" class="button btn">{% block submit_button_text %}{% trans "Upload" %}{% endblock %}</button>
+                    <span id="event_signup_result" class="event_signup_result"></span>
+                </div>
+</form>
+{% if request.is_ajax and False %}
+    <script>
+    $('#create_collection_item_form').ajaxForm({
+        beforeSubmit: function(){
+            $('.ajaxform').addClass('load')
+        },
+        success: function(data){
+            $('.ajaxform')
+                    .html(data)
+                    .removeClass('load')
+            setTimeout(function(){
+                $.fancybox.close()
+            }, 5000)
+        }
+    })
+    </script>
+{% endif %}
+{% endblock %}

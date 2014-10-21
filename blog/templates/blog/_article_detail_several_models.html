@@ -1,0 +1,23 @@
+{% load i18n %}
+        <div class="catalog_detail__several_models">
+            <time>{{ blog.date }}</time>
+            <h1>{{ blog.title }}</h1>
+            <div class="text-content">
+            <div class="article-text">{{ blog.text|default:''|safe }}</div>
+            <div class="article-tags">
+{% if blog.get_all_tags %}
+                <div class="catalog_detail__view-tags">
+                    <h4>{% trans "Tags" %}:</h4>
+{% for tag in blog.get_all_tags %}
+                    <a class="tag-name" href="{% url "blog:article-list" %}?tag={{ tag }}">{{ tag }}</a>
+{% endfor %}
+                </div>
+{% endif %}
+            </div>
+            </div>
+        </div>
+        <div class="catalog_list">
+{% for item in blog.get_item_list %}
+{% include "catalog/item_card.html" %}
+{% endfor %}
+        </div>

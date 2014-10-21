@@ -1,0 +1,9 @@
+{% load i18n %}
+{% if tags %}
+<h3>{% trans "By tags" %}:</h3>
+<ul class="filter_tags">
+{% for tag in tags %}
+    <li><a href="?tag={{ tag }}">{{ tag }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}

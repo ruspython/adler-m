@@ -1,0 +1,26 @@
+{% extends request.is_ajax|yesno:"collection/ajax_base.html,collection/base.html" %}
+{% load widget_tweaks i18n %}
+
+{% block h1 %}
+<h1>{% trans "Remove model from collection" %}</h1>
+{% endblock %}
+
+{% block form_content %}
+{% if item.catalog_product %}
+<form method="post" action="{% url "collection:remove" item.id %}" class="delete_collection_item">
+{% else %}
+<form method="post" action="{% url "collection:remove_uploaded" item.id %}" class="delete_collection_item">
+{% endif %}
+    {% csrf_token %}
+    <p>{% trans "Do you really want to remove this model from collection?" %}</p>
+{% if item.catalog_product %}
+{% with item.catalog_product as item %}
+    {%  include "collection/item.html" %}
+{% endwith %}
+{% else %}
+    {%  include "collection/item.html" %}
+{% endif %}
+    <hr><br>
+    <button class="button" type="submit">{% trans "Yes, sure" %}</button>
+</form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends CMS_TEMPLATE %}
+{% load thumbnail staticfiles i18n %}
+{% block content %}
+<div class="container">
+{% with collection.collectionitem_set.all as items %}
+{% include "collection/list.html" %}
+{% endwith %}
+</div>
+{% endblock %}

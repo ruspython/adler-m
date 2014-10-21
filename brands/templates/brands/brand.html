@@ -1,0 +1,31 @@
+{% extends CMS_TEMPLATE %}
+{% load thumbnail staticfiles i18n %}
+{% block h1 %}
+    <div class="container">
+        <h1>{{ brand.name }}</h1>
+    </div>
+{% endblock h1 %}
+{% block content %}
+{% if brand %}
+    <div class="container">
+    <div class="brand">
+        <div class="description">
+            {{ brand.description|safe }}
+            <br><br>
+            <a href="{% url "brands:brands-list" %}">{% trans "to list of brands" %}</a>
+        </div>
+        <aside class="logo">
+            {% thumbnail brand.image "220" format="PNG" as im %}
+            <img src="{{ im.url }}" alt="{{ brand.name }}">
+            {% endthumbnail %}
+{% if brand.web_site %}
+            <br><br>
+            <div class="website">
+                <a target="_blank" href="{{ brand.web_site }}">{% trans "to brand's site" %}</a>
+            </div>
+{% endif %}
+        </aside>
+    </div>
+    </div>
+{% endif %}
+{% endblock %}

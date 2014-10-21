@@ -1,0 +1,48 @@
+{% extends request.is_ajax|yesno:"faq/ajax_base.html,faq/base.html" %}
+{% load widget_tweaks %}
+{% block form_content %}
+<form method="post" class="ajaxform" id="question_form" action="{% url 'faq:create_faq' %}">
+    {% csrf_token %}
+{% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+{% endif %}
+{% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+{% for field in form.visible_fields %}
+                <div class="form-group {{ field.html_name }}{% if field.errors %} has-error has-feedback{% endif %}">
+{% if field|field_type == 'booleanfield' %}
+                    <div class="checkbox"><label>{{ field }} {{ field.label }}</label></div>
+{% else %}
+                    <label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+{% with field.field.required|yesno:"required," as attr %}
+                    {{ field|attr:attr|add_class:"form-control" }}
+{% endwith %}
+{% if field.errors %}
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+                    {{ field.errors }}
+{% endif %}
+{% endif %}
+                </div>
+{% endfor %}
+                <div class="form-group">
+                    <button type="submit" class="button btn">Отправить</button>
+                    <span id="event_signup_result" class="event_signup_result"></span>
+                </div>
+</form>
+{% if request.is_ajax %}
+    <script>
+    $('#question_form').ajaxForm({
+        beforeSubmit: function(){
+            $('.ajaxform').addClass('load')
+        },
+        success: function(data){
+            $('.ajaxform')
+                    .html(data)
+                    .removeClass('load')
+            setTimeout(function(){
+                $.fancybox.close()
+            }, 5000)
+        }
+    })
+    </script>
+{% endif %}
+{% endblock %}

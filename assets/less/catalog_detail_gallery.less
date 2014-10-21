@@ -1,0 +1,91 @@
+@import "bootstrap";
+
+
+&-gallery {
+  width: 100%;
+  .main-photo {
+    position: relative;
+    width: 100%;
+    padding-top: 71%;
+    cursor: pointer;
+    @media (min-width: @screen-sm-min) {
+      width: @gallery-width-sm;
+    }
+    @media (min-width: @screen-md-min) {
+      width: @gallery-width-md;
+    }
+    @media (min-width: @screen-lg-min) {
+      width: @gallery-width-lg;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      @main-img-transition: opacity 1s ease, transform 1s ease;
+      .transition(@main-img-transition);
+      .scale(1; 1);
+      .opacity(1);
+      &.new {
+        .scale(.5; .5);
+        .opacity(0);
+      }
+      &.old {
+        .scale(2; 2);
+        .opacity(0);
+      }
+    }
+  }
+  .gallery {
+    margin-top: 10px;
+    position: relative;
+    @media (min-width: @screen-sm-min) {
+      .size(@gallery-width-sm; @gallery-height-sm);
+    }
+    @media (min-width: @screen-md-min) {
+      .size(@gallery-width-md; @gallery-height-md);
+    }
+    @media (min-width: @screen-lg-min) {
+      .size(@gallery-width-lg; @gallery-height-lg);
+    }
+    &__slider {
+      .square(100%);
+      overflow: hidden;
+      &-list {
+        .square(100%);
+        .slide {
+          .pull-left();
+          background: center no-repeat;
+          background-size: 100%;
+          @media (min-width: @screen-sm-min) {
+            .size(@gallery-preview-width-sm; @gallery-height-sm);
+            margin-right: @gallery-gap-sm;
+          }
+          @media (min-width: @screen-md-min) {
+            .size(@gallery-preview-width-md; @gallery-height-md);
+            margin-right: @gallery-gap-md;
+          }
+          @media (min-width: @screen-lg-min) {
+            .size(@gallery-preview-width-lg; @gallery-height-lg);
+            margin-right: @gallery-gap-lg;
+          }
+        }
+      }
+    }
+    &__button {
+      @media (min-width: @screen-sm-min) {
+        .gallery__button(@gallery-button-width-sm);
+      }
+      @media (min-width: @screen-md-min) {
+        .gallery__button(@gallery-button-width-md);
+      }
+      @media (min-width: @screen-lg-min) {
+        .gallery__button(@gallery-button-width-lg);
+      }
+    }
+  }
+}
