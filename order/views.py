@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView, ListView, CreateView, FormView, DetailView
-from .forms import OrderForm
+from .forms import OrderForm, ExtendedPaymentForm
 from .models import Order, OrderItem
 from django.core.urlresolvers import reverse
 from personal.models import UserProfile
@@ -19,6 +19,7 @@ from yandex_money.forms import PaymentForm
 from yandex_money.models import Payment
 from django.http import Http404
 import re
+from django import forms
 
 
 class MyOrdersView(ListView):
@@ -161,10 +162,14 @@ class GoPayView(TemplateView):
 
         context = super(GoPayView, self).get_context_data(**kwargs)
         context['order_id'] = self.kwargs.get('order_id', None)
-        context['form'] = PaymentForm(instance=payment, initial={
-            'cps_email': order.email,
-            'cps_phone': phone
-        })
+        context['form'] = ExtendedPaymentForm(
+            instance=payment,
+            initial={
+                'cps_email': order.email,
+                'cps_phone': phone,
+                'paymentType': order.payment_method
+            }
+        )
         return context
 
 

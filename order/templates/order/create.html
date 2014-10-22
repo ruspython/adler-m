@@ -81,43 +81,14 @@
                 <span class="h_round-span onestring">Возможные спообы оплаты</span>
             </h3>
             <div class="payment-variants">
+{% for choice in form.payment_method %}
                 <div class="payment-variants_item">
                     <label class="payment-variants_item-label">
-                        <input type="radio" name="payment" value="cash" checked>
-                        <span>Наличными</span>
+                        {{ choice.tag }}
+                        <span>{{ choice.choice_label }}</span>
                     </label>
                 </div>
-                <div class="payment-variants_item">
-                    <label class="payment-variants_item-label">
-                        <input type="radio" name="payment" value="cc">
-                        <span>Кредитная карта</span>
-                    </label>
-                </div>
-                <div class="payment-variants_item">
-                    <label class="payment-variants_item-label">
-                        <input type="radio" name="payment" value="bank">
-                        <span>Банковский перевод</span>
-                    </label>
-                </div>
-                <div class="payment-variants_item">
-                    <label class="payment-variants_item-label">
-                        <input type="radio" name="payment" value="paypal">
-                        <span>PayPal</span>
-                    </label>
-                </div>
-                <div class="payment-variants_item">
-                    <label class="payment-variants_item-label">
-                        <input type="radio" name="payment" value="yandex">
-                        <span>Яндекс.Деньги</span>
-                    </label>
-                </div>
-                <div class="payment-variants_item">
-                    <label class="payment-variants_item-label">
-                        <input type="radio" name="payment" value="webmoney">
-                        <span>WebMoney</span>
-                    </label>
-                </div>
-
+{% endfor %}
 
             </div>
         </fieldset>

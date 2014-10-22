@@ -1,5 +1,5 @@
 {% extends CMS_TEMPLATE %}
-{% load widget_tweaks %}
+{% load i18n widget_tweaks %}
 {% block content %}
     <div class="order-success">
 {% with 3 as step %}
@@ -15,6 +15,7 @@
 {% for field in form %}
     {{ field|attr:"type:hidden" }}
 {% endfor %}
+    <br><br>
         <button type="submit" class="button">Оплатить</button>
     </form>
     </div>

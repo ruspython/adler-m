@@ -19,7 +19,7 @@
             <div class="orders_list__body__item-number"><div class="tb"><h4 class="order-number">{{ order.id }}</h4></div></div>
             <div class="orders_list__body__item-date"><div class="tb"><h4>{{ order.add_time|date:"j.m.y" }}</h4></div></div>
             <div class="orders_list__body__item-cost"><div class="tb"><h4>{{ order.total_price }} {% trans "r" %}</h4></div></div>
-            <div class="orders_list__body__item-payment"><div class="tb">Банковская карта</div></div>
+            <div class="orders_list__body__item-payment"><div class="tb">{{ order.get_payment_method_display }}</div></div>
             <div class="orders_list__body__item-delivery"><div class="tb">Почта</div></div>
             <div class="orders_list__body__item-carrier"><div class="tb">Почта России</div></div>
             <div class="orders_list__body__item-numpack"><div class="tb">

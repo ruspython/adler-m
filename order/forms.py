@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from hashlib import md5
 from django.conf import settings
+from yandex_money.forms import PaymentForm
 
 
 class OrderForm(forms.ModelForm):
@@ -25,3 +26,12 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         exclude = ['user', 'total_price']
+        widgets = {
+            'payment_method': forms.RadioSelect()
+        }
+
+
+class ExtendedPaymentForm(PaymentForm):
+    def __init__(self, *args, **kwargs):
+        super(ExtendedPaymentForm, self).__init__(*args, **kwargs)
+        self.fields['paymentType'].widget = forms.HiddenInput()
