@@ -2,82 +2,87 @@
 {% load i18n cms_tags sekizai_tags staticfiles %}
 {% block section_menu %}{% endblock %}
 {% block content %}
-{% regroup cities by country as country_list %}
-<div class="how2buy">
-    <section class="container how2buy-pay-methods">
-    {% placeholder "content" %}
-    </section>
+    {% regroup cities by country as country_list %}
+    <div class="how2buy">
+        <section class="container how2buy-pay-methods">
+            {% placeholder "content" %}
+        </section>
 
-    <section class="how2buy-area">
-        <div class="container">
-            <div class="form-group">
-                <label>{% trans "Your country" %}</label>
-                <select class="form-control" id="country-select">
-{% for country in country_list %}
-                    <option value="{{ country.grouper.id }}"{% if forloop.first %} selected{% endif %}>{{ country.grouper }}</option>
-{% endfor %}
-                </select>
+        <section class="how2buy-area">
+            <div class="container">
+                <div class="form-group">
+                    <label>{% trans "Your country" %}</label>
+                    <select class="form-control" id="country-select">
+                        {% for country in country_list %}
+                            <option value="{{ country.grouper.id }}"{% if forloop.first %}
+                                    selected{% endif %}>{{ country.grouper }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% for country in country_list %}
+                    <div class="form-group city-select{% if forloop.first %} selected{% endif %}"
+                         data-country="{{ country.grouper.id }}">
+                        <label>{% trans "Your city" %}</label>
+                        <select class="form-control" id="city-select">
+                            {% for item in country.list %}
+                                <option value="{{ item.id }}">{{ item.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endfor %}
             </div>
-{% for country in country_list %}
-            <div class="form-group city-select{% if forloop.first %} selected{% endif %}" data-country="{{ country.grouper.id }}">
-                <label>{% trans "Your city" %}</label>
-                <select class="form-control" id="city-select">
-{% for item in country.list %}
-                    <option value="{{ item.id }}">{{ item.name }}</option>
-{% endfor %}
-                </select>
-            </div>
-{% endfor %}
-        </div>
-    </section>
+        </section>
 
-    <section class="how2buy-delivery">
-        <div class="container">
-            <section id="section-points">
-{% for city in cities %}
-                <div class="delivery-variant{% if forloop.first %} selected{% endif %}" data-city="{{ city.id }}">
-{% if city.points %}
-                    <h3>{{ city.points_title|default:"Доставка в пункты выдачи" }}</h3>
-{% with city.pointaddress_set.all as points %}
-{% if points %}
-                    <ul class="list">
-{% for point in points %}
-                        <li>{{ point }}</li>
-{% endfor %}
-                    </ul>
-{% endif %}
-{% endwith %}
-                    {{ city.points|safe }}
-                    <hr>
-{% endif %}
-                </div>
-{% endfor %}
-            </section>
-            <section id="section-courier">
-{% for city in cities %}
-                <div class="delivery-variant{% if forloop.first %} selected{% endif %}" data-city="{{ city.id }}">
-{% if city.courier %}
-                    <h3>{{ city.courier_title|default:"Курьерская доставка" }}</h3>
-                    {{ city.courier|safe }}
-                    <hr>
-{% endif %}
-                </div>
-{% endfor %}
-            </section>
-            <section id="section-postal">
-{% for city in cities %}
-                <div class="delivery-variant{% if forloop.first %} selected{% endif %}" data-city="{{ city.id }}">
-{% if city.postal %}
-                    <h3>{{ city.postal_title|default:"Почтовая доставка" }}</h3>
-                    {{ city.postal|safe }}
-{% endif %}
+        <section class="how2buy-delivery">
+            <div class="container">
+                <section id="section-points">
+                    {% for city in cities %}
+                        <div class="delivery-variant{% if forloop.first %} selected{% endif %}"
+                             data-city="{{ city.id }}">
+                            {% if city.points %}
+                                <h3>{{ city.points_title|default:"Доставка в пункты выдачи" }}</h3>
+                                {% with city.pointaddress_set.all as points %}
+                                    {% if points %}
+                                        <ul class="list">
+                                            {% for point in points %}
+                                                <li>{{ point }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                {% endwith %}
+                                {{ city.points|safe }}
+                                <hr>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </section>
+                <section id="section-courier">
+                    {% for city in cities %}
+                        <div class="delivery-variant{% if forloop.first %} selected{% endif %}"
+                             data-city="{{ city.id }}">
+                            {% if city.courier %}
+                                <h3>{{ city.courier_title|default:"Курьерская доставка" }}</h3>
+                                {{ city.courier|safe }}
+                                <hr>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </section>
+                <section id="section-postal">
+                    {% for city in cities %}
+                        <div class="delivery-variant{% if forloop.first %} selected{% endif %}"
+                             data-city="{{ city.id }}">
+                            {% if city.postal %}
+                                <h3>{{ city.postal_title|default:"Почтовая доставка" }}</h3>
+                                {{ city.postal|safe }}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </section>
             </div>
-{% endfor %}
-            </section>
-        </div>
-    </section>
-</div>
-{% addtoblock "js" %}
-    <script src="{% static "js/how2buy.js" %}"></script>
-{% endaddtoblock %}
+        </section>
+    </div>
+    {% addtoblock "js" %}
+        <script src="{% static "js/how2buy.js" %}"></script>
+    {% endaddtoblock %}
 {% endblock %}

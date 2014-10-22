@@ -63,9 +63,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'adler', 'static'),
 )
 
-FIXTURE_DIRS = (
-   os.path.join(BASE_DIR, 'adler', 'fixtures'),
-)
 
 SITE_ID = 1
 

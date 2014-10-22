@@ -1,0 +1,991 @@
+- model: payment_and_delivery.Country
+  fields:
+    name: Австралия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Австрия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Азербайджан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Аландские острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Албания
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Алжир
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Американские Виргинские острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Американское Самоа'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ангола
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ангуилла
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Андорра
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Антарктика
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Антигуа и Барбуда'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Аргентина
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Армения
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Аруба
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Афганистан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Багамские острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Бангладеш
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Барбадос
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Бахрейн
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Беларусь
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Белиз
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Бельгия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Бенин
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Бермудские Острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Болгария
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Боливия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Босния и Герцеговина'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ботсвана
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Бразилия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Британская территория в Индийском океане'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Британские Виргинские Острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Бруней Даруссалам'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Буркина Фасо'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Бурунди
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Бутан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Вануату
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ватикан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Великобритания
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Венгрия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Венесуэла
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Внешние малые острова (США)'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Восточный Тимор'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Вьетнам
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Габон
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гаити
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гайана
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гамбия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гана
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гваделупа
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гватемала
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гвинея
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гвинея-Биссау
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Германия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гернси
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гибралтар
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гондурас
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Гонконг, Особый Административный Район Китая'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гренада
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гренландия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Греция
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Грузия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Гуам
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Дания
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Демократическая Республика Конго'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Джерси
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Джибути
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Доминиканская Республика'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Египет
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Замбия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Западная Сахара'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Зимбабве
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Израиль
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Индия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Индонезия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Иордания
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ирак
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Иран
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ирландия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Исландия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Испания
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Италия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Йемен
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Казахстан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Каймановы острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Камбоджа
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Камерун
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Канада
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Катар
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Кения
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Кипр
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Кирибати
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Китай
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Кокосовые острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Колумбия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Коморские Острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Конго
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Корейская Народно-Демократическая Республика'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Коста-Рика
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Кот д’Ивуар'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Куба
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Кувейт
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Кыргызстан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Лаос
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Латвия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Лесото
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Либерия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ливан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ливия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Литва
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Лихтенштейн
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Люксембург
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Маврикий
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мавритания
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мадагаскар
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Майотта
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Макао (особый административный район КНР)'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Македония
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Малави
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Малайзия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мали
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мальдивы
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мальта
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Марокко
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мартиник
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Маршалловы Острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мексика
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мозамбик
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Молдова
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Монако
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Монголия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Монсеррат
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Мьянма
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Намибия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Науру
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Неизвестный или недействительный регион'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Непал
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Нигер
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Нигерия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Нидерландские Антильские острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Нидерланды
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Никарагуа
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ниуе
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Новая Зеландия'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Новая Каледония'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Норвегия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Объединенные Арабские Эмираты'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Оман
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Остров Буве'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Остров Доминика'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Остров Мэн'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Остров Норфолк'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Остров Рождества'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Остров Святого Бартоломея'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Остров Святого Мартина'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Остров Святой Елены'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Острова Зеленого Мыса'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Острова Кука'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Острова Тёркс и Кайкос'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Острова Херд и Макдональд'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Пакистан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Палау
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Палестинская автономия'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Панама
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Папуа-Новая Гвинея'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Парагвай
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Перу
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Питкерн
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Польша
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Португалия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Пуэрто-Рико
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Республика Корея'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Реюньон
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Россия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Руанда
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Румыния
+
+- model: payment_and_delivery.Country
+  fields:
+    name: США
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Сальвадор
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Самоа
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Сан-Марино
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Сан-Томе и Принсипи'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Саудовская Аравия'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Свазиленд
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Свальбард и Ян-Майен'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Северные Марианские Острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Сейшельские Острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Сен-Пьер и Микелон'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Сенегал
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Сент-Винсент и Гренадины'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Сент-Киттс и Невис'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Сент-Люсия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Сербия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Сербия и Черногория'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Сингапур
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Сирийская Арабская Республика'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Словакия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Словения
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Соломоновы Острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Сомали
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Судан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Суринам
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Сьерра-Леоне
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Таджикистан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Таиланд
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Тайвань
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Танзания
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Того
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Токелау
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Тонга
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Тринидад и Тобаго'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Тувалу
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Тунис
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Туркменистан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Турция
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Уганда
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Узбекистан
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Украина
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Уоллис и Футуна'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Уругвай
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Фарерские острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Федеративные Штаты Микронезии'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Фиджи
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Филиппины
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Финляндия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Фолклендские острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Франция
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Французская Гвиана'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Французская Полинезия'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Французские Южные Территории'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Хорватия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Центрально-Африканская Республика'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Чад
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Черногория
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Чешская республика'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Чили
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Швейцария
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Швеция
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Шри-Ланка
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Эквадор
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Экваториальная Гвинея'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Эритрея
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Эстония
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Эфиопия
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Южная Африка'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: 'Южная Джорджия и Южные Сандвичевы Острова'
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Ямайка
+
+- model: payment_and_delivery.Country
+  fields:
+    name: Япония
