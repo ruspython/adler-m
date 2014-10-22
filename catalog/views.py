@@ -37,7 +37,7 @@ class CatalogListView(ListView):
                     Q(name__icontains=w) |
                     Q(article__icontains=w) |
                     Q(scale=w) |
-                    Q(brand=w) |
+                    Q(brand__icontains=w) |
                     Q(type=w) |
                     Q(manufacturer__icontains=w) |
                     Q(color=w) |
