@@ -177,6 +177,7 @@ INSTALLED_APPS = (
     'ckeditor',
     'form_utils',
     'addresspicker',
+    'email_templates',
     'adler',
     'faq',
     'catalog',

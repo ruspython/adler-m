@@ -30,7 +30,7 @@
     </div>
     {% placeholder "content" %}
 <div class="feedback">
-    <form method="post" class="feedback-form">
+    <form method="post" class="feedback-form" action="{% url "contact:home" %}">
         <h2>{% trans "Feedback" %}</h2>
         {% csrf_token %}
 {% if form.non_field_errors %}
