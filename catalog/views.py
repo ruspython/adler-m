@@ -39,11 +39,12 @@ class CatalogListView(ListView):
                     Q(scale=w) |
                     Q(brand=w) |
                     Q(type=w) |
-                    Q(manufacturer=w) |
+                    Q(manufacturer__icontains=w) |
                     Q(color=w) |
                     Q(material=w) |
                     Q(tags__tag=w)
                 )
+                print(queryset)
             queryset = queryset.distinct()
 
         scale = get_params.get('scale', None)
@@ -138,17 +139,8 @@ class SearchSuggest(ListView):
                     Q(material__icontains=w) |
                     Q(tags__tag__icontains=w)
                 )
-            # queryset = queryset.filter(
-            #     Q(name__icontains=q) |
-            #     Q(article__icontains=q) |
-            #     Q(scale=q) |
-            #     Q(brand=q) |
-            #     Q(type=q) |
-            #     Q(manufacturer=q) |
-            #     Q(color=q) |
-            #     Q(material=q) |
-            #     Q(tags__tag=q)
-            # )
+                print(queryset)
+            queryset = queryset.distinct()
         return queryset[:10]
 
 
