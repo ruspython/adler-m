@@ -17,9 +17,4 @@ class FeedbackForm(forms.ModelForm):
             'city': instance.city,
             'department': instance.department,
         })
-        print({
-            'name': instance.name,
-            'message': instance.message,
-            'add_time': instance.add_time
-        })
         return instance
