@@ -1,3 +1,5 @@
+import string
+from django.db.models import Q
 from django.views.generic import TemplateView, ListView, CreateView, FormView, DetailView
 from .forms import OrderForm, ExtendedPaymentForm
 from .models import Order, OrderItem
@@ -216,3 +218,25 @@ class OrderPaymentFailView(TemplateView):
         context = super(OrderPaymentFailView, self).get_context_data(**kwargs)
         # context['order_id'] = self.kwargs.get('order_id', None)
         return context
+
+
+class CityListView(ListView):
+    model = City
+    template_name = 'order/city_suggest.html'
+    context_object_name = 'cities'
+
+    def get_queryset(self):
+        queryset = super(CityListView, self).get_queryset().filter()
+        get_params = self.request.GET
+
+        q = get_params.get('q', None)
+        if q:
+            punc = string.punctuation
+            q_list = ''.join([o for o in list(q) if not (o in punc and o != ":")]).split()
+            for w in q_list:
+                queryset = queryset.filter(
+                    Q(name__icontains=w)
+                )
+                print(queryset)
+            queryset = queryset.distinct()
+        return queryset[:10]

@@ -1,0 +1,5 @@
+[{% for city in cities %}
+    {
+        "value": "{{ city.name }}"
+    }{% if not forloop.last %},{% endif %}
+{% endfor %}]
