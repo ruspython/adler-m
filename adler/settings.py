@@ -297,6 +297,14 @@ SMS_USERNAME = 'scriptosaur'
 SMS_PASSWORD = 'qwerty00'
 
 
+SERVER_EMAIL = 'adler.m.ru@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'adler.m.ru@gmail.com'
+EMAIL_HOST_PASSWORD = 'PaSsWoRd_BY_Bl0nd1E'
+
+
 YANDEX_MONEY_DEBUG = True
 YANDEX_MONEY_SCID = 57057
 YANDEX_MONEY_SHOP_ID = 22010
