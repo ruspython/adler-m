@@ -3,5 +3,5 @@ from .views import *
 
 
 urlpatterns = patterns('',
-    url(r'^$', CreateFeedbackView.as_view()),
+    url(r'^$', CreateFeedbackView.as_view(), name='home'),
 )

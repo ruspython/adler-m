@@ -1,6 +1,9 @@
 {% extends CMS_TEMPLATE %}
-{% load endless staticfiles i18n sekizai_tags %}
+{% load endless staticfiles i18n sekizai_tags cms_tags %}
 {% lazy_paginate questions %}
+{% block h1 %}
+        <h1>{% page_attribute "page_title" %}</h1>
+{% endblock h1 %}
 {% block content %}
 <div class="container">
     <div class="b-faq">
