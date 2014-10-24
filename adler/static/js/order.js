@@ -19,7 +19,30 @@
       });
     };
     selectDeliveryCity();
-    return $('#id_address_city').change(selectDeliveryCity);
+    $('#id_address_city').change(selectDeliveryCity);
+    $('#id_address_city').autocomplete({
+      source: function(request, response) {
+        $.ajax({
+          url: "../get_city",
+          dataType: "json",
+          data: {
+            q: request.term
+          },
+          success: function(data) {
+            response(data);
+          }
+        });
+      },
+      minLength: 2,
+      position: {
+        my: "left top",
+        at: "left bottom"
+      },
+      select: function(event, ui) {
+        selectDeliveryCity();
+        return $('#id_address_city').change(selectDeliveryCity);
+      }
+    });
   });
 
 }).call(this);

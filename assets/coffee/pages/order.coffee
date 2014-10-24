@@ -1,5 +1,6 @@
 $ ->
-  after = (ms, cb) -> setTimeout cb, ms
+  after = (ms, cb) ->
+    setTimeout cb, ms
 
 
   selectDeliveryCity = ->
@@ -15,18 +16,33 @@ $ ->
 
   selectDeliveryCity()
   $('#id_address_city').change selectDeliveryCity
+
+  $('#id_address_city').autocomplete
+    source: (request, response) ->
+      $.ajax
+        url: "../get_city"
+        dataType: "json"
+        data:
+          q: request.term
+        success: (data) ->
+          response data
+          return
+      return
+    minLength: 2
+    position:
+      my: "left top"
+      at: "left bottom"
+    select: (event, ui) ->
+      selectDeliveryCity()
+      return $('#id_address_city').change selectDeliveryCity
+  return
+
+
+
 #  $('.delivery-variants').on 'click', 'a.direction_map', (e)->
 #    e.preventDefault()
 #    $.fancybox
 #      href: $(@).attr 'href'
-
-
-
-
-
-
-
-
 
 
 #  $('.order-make-form .personal_item .change').click ->
@@ -43,3 +59,5 @@ $ ->
 #      newValue = $container.find('.new_value').val()
 #    $container.removeClass 'edit'
 #    $container.find('.value').text newValue if newValue
+
+
