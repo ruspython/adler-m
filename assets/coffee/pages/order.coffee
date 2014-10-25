@@ -20,7 +20,7 @@ $ ->
   $('#id_address_city').autocomplete
     source: (request, response) ->
       $.ajax
-        url: "../get_city"
+        url: window.cityUrl
         dataType: "json"
         data:
           q: request.term
