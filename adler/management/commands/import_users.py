@@ -43,12 +43,10 @@ class Command(BaseCommand):
                         second_name = name[2]
 
             try:
-                print(email)
                 user_field = User.objects.create_user(str(user_id), password=password)
             except IntegrityError:
                 continue
 
             new_user = UserProfile(last_name=last_name, old_ID=user_id, email=email, user=user_field)
             new_user.save()
-            print(email)
             self.stdout.write(email)
