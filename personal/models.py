@@ -17,6 +17,8 @@ class UserProfile(models.Model):
     apartment = models.CharField(_('apartment'), max_length=64, null=True, blank=True)
     phone = models.CharField(_('phone'), max_length=64, null=True, blank=True)
 
+    old_ID = models.BigIntegerField(null=True, blank=True)
+
     def __unicode__(self):
         return u'%s %s %s' % (self.last_name, self.first_name, self.second_name)
 
