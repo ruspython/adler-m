@@ -6,7 +6,7 @@ from django_resized import ResizedImageField
 class Banner(models.Model):
     color_help = _('for example: #ff5b2d, rgb(255,91,45), red.'
                    '<a target="_blank" href="http://htmlbook.ru/css/value/color">Documentation</a>')
-    image = ResizedImageField(_('image'), max_width=1000, max_height=1000, upload_to='images/banner')
+    image = ResizedImageField(_('image'), max_width=1232, max_height=1000, upload_to='images/banner')
     title = models.CharField(_('title'), max_length=128)
     subtitle = models.CharField(_('subtitle'), max_length=128, null=True, blank=True)
     color_title = models.CharField(_('color title'), max_length=16, null=True, blank=True, help_text=color_help)
