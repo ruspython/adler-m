@@ -45,6 +45,9 @@ class Command(BaseCommand):
             try:
                 user_field = User.objects.create_user(str(user_id), email, password=password)
             except IntegrityError:
+                user_field = User.objects.get(username=str(user_id))
+                user_field.email = email
+                user_field.save()
                 continue
             new_user = UserProfile(last_name=last_name, old_ID=user_id, email=email, user=user_field)
             new_user.save()
