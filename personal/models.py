@@ -19,8 +19,11 @@ class UserProfile(models.Model):
 
     old_ID = models.BigIntegerField(null=True, blank=True)
 
-    def __unicode__(self):
+    def get_full_name(self):
         return u'%s %s %s' % (self.last_name, self.first_name, self.second_name)
+
+    def __unicode__(self):
+        return self.get_full_name()
 
     class Meta:
         verbose_name = _('user profile')

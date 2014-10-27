@@ -22,9 +22,10 @@
         success: function(data){
             $('.ajaxform')
                     .html(data)
-                    .removeClass('load')
+                    .removeClass('load');
             setTimeout(function(){
-                $.fancybox.close()
+                window.location.reload();
+{#                $.fancybox.close();#}
             }, 5000)
         }
     })
