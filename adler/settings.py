@@ -250,6 +250,7 @@ CMS_PERMISSION = True
 
 CMS_STYLE_NAMES = (
     ('teaser_line', _("teaser line")),
+    ('columns_container', _("columns container")),
 )
 
 

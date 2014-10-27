@@ -8,7 +8,7 @@
                     <div class="answer"><a href="{{ entry.get_comment_link }}" class="text-right open-popup">{% trans "reply" %}</a></div>
                 </div>
 {% if entry.name %}
-                <div class="name">{{ entry.name }}</div>
+                <div class="name{% if entry.author.is_superuser %} admin{% endif %}">{{ entry.name }}</div>
 {% endif %}
                 <div class="date">{{ entry.add_time|date:"d.m.Y" }}</div>
             </div>

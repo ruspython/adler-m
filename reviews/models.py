@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 class Review(models.Model):
     add_time = models.DateTimeField(_('add time'), default=datetime.now, blank=True)
     name = models.CharField(_('your name'), max_length=128)
+    author = models.ForeignKey(User, verbose_name=_('author'), blank=True, null=True)
     review = models.TextField(_('review text'))
 
     def __unicode__(self):

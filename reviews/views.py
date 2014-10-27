@@ -27,6 +27,13 @@ class ReviewCreateView(CreateView):
     def get_success_url(self):
         return reverse('reviews:review_add_success')
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        user = self.request.user
+        if user:
+            self.object.author = user
+        return super(ReviewCreateView, self).form_valid(form)
+
 
 class CommentCreateView(CreateView):
     form_class = CommentForm
@@ -42,3 +49,10 @@ class CommentCreateView(CreateView):
         context = super(CommentCreateView, self).get_context_data(**kwargs)
         context['review'] = Review.objects.get(pk=self.kwargs['pk'])
         return context
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        user = self.request.user
+        if user:
+            self.object.author = user
+        return super(CommentCreateView, self).form_valid(form)
