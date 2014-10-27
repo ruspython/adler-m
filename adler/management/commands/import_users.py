@@ -24,8 +24,6 @@ class Command(BaseCommand):
             user_id = user['id']
             email = user['login']
             password = str(uuid.uuid4()).split('-')[0]
-            print(email)
-            name = name_len = None
 
             if user['fullname']:
                 name = user['fullname'].split(' ')
@@ -33,7 +31,6 @@ class Command(BaseCommand):
                 name = None
 
             name_len = len(name) if name else 0
-            #last_name, first_name, second_name = user['fullname'].split(' ')
             first_name = second_name = last_name = None
             if name_len > 0:
                 last_name = name[0]
@@ -41,14 +38,26 @@ class Command(BaseCommand):
                     first_name = name[1]
                     if name_len > 2:
                         second_name = name[2]
-
+            print(email)
             try:
                 user_field = User.objects.create_user(str(user_id), email, password=password)
-            except IntegrityError:
+            except IntegrityError as e:
                 user_field = User.objects.get(username=str(user_id))
                 user_field.email = email
                 user_field.save()
-                continue
-            new_user = UserProfile(last_name=last_name, old_ID=user_id, email=email, user=user_field)
-            new_user.save()
+
+            try:
+                new_user = UserProfile(user=user_field, email=email, old_ID=user_id, first_name=first_name,
+                                       last_name=last_name, second_name=second_name)
+                new_user.email = email
+                new_user.user = user_field
+                new_user.save()
+            except IntegrityError as e:
+                new_user = UserProfile.objects.get(old_ID=user_id)
+                new_user.last_name = last_name
+                new_user.first_name = first_name
+                new_user.second_name = second_name
+                new_user.save()
+
+
             self.stdout.write(email)
