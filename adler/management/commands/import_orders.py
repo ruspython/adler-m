@@ -59,6 +59,9 @@ class Command(BaseCommand):
                     client_first_name = client_name[1]
                     if client_name_len > 2:
                         client_second_name = client_name[2]
+            new_order.client_name = client_first_name or ""
+            new_order.client_second_name = client_second_name
+            new_order.client_last_name = client_last_name
             new_order.save()
 
             items = order['items']
