@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.encoding import force_text
 from server_connect.utils import request2server
-from ...xml_import import import_some_item_from_tmp, read_catalog_data
+from ...xml_import import import_items_from_tmp, read_catalog_data
 from django.conf import settings
 
 
@@ -15,5 +15,9 @@ class Command(BaseCommand):
         f = open(file_name, "w")
         f.write(xml.encode('utf-8'))
         f.close()
+        f = open(file_name, "r")
+        xml = f.read()
+        # print(xml)
+        f.close()
         read_catalog_data(xml)
-        import_some_item_from_tmp()
+        import_items_from_tmp()
