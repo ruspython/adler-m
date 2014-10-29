@@ -4,6 +4,24 @@ from djangocms_text_ckeditor.fields import HTMLField
 from addresspicker.fields import AddressPickerField
 
 
+class DeliveryMethod(models.Model):
+    delivery_types_choices = (
+        ('postal', _('postal')),
+        ('courier', _('courier')),
+        ('points', _('points')),
+    )
+    delivery_types = models.CharField(_('delivery_types'), max_length=32, choices=delivery_types_choices,
+                                      default='post', blank=True)
+    price = models.PositiveSmallIntegerField(_('price'), default=0)
+    description = models.TextField(_('description'), blank=True, null=True)
+
+    def __unicode__(self):
+        return "%s: %s" % (self.delivery_types, self.price)
+
+    class Meta:
+        verbose_name_plural = _('Delivery methods')
+
+
 class Country(models.Model):
     name = models.CharField(_('name'), max_length=128)
     ordering = models.IntegerField(_('ordering'), default=10)
@@ -19,6 +37,7 @@ class Country(models.Model):
 
 class City(models.Model):
     country = models.ForeignKey(Country)
+    delivery_method = models.ManyToManyField(DeliveryMethod)
     name = models.CharField(_('name of city'), max_length=128)
     points_title = models.CharField(_('points title'), max_length=1128, blank=True, null=True)
     points = HTMLField(_('points'), blank=True)
@@ -50,3 +69,5 @@ class PointAddress(models.Model):
         verbose_name = _('point')
         verbose_name_plural = _('points')
         ordering = ['ordering']
+
+

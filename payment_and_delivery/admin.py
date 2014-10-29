@@ -13,7 +13,7 @@ class CityAdmin(admin.ModelAdmin):
     list_filter = ['country']
     fieldsets = (
         (None, {
-            'fields': ('country', 'name')
+            'fields': ('country', 'name', 'delivery_method')
         }),
         (_('points'), {
             'fields': ('points_title', 'points')
@@ -32,3 +32,4 @@ class CityAdmin(admin.ModelAdmin):
 
 admin.site.register(Country, PlaceholderAdmin)
 admin.site.register(City, CityAdmin)
+admin.site.register(DeliveryMethod)
