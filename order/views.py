@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from server_connect.utils import request2server
-from payment_and_delivery.models import City, PointAddress
+from payment_and_delivery.models import City, PointAddress, DeliveryMethod
 from adler.utils import send_sms
 from adler.models import SMSMessage
 from yandex_money.forms import PaymentForm
@@ -240,3 +240,28 @@ class CityListView(ListView):
                 print(queryset)
             queryset = queryset.distinct()
         return queryset[:10]
+
+
+class DeliveryMethodListView(ListView):
+    model = DeliveryMethod
+    template_name = 'order/delivery_method_suggest.html'
+    context_object_name = 'methods'
+
+    def get_queryset(self):
+        queryset = super(DeliveryMethodListView, self).get_queryset().filter()
+        get_params = self.request.GET
+
+        city_name = get_params.get('city', None)
+        if city_name:
+            city = City.objects.get(name=city_name)
+            print(city.delivery_method.all())
+            queryset = city.delivery_method.all()
+            # punc = string.punctuation
+            # q_list = ''.join([o for o in list(city) if not (o in punc and o != ":")]).split()
+            # for w in q_list:
+            #     queryset = queryset.filter(
+            #         Q(name__icontains=w)
+            #     )
+            #     print(queryset)
+            # queryset = queryset.distinct()
+        return queryset

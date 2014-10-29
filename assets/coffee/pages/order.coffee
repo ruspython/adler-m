@@ -35,8 +35,34 @@ $ ->
     select: (event, ui) ->
       selectDeliveryCity()
       return $('#id_address_city').change selectDeliveryCity
-  return
 
+  total_elem = $('.total_cost span')
+  total_cost = parseInt(total_elem.text())
+  $(document).on 'ifChecked', 'input[name="delivery"]', ->
+    value = $(this).val()
+    city = $('#id_address_city').val()
+    url = $('#delivery-location-name').data 'delivery-source'
+    $.ajax
+      url: '/ru/personal/orders/get_delivery_method/'
+      type: 'GET'
+      dataType: "json"
+      data:
+        city: city
+      success: (data) ->
+        sett = {}
+        for entry in data
+          sett = {}
+          if entry['type'] == 'postal'
+            sett['post'] = entry
+          if entry['type'] == 'courier'
+            sett['courier'] = entry
+          if entry['type'] == 'points'
+            sett['pickup'] = entry
+        alert sett[value]['price']
+        total_elem.text(total_cost + sett[value]['price'])
+        return
+    return
+  return
 
 
 #  $('.delivery-variants').on 'click', 'a.direction_map', (e)->

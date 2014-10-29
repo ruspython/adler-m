@@ -1,6 +1,6 @@
 (function() {
   $(function() {
-    var after, selectDeliveryCity;
+    var after, selectDeliveryCity, total_cost, total_elem;
     after = function(ms, cb) {
       return setTimeout(cb, ms);
     };
@@ -42,6 +42,41 @@
         selectDeliveryCity();
         return $('#id_address_city').change(selectDeliveryCity);
       }
+    });
+    total_elem = $('.total_cost span');
+    total_cost = parseInt(total_elem.text());
+    $(document).on('ifChecked', 'input[name="delivery"]', function() {
+      var city, url, value;
+      value = $(this).val();
+      city = $('#id_address_city').val();
+      url = $('#delivery-location-name').data('delivery-source');
+      $.ajax({
+        url: '/ru/personal/orders/get_delivery_method/',
+        type: 'GET',
+        dataType: "json",
+        data: {
+          city: city
+        },
+        success: function(data) {
+          var entry, sett, _i, _len;
+          sett = {};
+          for (_i = 0, _len = data.length; _i < _len; _i++) {
+            entry = data[_i];
+            sett = {};
+            if (entry['type'] === 'postal') {
+              sett['post'] = entry;
+            }
+            if (entry['type'] === 'courier') {
+              sett['courier'] = entry;
+            }
+            if (entry['type'] === 'points') {
+              sett['pickup'] = entry;
+            }
+          }
+          alert(sett[value]['price']);
+          total_elem.text(total_cost + sett[value]['price']);
+        }
+      });
     });
   });
 

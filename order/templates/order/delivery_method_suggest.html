@@ -1,0 +1,7 @@
+[{% for method in methods %}
+    {
+        "price": "{{ method.price }}",
+        "type": "{{ method.delivery_types }}",
+        "description": "{{ method.description }}"
+    }{% if not forloop.last %},{% endif %}
+{% endfor %}]
