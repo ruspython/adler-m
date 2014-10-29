@@ -19,6 +19,7 @@ class DeliveryMethod(models.Model):
         return "%s: %s" % (self.delivery_types, self.price)
 
     class Meta:
+        verbose_name = _('Delivery method')
         verbose_name_plural = _('Delivery methods')
 
 

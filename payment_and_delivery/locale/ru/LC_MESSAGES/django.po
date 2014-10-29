@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-09 08:56+0000\n"
+"POT-Creation-Date: 2014-10-29 16:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: admin.py:14 models.py:23
+#: admin.py:18 models.py:11 models.py:44 models.py:71
 msgid "points"
 msgstr "пункты самовывоза"
 
-#: admin.py:17 models.py:25
+#: admin.py:21 models.py:10 models.py:46
 msgid "courier"
 msgstr "курьерская доставка"
 
-#: admin.py:21 models.py:27
+#: admin.py:25 models.py:9 models.py:48
 msgid "postal"
 msgstr "почтовая доставка"
 
@@ -35,7 +35,7 @@ msgstr "почтовая доставка"
 msgid "Payment and delivery"
 msgstr "Оплата и доставка"
 
-#: cms_toolbar.py:12
+#: cms_toolbar.py:12 models.py:23
 msgid "Delivery methods"
 msgstr "Способы доставки"
 
@@ -47,50 +47,82 @@ msgstr "Страны"
 msgid "Cities"
 msgstr "Города"
 
-#: models.py:7
+#: models.py:13
+#, fuzzy
+#| msgid "Delivery methods"
+msgid "delivery_types"
+msgstr "Способы доставки"
+
+#: models.py:15
+msgid "price"
+msgstr ""
+
+#: models.py:16
+msgid "description"
+msgstr ""
+
+#: models.py:22
+msgid "Delivery method"
+msgstr "Способ доставки"
+
+#: models.py:27
 msgid "name"
 msgstr "название"
 
-#: models.py:8
+#: models.py:28 models.py:64
 msgid "ordering"
 msgstr "сортировка"
 
-#: models.py:15
+#: models.py:35
 msgid "country"
 msgstr "страна"
 
-#: models.py:16
+#: models.py:36
 msgid "countries"
 msgstr "страны"
 
-#: models.py:21
+#: models.py:42
 msgid "name of city"
 msgstr "название города"
 
-#: models.py:22
+#: models.py:43
 msgid "points title"
 msgstr "заголовок блока «пункты самовывоза»"
 
-#: models.py:24
+#: models.py:45
 msgid "courier title"
 msgstr "заголовок блока «курьерская доставка»"
 
-#: models.py:26
+#: models.py:47
 msgid "postal title"
 msgstr "заголовок блока «почтовая доставка»"
 
-#: models.py:34
+#: models.py:55 models.py:60
 msgid "city"
 msgstr "город"
 
-#: models.py:35
+#: models.py:56
 msgid "cities"
 msgstr "города"
+
+#: models.py:61
+msgid "address"
+msgstr ""
+
+#: models.py:62
+msgid "place on map"
+msgstr ""
+
+#: models.py:70
+#, fuzzy
+#| msgid "points"
+msgid "point"
+msgstr "пункты самовывоза"
 
 #: templates/payment_and_delivery/payment_and_delivery.html:14
 msgid "Your country"
 msgstr "Ваша страна"
 
-#: templates/payment_and_delivery/payment_and_delivery.html:23
+#: templates/payment_and_delivery/payment_and_delivery.html:25
 msgid "Your city"
 msgstr "Ваш город"
