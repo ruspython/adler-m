@@ -5,9 +5,9 @@ from .models import *
 class PartnerInline(admin.TabularInline):
     model = Partner
 
-    def get_formset(self, request, obj=None, **kwargs):
-        self.max_num = obj.model.port_count
-        return super(PartnerInline, self).get_formset(request, obj, **kwargs)
+    # def get_formset(self, request, obj=None, **kwargs):
+    #     self.max_num = obj.model.port_count
+    #     return super(PartnerInline, self).get_formset(request, obj, **kwargs)
 
 
 class CityAdmin(admin.ModelAdmin):

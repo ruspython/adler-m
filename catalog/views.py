@@ -139,7 +139,7 @@ class SearchSuggest(ListView):
                     Q(material__icontains=w) |
                     Q(tags__tag__icontains=w)
                 )
-                print(queryset)
+                # print(queryset)
             queryset = queryset.distinct()
         return queryset[:10]
 

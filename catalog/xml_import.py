@@ -131,7 +131,8 @@ def data_import(xml_doc_data):
 
 
 def read_catalog_data(xml_doc_data):
-    xml_doc_tree = eTree.fromstring(xml_doc_data.encode('utf-8'))
+    # xml_doc_tree = eTree.fromstring(xml_doc_data.encode('utf-8'))
+    xml_doc_tree = eTree.fromstring(xml_doc_data)
     ImportItem.objects.all().delete()
     ImportImage.objects.all().delete()
     for item in xml_doc_tree.iter('nomen-item'):
@@ -192,6 +193,7 @@ def import_item_from_tmp(item):
     img_dir = 'images/catalog/'
     slugify_unique = UniqueSlugify(separator='_')
     slug = slugify_unique(item.article)
+    print(slug)
 
     def to_int(s):
         try:
@@ -205,6 +207,12 @@ def import_item_from_tmp(item):
         except:
             return False
 
+    def to_str(s):
+        try:
+            return s.encode('utf-8')
+        except:
+            return ''
+
     if slug:
         new_item, created = Item.objects.get_or_create(slug=slug)
         if to_boolean(item.statusaccess):
@@ -214,24 +222,24 @@ def import_item_from_tmp(item):
         else:
             section = 'model'
         item_info = {
-            'article': item.article,
+            'article': to_str(item.article),
             'section': section,
-            'name': item.name,
-            'name_en': item.name_en,
-            'brand': item.brand,
-            'brand_en': item.brand_en,
-            'type': item.type,
-            'type_en': item.type_en,
-            'note': item.note,
-            'note_en': item.note_en,
-            'series': item.series,
-            'series_en': item.series_en,
+            'name': to_str(item.name),
+            'name_en': to_str(item.name_en),
+            'brand': to_str(item.brand),
+            'brand_en': to_str(item.brand_en),
+            'type': to_str(item.type),
+            'type_en': to_str(item.type_en),
+            'note': to_str(item.note),
+            'note_en': to_str(item.note_en),
+            'series': to_str(item.series),
+            'series_en': to_str(item.series_en),
             'scale': item.scale,
-            'manufacturer': item.manufacturer,
-            'manufacturer_en': item.manufacturer_en,
-            'color': item.color,
-            'color_en': item.color_en,
-            'material': item.material,
+            'manufacturer': to_str(item.manufacturer),
+            'manufacturer_en': to_str(item.manufacturer_en),
+            'color': to_str(item.color),
+            'color_en': to_str(item.color_en),
+            'material': to_str(item.material),
             'weight': item.weight,
             'length': item.length,
             'width': item.width,
@@ -245,8 +253,10 @@ def import_item_from_tmp(item):
             'status_sale': to_boolean(item.statussale),
             'status_on_the_way': to_boolean(item.statusway)
         }
+        print(item.name.encode('utf-8'))
         for (key, value) in item_info.items():
             setattr(new_item, key, value)
+        # print(item_info)
 
         tags = item.tags.split(';')
         for tag in tags:
@@ -279,12 +289,14 @@ def import_item_from_tmp(item):
                 image_count += 1
         if image_count <= 0:
             new_item.status_without_image = True
+        new_item.save()
     print(u"%s: imported" % item.id)
 
 
 def import_items_from_tmp():
-    for item in ImportItem.objects.all():
+    for item in ImportItem.objects.all().prefetch_related('importimage_set'):
         import_item_from_tmp(item)
+        item.delete()
 
 
 def import_some_item_from_tmp():
@@ -293,5 +305,5 @@ def import_some_item_from_tmp():
         import_item_from_tmp(item)
         item.delete()
         return import_some_item_from_tmp()
-    except:
+    except ImportItem.DoesNotExist:
         return 0
