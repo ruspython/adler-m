@@ -294,8 +294,8 @@ SERVER_1C_PATH = 'adler/ws/wsnomex.1cws'
 
 
 SMS_SENDER = 'adler'
-SMS_USERNAME = 'scriptosaur'
-SMS_PASSWORD = 'qwerty00'
+SMS_USERNAME = '79216491123'
+SMS_PASSWORD = 'KMELUXYQ'
 
 
 SERVER_EMAIL = 'adler.m.ru@gmail.com'
