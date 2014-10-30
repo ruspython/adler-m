@@ -1,4 +1,21 @@
 (function() {
+  var rubalyze, split_cost;
+
+  split_cost = function(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  };
+
+  rubalyze = function(value) {
+    value = parseInt(value);
+    if (value % 10 === 1 && value % 100 !== 11) {
+      return split_cost(value) + "рубль";
+    }
+    if ((value % 10 === 2 && value % 100 !== 12) || (value % 10 === 3 && value % 100 !== 13) || (value % 10 === 4 && value % 100 !== 14)) {
+      return split_cost(value) + "рубля";
+    }
+    return split_cost(value) + "рублей";
+  };
+
   $(function() {
     var after, selectDeliveryCity, total_cost, total_elem;
     after = function(ms, cb) {
@@ -44,12 +61,13 @@
       }
     });
     total_elem = $('.total_cost span');
-    total_cost = parseInt(total_elem.text());
+    total_cost = parseInt(total_elem.attr('data-price'));
     $(document).on('ifChecked', 'input[name="delivery"]', function() {
-      var city, url, value;
+      var city, methods, url, value;
       value = $(this).val();
       city = $('#id_address_city').val();
       url = $('#delivery-location-name').data('delivery-source');
+      methods = {};
       $.ajax({
         url: '/ru/personal/orders/get_delivery_method/',
         type: 'GET',
@@ -58,23 +76,20 @@
           city: city
         },
         success: function(data) {
-          var entry, sett, _i, _len;
-          sett = {};
+          var entry, _i, _len;
           for (_i = 0, _len = data.length; _i < _len; _i++) {
             entry = data[_i];
-            sett = {};
             if (entry['type'] === 'postal') {
-              sett['post'] = entry;
+              methods['post'] = entry;
             }
             if (entry['type'] === 'courier') {
-              sett['courier'] = entry;
+              methods['courier'] = entry;
             }
             if (entry['type'] === 'points') {
-              sett['pickup'] = entry;
+              methods['pickup'] = entry;
             }
           }
-          alert(sett[value]['price']);
-          total_elem.text(total_cost + sett[value]['price']);
+          total_elem.text(rubalyze(total_cost + parseInt(methods[value]['price'])));
         }
       });
     });

@@ -1,3 +1,14 @@
+split_cost = (value) ->
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+
+rubalyze = (value) ->
+  value = parseInt value
+  if value % 10 == 1 && value % 100 != 11
+    return split_cost(value) + "рубль"
+  if (value % 10 == 2 && value % 100 != 12) || (value % 10 == 3 && value % 100 != 13) || (value % 10 == 4 && value % 100 != 14)
+    return split_cost(value) + "рубля"
+  return split_cost(value) + " рублей"
+
 $ ->
   after = (ms, cb) ->
     setTimeout cb, ms
@@ -37,11 +48,13 @@ $ ->
       return $('#id_address_city').change selectDeliveryCity
 
   total_elem = $('.total_cost span')
-  total_cost = parseInt(total_elem.text())
+  total_cost = parseInt(total_elem.attr('data-price'))
+
   $(document).on 'ifChecked', 'input[name="delivery"]', ->
     value = $(this).val()
     city = $('#id_address_city').val()
     url = $('#delivery-location-name').data 'delivery-source'
+    methods = {}
     $.ajax
       url: '/ru/personal/orders/get_delivery_method/'
       type: 'GET'
@@ -49,21 +62,20 @@ $ ->
       data:
         city: city
       success: (data) ->
-        sett = {}
         for entry in data
-          sett = {}
+
           if entry['type'] == 'postal'
-            sett['post'] = entry
+            methods['post'] = entry
           if entry['type'] == 'courier'
-            sett['courier'] = entry
+            methods['courier'] = entry
           if entry['type'] == 'points'
-            sett['pickup'] = entry
-        alert sett[value]['price']
-        total_elem.text(total_cost + sett[value]['price'])
+            methods['pickup'] = entry
+
+
+        total_elem.text(rubalyze(total_cost + parseInt(methods[value]['price'])))
         return
     return
   return
-
 
 #  $('.delivery-variants').on 'click', 'a.direction_map', (e)->
 #    e.preventDefault()
@@ -85,5 +97,3 @@ $ ->
 #      newValue = $container.find('.new_value').val()
 #    $container.removeClass 'edit'
 #    $container.find('.value').text newValue if newValue
-
-

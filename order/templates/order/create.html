@@ -125,7 +125,7 @@
             </fieldset>
 
             <div class="total_cost">Общая сумма заказа:
-                <span>{{ total_price|intcomma }} рубл{{ total_price|choose_plural:"ь,я,ей" }}</span></div>
+                <span data-price="{{ total_price }}">{{ total_price|intcomma }} рубл{{ total_price|choose_plural:"ь,я,ей" }}</span></div>
 
             <div class="form-group personal_item comment
                     {{ field.html_name }}{% if field.errors %} has-error has-feedback{% endif %}">
