@@ -4,9 +4,9 @@ split_cost = (value) ->
 rubalyze = (value) ->
   value = parseInt value
   if value % 10 == 1 && value % 100 != 11
-    return split_cost(value) + "рубль"
+    return split_cost(value) + " рубль"
   if (value % 10 == 2 && value % 100 != 12) || (value % 10 == 3 && value % 100 != 13) || (value % 10 == 4 && value % 100 != 14)
-    return split_cost(value) + "рубля"
+    return split_cost(value) + " рубля"
   return split_cost(value) + " рублей"
 
 $ ->
