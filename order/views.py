@@ -104,7 +104,10 @@ class OrderCreateView(CreateView):
 
     def form_valid(self, form):
         form_data = form.save(commit=False)
+        print('warning: ', self.request.POST['delivery'])
         form_data.order_status = 'new'
+        form_data.delivery_method = self.request.POST['delivery']
+        form_data.carrier = _('Pochta Rossii') if form_data.delivery_method == 'post' else ''
         user = self.request.user
         if not user.is_authenticated():
             new_user_password = 'password'
@@ -237,7 +240,6 @@ class CityListView(ListView):
                 queryset = queryset.filter(
                     Q(name__icontains=w)
                 )
-                print(queryset)
             queryset = queryset.distinct()
         return queryset[:10]
 
@@ -254,14 +256,5 @@ class DeliveryMethodListView(ListView):
         city_name = get_params.get('city', None)
         if city_name:
             city = City.objects.get(name=city_name)
-            print(city.delivery_method.all())
             queryset = city.delivery_method.all()
-            # punc = string.punctuation
-            # q_list = ''.join([o for o in list(city) if not (o in punc and o != ":")]).split()
-            # for w in q_list:
-            #     queryset = queryset.filter(
-            #         Q(name__icontains=w)
-            #     )
-            #     print(queryset)
-            # queryset = queryset.distinct()
         return queryset

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-10 16:15+0000\n"
+"POT-Creation-Date: 2014-10-31 21:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Client"
 msgstr "Покупатель"
 
-#: admin.py:24 templates/order/create.html:33
+#: admin.py:24 templates/order/create.html:36
 msgid "Address"
 msgstr "Адрес"
 
@@ -35,148 +35,174 @@ msgstr "Данные заказа"
 msgid "Adler Orders App"
 msgstr "Заказы"
 
-#: forms.py:16
+#: forms.py:19
 msgid "user with this email already exists"
 msgstr "пользователь с таким email уже существует"
 
-#: forms.py:18
+#: forms.py:21
 msgid "too many users with this email already exist"
 msgstr "слишком много пользователей с таким email"
 
-#: models.py:8
+#: models.py:9
 msgid "user"
 msgstr "пользователь"
 
-#: models.py:9
+#: models.py:10
 msgid "order date & time"
 msgstr "дата и время заказа"
 
-#: models.py:11
+#: models.py:12
 msgid "name"
 msgstr "имя"
 
-#: models.py:12
+#: models.py:13
 msgid "second name"
 msgstr "отчество"
 
-#: models.py:13
+#: models.py:14
 msgid "last name"
 msgstr "фамилия"
 
-#: models.py:15
+#: models.py:16
 msgid "city"
 msgstr "город"
 
-#: models.py:16
+#: models.py:17
 msgid "street"
 msgstr "Улица"
 
-#: models.py:17
+#: models.py:18
 msgid "house"
 msgstr "дом"
 
-#: models.py:18
+#: models.py:19
 msgid "building"
 msgstr "корпус"
 
-#: models.py:19
+#: models.py:20
 msgid "apt."
 msgstr "Кв."
 
-#: models.py:20
+#: models.py:21
 msgctxt "zipcode for order"
 msgid "zipcode"
 msgstr "Индекс"
 
-#: models.py:22
+#: models.py:24
 msgid "phone"
 msgstr "Телефон"
 
-#: models.py:23
+#: models.py:25
 msgid "email"
 msgstr "E-mail"
 
-#: models.py:25
+#: models.py:27
 msgid "total price"
 msgstr "сумма заказа"
 
-#: models.py:26
+#: models.py:28
 msgid "comment"
 msgstr "Комментарий"
 
-#: models.py:29
+#: models.py:31
 msgid "new"
 msgstr "новый"
 
-#: models.py:30
+#: models.py:32
 msgid "confirmed"
 msgstr "принят"
 
-#: models.py:31
+#: models.py:33
 msgid "shipped"
 msgstr "отправлен"
 
-#: models.py:33
+#: models.py:36
+msgid "post"
+msgstr "Почтой"
+
+#: models.py:37
+msgid "courier"
+msgstr "Курьером"
+
+#: models.py:38
+msgid "pickup"
+msgstr "Самовывоз"
+
+#: models.py:40
 msgid "order status"
 msgstr "статус заказа"
 
-#: models.py:34
+#: models.py:42
 msgid "payment status"
 msgstr "оплачено"
 
-#: models.py:42
+#: models.py:43
+msgid "payment_method"
+msgstr "Способ оплаты"
+
+#: models.py:46
+msgid "delivery method"
+msgstr "Способ доставки"
+
+#: models.py:48
+#, fuzzy
+#| msgid "Carrier"
+msgid "carrier"
+msgstr "Перевозчик"
+
+#: models.py:57
 msgid "order number"
 msgstr "номер заказа"
 
-#: models.py:60
+#: models.py:76
 msgid "full name"
 msgstr "Покупатель"
 
-#: models.py:64 models.py:70
+#: models.py:80 models.py:86
 msgid "order"
 msgstr "заказ"
 
-#: models.py:65
+#: models.py:81
 msgid "orders"
 msgstr "заказы"
 
-#: models.py:71
+#: models.py:87
 msgid "catalog item"
 msgstr "товар в каталоге"
 
-#: models.py:72
+#: models.py:88
 msgid "item name"
 msgstr "наименование товара"
 
-#: models.py:73 templates/order/list.html:60
+#: models.py:89 templates/order/list.html:60
 msgid "manufacturer"
 msgstr "Производитель"
 
-#: models.py:74 templates/order/list.html:61
+#: models.py:90 templates/order/list.html:61
 msgid "scale"
 msgstr "Масштаб"
 
-#: models.py:75 templates/order/list.html:62
+#: models.py:91 templates/order/list.html:62
 msgid "article"
 msgstr "артикул"
 
-#: models.py:76
+#: models.py:92
 msgid "price"
 msgstr "цена"
 
-#: models.py:77
+#: models.py:93
 msgid "quantity"
 msgstr "количество"
 
-#: models.py:78
+#: models.py:94
 msgid "discount"
 msgstr "скидка"
 
-#: models.py:87
+#: models.py:103
 msgid "item in order"
 msgstr "товар в заказе"
 
-#: models.py:88
+#: models.py:104
 msgid "items in order"
 msgstr "товары в заказе"
 
@@ -205,30 +231,44 @@ msgstr "Купить без регистрации"
 msgid "Buy"
 msgstr "Купить"
 
-#: templates/order/create.html:52
+#: templates/order/create.html:57
 msgid "zipcode make order"
 msgstr "Индекс"
 
-#: templates/order/create.html:56
+#: templates/order/create.html:62
 msgid "Field is required <br> Only in the case of postal delivery."
 msgstr "Поле обязательно к заполнению<br>только в случае почтовой доставки."
 
-#: templates/order/create.html:145
+#: templates/order/create.html:133
 msgid "comment for order"
 msgstr "Комментарий к заказу"
 
-#: templates/order/create.html:152
+#: templates/order/create.html:141
 msgid "Get notified of new arrivals"
 msgstr "Уведомлять о новых поступлениях"
 
-#: templates/order/create.html:154
+#: templates/order/create.html:143
 msgctxt "Create order"
 msgid "Checkout"
 msgstr "Оформить заказ"
 
-#: templates/order/delivery_variants.html:26
+#: templates/order/delivery_variants.html:29
 msgid "direction map"
 msgstr "Карта проезда"
+
+#: templates/order/go_pay.html:9 templates/order/payment_success.html:6
+#: templates/order/success.html:9
+msgid "Thank you!"
+msgstr "Спасибо!"
+
+#: templates/order/go_pay.html:10 templates/order/success.html:10
+msgid "Your order created successfully"
+msgstr "Ваш заказ оформлен успешно"
+
+#: templates/order/go_pay.html:12 templates/order/payment_success.html:9
+#: templates/order/success.html:12
+msgid "Order No:"
+msgstr "Номер заказа:"
 
 #: templates/order/list.html:7
 msgid "Date of the order"
@@ -295,6 +335,22 @@ msgstr "Сумма"
 msgid "Ordering"
 msgstr "Оформление заказа"
 
+#: templates/order/payment_fail.html:6
+msgid "Sorry"
+msgstr ""
+
+#: templates/order/payment_fail.html:7
+#, fuzzy
+#| msgid "payment status"
+msgid "Payment fail"
+msgstr "оплачено"
+
+#: templates/order/payment_success.html:7
+#, fuzzy
+#| msgid "Your order created successfully"
+msgid "Order successfully paid"
+msgstr "Ваш заказ оформлен успешно"
+
 #: templates/order/steps.html:7
 msgid "Step 1."
 msgstr "Шаг 1."
@@ -319,17 +375,9 @@ msgstr "Шаг 3."
 msgid "Completion"
 msgstr "Завершение"
 
-#: templates/order/success.html:9
-msgid "Thank you!"
-msgstr "Спасибо!"
-
-#: templates/order/success.html:10
-msgid "Your order created successfully"
-msgstr "Ваш заказ оформлен успешно"
-
-#: templates/order/success.html:12
-msgid "Order No:"
-msgstr "Номер заказа:"
+#: views.py:110
+msgid "Pochta Rossii"
+msgstr "Почта России"
 
 #~ msgid "name item"
 #~ msgstr "наименование товара"

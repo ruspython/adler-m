@@ -18,7 +18,8 @@ class Order(models.Model):
     address_house = models.CharField(_('house'), max_length=32, null=True, blank=True)
     address_building = models.CharField(_('building'), max_length=32, null=True, blank=True)
     address_flat = models.CharField(_('apt.'), max_length=32, null=True, blank=True)
-    address_zipcode = models.CharField(pgettext_lazy('zipcode for order', 'zipcode'), max_length=32, null=True, blank=True)
+    address_zipcode = models.CharField(pgettext_lazy('zipcode for order', 'zipcode'), max_length=32, null=True,
+                                       blank=True)
 
     phone = models.CharField(_('phone'), max_length=32)
     email = models.EmailField(_('email'))
@@ -31,18 +32,28 @@ class Order(models.Model):
         ('confirmed', _('confirmed')),
         ('shipped', _('shipped')),
     )
+    delivery_method_choices = (
+        ('post', _('post')),
+        ('courier', _('courier')),
+        ('pickup', _('pickup')),
+    )
     order_status = models.CharField(_('order status'), max_length=32, choices=order_status_choices, default='new',
                                     blank=True)
     payment_status = models.BooleanField(_('payment status'), default=False)
     payment_method = models.CharField(_('payment_method'), max_length=2,
                                       choices=Payment.PAYMENT_TYPE.CHOICES, default=Payment.PAYMENT_TYPE.PC)
 
+    delivery_method = models.CharField(_('delivery method'), max_length=32, choices=delivery_method_choices,
+                                       default='post', blank=True)
+    carrier = models.CharField(_('carrier'), max_length=64, null=True, blank=True, default='')
+
     def __unicode__(self):
-        return u'%s: %s %s %s, %s' %\
+        return u'%s: %s %s %s, %s' % \
                (self.add_time, self.client_name, self.client_second_name, self.client_last_name, self.total_price)
 
     def get_number_order(self):
         return u'%s' % (self.id, )
+
     get_number_order.short_description = _("order number")
 
     def get_client(self):
@@ -61,6 +72,7 @@ class Order(models.Model):
             self.address_zipcode, self.address_city, self.address_street, self.address_house, self.address_building,
             self.address_flat
         )
+
     get_client.short_description = _("full name")
     get_client.allow_tags = True
 

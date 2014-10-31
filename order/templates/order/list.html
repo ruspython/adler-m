@@ -20,8 +20,8 @@
             <div class="orders_list__body__item-date"><div class="tb"><h4>{{ order.add_time|date:"j.m.y" }}</h4></div></div>
             <div class="orders_list__body__item-cost"><div class="tb"><h4>{{ order.total_price }} {% trans "r" %}</h4></div></div>
             <div class="orders_list__body__item-payment"><div class="tb">{{ order.get_payment_method_display }}</div></div>
-            <div class="orders_list__body__item-delivery"><div class="tb">Почта</div></div>
-            <div class="orders_list__body__item-carrier"><div class="tb">Почта России</div></div>
+            <div class="orders_list__body__item-delivery"><div class="tb">{% trans  order.delivery_method  %}</div></div>
+            <div class="orders_list__body__item-carrier"><div class="tb">{% if order.carrier %}{% trans order.carrier %}{% endif %}</div></div>
             <div class="orders_list__body__item-numpack"><div class="tb">
                 <h4>321654987</h4>
                 <a href="#" class="hid-xs">Проверить статус</a>
