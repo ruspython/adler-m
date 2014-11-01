@@ -34,7 +34,7 @@ class Order(models.Model):
     )
     delivery_method_choices = (
         ('post', _('post')),
-        ('courier', _('courier')),
+        ('courier', pgettext_lazy('courier', 'courier')),
         ('pickup', _('pickup')),
     )
     order_status = models.CharField(_('order status'), max_length=32, choices=order_status_choices, default='new',
