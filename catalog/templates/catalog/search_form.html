@@ -6,24 +6,25 @@
     <button type="button" class="show_search">{% trans "Search" %}</button>
 </form>
 <script>
-    $(function () {
-        $('#id_q').autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: "{% url "catalog:suggest" %}",
-                    dataType: "json",
-                    data: {
-                        q: request.term
-                    },
-                    success: function (data) {
-                        response(data);
-                    }
-                });
-            },
-            minLength: 2,
-            position: {
-                my: "right top", at: "right bottom"
-            }
-        })
-    })
+    $('#id_q').data('catalog-source', "{% url "catalog:suggest" %}");
+{#    $(function () {#}
+{#        $('#id_q').autocomplete({#}
+{#            source: function (request, response) {#}
+{#                $.ajax({#}
+{#                    url: "{% url "catalog:suggest" %}",#}
+{#                    dataType: "json",#}
+{#                    data: {#}
+{#                        q: request.term#}
+{#                    },#}
+{#                    success: function (data) {#}
+{#                        response(data);#}
+{#                    }#}
+{#                });#}
+{#            },#}
+{#            minLength: 2,#}
+{#            position: {#}
+{#                my: "right top", at: "right bottom"#}
+{#            }#}
+{#        })#}
+{#    })#}
 </script>
