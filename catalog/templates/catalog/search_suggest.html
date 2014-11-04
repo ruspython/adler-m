@@ -1,7 +1,7 @@
 [{% for item in items %}
     {
         "id": "{{ item.get_article|escapejs }}",
-        "label": "{{ item.brand|escapejs }} {{ item.name|escapejs }} / {{ item.manufacturer|escapejs }} / {{ item.scale|escapejs }}",
+        "label": "{{ item.brand|escapejs }} {{ item.name|escapejs }} / {{ item.manufacturer|escapejs }} / {{ item.scale|escapejs }} / {{ item.article|escapejs }}",
         "value": "{{ item.brand|escapejs }} {{ item.name|escapejs }} {{ item.manufacturer|escapejs }} {{ item.scale|escapejs }}",
         "url": "{{ item.get_absolute_url|escapejs }}"
     }{% if not forloop.last %},{% endif %}
