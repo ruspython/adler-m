@@ -21,6 +21,8 @@ from yandex_money.forms import PaymentForm
 from yandex_money.models import Payment
 from django.http import Http404
 import re
+from django.utils.translation import ugettext_lazy as _
+
 from django import forms
 
 
