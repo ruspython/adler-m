@@ -111,14 +111,12 @@ class Item(ItemBase):
     def get_status(self):
         if self.status_new:
             return 'novelty'
-        elif self.status_not_available or self.status_on_the_way:
+        elif self.status_on_the_way:
             return 'pre_order'
         elif self.status_back_in_stock:
             return 'back_in_stock'
         elif self.status_action or self.status_sale:
             return 'sale'
-        elif self.status_on_the_way:
-            return 'on_the_way'
         else:
             return None
 
