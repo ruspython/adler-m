@@ -1,35 +1,39 @@
 {% extends CMS_TEMPLATE %}
-{% load i18n thumbnail staticfiles catalog_tags pangination_tags  %}
+{% load i18n thumbnail staticfiles catalog_tags pangination_tags %}
 {% block title %}{% trans "Scale models" %}{{ title_ext }}{% endblock %}
 {% block extra_head %}
-{% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+    {% if canonical %}
+        <link rel="canonical" href="{{ canonical }}">{% endif %}
 {% endblock %}
 {% block h1 %}
-{% if page_header %}
-    <h1>{{ page_header }}</h1>
-{% else %}
-    {{ block.super }}
-{% endif %}
+    {% if page_header %}
+        <h1>{{ page_header }}</h1>
+    {% else %}
+        {{ block.super }}
+    {% endif %}
 {% endblock h1 %}
 {% block content %}
     <div class="container">
-{% if filter_type == 'accessories' %}
-        {% accessories_filter %}
-{% elif filter_type == 'books' %}
-        {% books_filter %}
-{% else %}
-        {% catalog_filter filter_show_all %}
-{% endif %}
+        {% if filter_type == 'accessories' %}
+            {% accessories_filter %}
+        {% elif filter_type == 'books' %}
+            {% books_filter %}
+        {% else %}
+            {% catalog_filter filter_show_all %}
+        {% endif %}
         <div class="catalog_list">
-{% for item in items %}
-    {% include "catalog/item_card.html" %}
-{% if forloop.counter|divisibleby:4 %}<div class="clearfix visible-sm"></div>{% endif %}
-{% if forloop.counter|divisibleby:5 %}<div class="clearfix visible-md"></div>{% endif %}
-{% if forloop.counter|divisibleby:2 %}<div class="clearfix visible-xs"></div>{% endif %}
-{% empty %}
-        <div class="">Нет товаров, удовлетворяющих критериям поиска</div>
-{% endfor %}
+            {% for item in items %}
+                {% include "catalog/item_card.html" %}
+                {% if forloop.counter|divisibleby:4 %}
+                    <div class="clearfix visible-sm"></div>{% endif %}
+                {% if forloop.counter|divisibleby:5 %}
+                    <div class="clearfix visible-md"></div>{% endif %}
+                {% if forloop.counter|divisibleby:2 %}
+                    <div class="clearfix visible-xs"></div>{% endif %}
+            {% empty %}
+                <div class="">Нет товаров, удовлетворяющих критериям поиска</div>
+            {% endfor %}
         </div>
-{% pagination %}
+        {% pagination %}
     </div>
 {% endblock %}

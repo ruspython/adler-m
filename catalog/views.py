@@ -82,7 +82,7 @@ class CatalogListView(ListView):
 
         show_not_available = get_params.get('show_not_available', None)
         if not show_not_available:
-            queryset = queryset.filter(status_not_available=False)
+            queryset = queryset.filter(quantity__gte=0)
 
         tag_param = get_params.get('tag', None)
         if tag_param:

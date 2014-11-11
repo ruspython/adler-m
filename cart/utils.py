@@ -40,6 +40,8 @@ def add2cart(request):
         item = Item.objects.filter(id=r_data.get('item_id', None))[0]
         try:
             quantity = int(r_data.get('quantity', None))
+            if quantity < 0:
+                quantity = 1
         except (ValueError, TypeError):
             quantity = 1
         if item and quantity:
