@@ -19,7 +19,7 @@ class ItemTag(models.Model):
 
 class ItemManager(models.Manager):
     def get_queryset(self):
-        return super(ItemManager, self).get_queryset().filter(status_not_available=False)
+        return super(ItemManager, self).get_queryset().filter(quantity__gte=0)
 
 
 ITEM_STATUSES = {
