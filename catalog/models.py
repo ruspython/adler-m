@@ -2,6 +2,9 @@ from django.db import models
 from django.utils.translation import pgettext_lazy, ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django_resized import ResizedImageField
+from django.core import serializers
+from django.contrib.sites.models import Site
+from django.template.loader import render_to_string
 from itertools import chain
 from cuser.middleware import CuserMiddleware
 
@@ -183,6 +186,14 @@ class Item(ItemBase):
                 self.material
             )
 
+    def save(self, *args, **kwargs):
+        args_dict = {}
+        args_dict['item'] = self
+        args_dict['item_images'] = ItemImage.objects.filter(item=self)
+        response = render_to_string('admin/catalog/items_to_1C.html', args_dict)
+        print(response)
+        super(Item, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = _('catalog item')
         verbose_name_plural = _('catalog items')
@@ -195,6 +206,14 @@ class ItemImage(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.file.url
+
+    def get_src(self):
+        current_site = Site.objects.get_current()
+
+        return u'%s%s' % (current_site.domain, self.file.url)
+
+    def get_filename(self):
+        return u'%s' % self.file.name.split('/')[-1]
 
     class Meta:
         verbose_name = _('item photo')
