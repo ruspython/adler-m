@@ -1,46 +1,54 @@
 {% load i18n thumbnail staticfiles sekizai_tags cms_tags %}
 {% render_model_block item %}
-            <div class="catalog_list__item{% if forloop.first %} first-item{% endif %}">
-                <div class="catalog_list__item-card item-card" data-id="{{ item.id }}" data-gallery="{{ item.get_gallery_url }}">
-                    <div class="catalog_list__item-card-gallery">
-                        <div class="gallery">
-                        </div>
-                        <a href="{{ item.get_absolute_url }}" class="catalog_list__item-card-gallery_main-image">
-{% if item.get_status %}
-                            <div class="catalog_list__item-card-gallery_main-image_status {{ item.get_status }}">{{ item.get_status_string }}</div>
-{% endif %}
-                            <div class="image">
-{% thumbnail item.get_main_image.file "270x270" as im %}
-                                <img src="{{ im.url }}">
-{% empty %}
-                                <img src="{% static "images/no-photo-270.jpg" %}">
-{% endthumbnail %}
-                            </div>
-                        </a>
+    <div class="catalog_list__item{% if forloop.first %} first-item{% endif %}">
+        <div class="catalog_list__item-card item-card" data-id="{{ item.id }}"
+             data-gallery="{{ item.get_gallery_url }}">
+            <div class="catalog_list__item-card-gallery">
+                <div class="gallery">
+                </div>
+                <a href="{{ item.get_absolute_url }}" class="catalog_list__item-card-gallery_main-image">
+                    {% if item.get_status %}
+                        <div class="catalog_list__item-card-gallery_main-image_status {{ item.get_status }}">{{ item.get_status_string }}</div>
+                    {% endif %}
+                    <div class="image">
+                        {% thumbnail item.get_main_image.file "270x270" as im %}
+                            <img src="{{ im.url }}">
+                        {% empty %}
+                            <img src="{% static "images/no-photo-270.jpg" %}">
+                        {% endthumbnail %}
                     </div>
-                    <h4 class="catalog_list__item-card-title"><a href="{{ item.get_absolute_url }}">{{ item.full_name }}</a></h4>
-                    <div class="catalog_list__item-card-props">
-                        <div class="catalog_list__item-card-props-manufacturer">{{ item.manufacturer|default:'' }}</div>
-                        <div class="catalog_list__item-card-props-article">{{ item.slug }}</div>
-                        <div class="catalog_list__item-card-props-scale">{{ item.scale }}</div>
+                </a>
+            </div>
+            <h4 class="catalog_list__item-card-title"><a href="{{ item.get_absolute_url }}">{{ item.full_name }}</a>
+            </h4>
+
+            <div class="catalog_list__item-card-props">
+                <div class="catalog_list__item-card-props-manufacturer">{{ item.manufacturer|default:'' }}</div>
+                <div class="catalog_list__item-card-props-article">{{ item.slug }}</div>
+                <div class="catalog_list__item-card-props-scale">{{ item.scale }}</div>
+            </div>
+            {% if item.price %}
+                {% if item.pricebeforeaction %}
+                    <div class="catalog_list__item-card-oldprice">
+                        {{ item.pricebeforeaction }} {% trans "r" %}
                     </div>
-{% if item.price %}
-                    <div class="catalog_list__item-card-price">{{ item.price }} {% trans "r" %}</div>
-{% if item.get_status != 'pre_order' %}
+                {% endif %}
+                <div class="catalog_list__item-card-price">{{ item.price }} {% trans "r" %}</div>
+                {% if item.get_status != 'pre_order' %}
                     <form class="buy" action="{% url "cart:add2cart" %}" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="item_id" value="{{ item.id }}">
                         <button class="buy_button">{% trans "Buy" %}</button>
                     </form>
-{% endif %}
-{% endif %}
-{% if item.get_status == 'pre_order' %}
-                    <div class="buy">
-                        <a class="buy_button" href="{% url "preorder:add" item.id %}">{% trans "Pre-order" %}</a>
-                    </div>
-{% endif %}
+                {% endif %}
+            {% endif %}
+            {% if item.get_status == 'pre_order' %}
+                <div class="buy">
+                    <a class="buy_button" href="{% url "preorder:add" item.id %}">{% trans "Pre-order" %}</a>
                 </div>
-            </div>
+            {% endif %}
+        </div>
+    </div>
 {% endrender_model_block %}
 {% addtoblock "js" %}
     <script src="{% static "js/catalog.js" %}"></script>

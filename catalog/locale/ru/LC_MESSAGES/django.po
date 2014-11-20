@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-17 09:42+0000\n"
+"POT-Creation-Date: 2014-11-20 17:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "characteristics"
 msgstr "характеристики"
 
-#: admin.py:45 models.py:17 models.py:80
+#: admin.py:45 models.py:20 models.py:83
 msgid "tags"
 msgstr "теги"
 
@@ -51,7 +51,7 @@ msgstr "Типы моделей"
 msgid "Catalog index Plugin"
 msgstr "Индекс каталога"
 
-#: cms_toolbar.py:12 views.py:246
+#: cms_toolbar.py:12 views.py:238
 msgid "Catalog"
 msgstr "Каталог"
 
@@ -71,7 +71,7 @@ msgstr "Импорт товаров из 1С"
 msgid "Scale"
 msgstr "Масштаб"
 
-#: forms.py:12 templates/catalog/catalog_filter.html:36
+#: forms.py:12 templates/catalog/catalog_filter.html:37
 msgid "Type"
 msgstr "Тип"
 
@@ -91,7 +91,7 @@ msgstr "Журналы"
 msgid "Books"
 msgstr "Книги"
 
-#: forms.py:24 templates/catalog/search_form.html:5
+#: forms.py:24 templates/catalog/search_form.html:6
 msgid "Search"
 msgstr ""
 
@@ -103,12 +103,12 @@ msgstr "меню каталога"
 msgid "All catalog"
 msgstr "Весь каталог"
 
-#: menu.py:14 views.py:161 templates/catalog/index_plugin.html:5
+#: menu.py:14 templates/catalog/index_plugin.html:5 views.py:153
 msgid "Novelties"
 msgstr "Новинки"
 
-#: menu.py:15 models.py:27 views.py:175 templates/catalog/item.html:56
-#: templates/catalog/item_card.html:39
+#: menu.py:15 models.py:30 templates/catalog/item.html:56
+#: templates/catalog/item_card.html:47 views.py:167
 msgid "Pre-order"
 msgstr "Предзаказ"
 
@@ -116,224 +116,217 @@ msgstr "Предзаказ"
 msgid "Promo and sales"
 msgstr "Акции и распродажи"
 
-#: menu.py:17 models.py:28 views.py:199
+#: menu.py:17 models.py:31 views.py:191
 msgid "Back in stock"
 msgstr "Снова в продаже"
 
-#: menu.py:18 views.py:210
+#: menu.py:18 views.py:202
 msgid "Accessories"
 msgstr "Аксессуары"
 
-#: menu.py:19 views.py:227
+#: menu.py:19 views.py:219
 msgid "Literature"
 msgstr "Литература"
 
-#: models.py:10 models.py:16
+#: models.py:13 models.py:19
 msgid "tag"
 msgstr "тег"
 
-#: models.py:26
+#: models.py:29
 msgid "Novelty"
 msgstr "новинка"
 
-#: models.py:29 views.py:188 templates/catalog/index_plugin.html:7
+#: models.py:32 templates/catalog/index_plugin.html:7 views.py:180
 msgid "Sale"
 msgstr "Акция"
 
-#: models.py:30
+#: models.py:33
 msgid "On the way"
 msgstr "В пути"
 
-#: models.py:31
+#: models.py:34
 msgid "In stock"
 msgstr "В наличии"
 
-#: models.py:32
+#: models.py:35
 msgid "Few"
 msgstr "Несколько штук"
 
-#: models.py:33
+#: models.py:36
 msgid "Not available"
 msgstr "Нет в продаже"
 
-#: models.py:59
+#: models.py:62
 msgid "Model"
 msgstr "Модель"
 
-#: models.py:60
+#: models.py:63
 msgid "Accessory"
 msgstr "Аксессуар"
 
-#: models.py:61
+#: models.py:64
 msgid "Book"
 msgstr "Книга"
 
-#: models.py:63
+#: models.py:66
 msgid "section"
 msgstr "раздел"
 
-#: models.py:64
+#: models.py:67
 msgid "slug"
 msgstr ""
 
-#: models.py:65
+#: models.py:68
 msgid "article"
 msgstr "артикул"
 
-#: models.py:66
+#: models.py:69
 msgid "model name"
 msgstr "наименование"
 
-#: models.py:67
+#: models.py:70
 msgid "model brand"
 msgstr "марка автомобиля"
 
-#: models.py:68 models.py:216
+#: models.py:71 models.py:234
 msgid "model type"
 msgstr "тип"
 
-#: models.py:69
+#: models.py:72
 msgid "comment"
 msgstr "комментарий"
 
-#: models.py:70
+#: models.py:73
 msgid "note"
 msgstr "примечание"
 
-#: models.py:71
+#: models.py:74
 msgid "series"
 msgstr "серия"
 
-#: models.py:72
+#: models.py:75
 msgid "scale"
 msgstr "масштаб"
 
-#: models.py:73
+#: models.py:76
 msgid "manufacturer"
 msgstr "производитель"
 
-#: models.py:74
+#: models.py:77
 msgid "color"
 msgstr "цвет"
 
-#: models.py:75
+#: models.py:78
 msgid "material"
 msgstr "материал"
 
-#: models.py:76
+#: models.py:79
 msgid "weight"
 msgstr "вес"
 
-#: models.py:77
+#: models.py:80
 msgid "length"
 msgstr "длина"
 
-#: models.py:78
+#: models.py:81
 msgid "width"
 msgstr "ширина"
 
-#: models.py:79
+#: models.py:82
 msgid "height"
 msgstr "высота"
 
-#: models.py:81
+#: models.py:84
 msgid "quantity"
 msgstr "количество"
 
-#: models.py:82
+#: models.py:85
 msgid "price"
 msgstr "цена"
 
-#: models.py:83
+#: models.py:86
+#, fuzzy
+#| msgid "promo action"
+msgctxt "price before action"
+msgid "price before action"
+msgstr "цена перед акцией"
+
+#: models.py:87
 msgid "minimal price"
 msgstr "минимальная цена"
 
-#: models.py:84
+#: models.py:88
 msgid "new before"
 msgstr "дата окончания статуса «Новинка»"
 
-#: models.py:85
+#: models.py:89
 msgid "novelty"
 msgstr "новинка"
 
-#: models.py:86
+#: models.py:90
 msgid "not available"
 msgstr "нет в продаже"
 
-#: models.py:87
+#: models.py:91
 msgid "back in stock"
 msgstr "снова в продаже"
 
-#: models.py:88
+#: models.py:92
 msgid "promo action"
 msgstr "акция"
 
-#: models.py:89
+#: models.py:93
 msgid "sale"
 msgstr "распродажа"
 
-#: models.py:90
+#: models.py:94
 msgid "on the way"
 msgstr "в пути"
 
-#: models.py:91
+#: models.py:95
 msgid "without image"
 msgstr "без изображения"
 
-#: models.py:92
+#: models.py:96
 msgid "just updated"
 msgstr ""
 
-#: models.py:187 models.py:194
+#: models.py:197 models.py:204
 msgid "catalog item"
 msgstr "товар"
 
-#: models.py:188
+#: models.py:198
 msgid "catalog items"
 msgstr "товары"
 
-#: models.py:193
+#: models.py:203
 msgid "image file"
 msgstr "файл изображения"
 
-#: models.py:200
+#: models.py:218
 msgid "item photo"
 msgstr "фотография модели"
 
-#: models.py:201
+#: models.py:219
 msgid "item photos"
 msgstr "фотографии модели"
 
-#: models.py:205
+#: models.py:223
 msgid "type"
 msgstr "тип"
 
-#: models.py:206
+#: models.py:224
 #, fuzzy
 msgid "image"
 msgstr "файл изображения"
 
-#: models.py:207
+#: models.py:225
 msgid "ordering"
 msgstr "сортировка"
 
-#: models.py:217
+#: models.py:235
 msgid "model types"
 msgstr "типы моделей"
-
-#: utils.py:58
-msgid "all"
-msgstr "все"
-
-#: views.py:110
-#, python-format
-msgid "Tag: %s"
-msgstr "Тег: %s"
-
-#: views.py:248
-#, python-format
-msgid "Change %s"
-msgstr "Изменить %s"
 
 #: templates/admin/catalog/1c_import.html:6
 #: templates/admin/catalog/catalog_import.html:6
@@ -347,14 +340,14 @@ msgstr "Сбросить все поля"
 
 #: templates/catalog/accessories_filter.html:12
 #: templates/catalog/books_filter.html:6
-#: templates/catalog/catalog_filter.html:75
+#: templates/catalog/catalog_filter.html:79
 msgid "Apply"
 msgstr "Применить"
 
 #: templates/catalog/catalog_filter.html:11
 #: templates/catalog/catalog_filter.html:20
 #: templates/catalog/catalog_filter.html:29
-#: templates/catalog/catalog_filter.html:38
+#: templates/catalog/catalog_filter.html:39
 msgid "All"
 msgstr "все"
 
@@ -362,11 +355,11 @@ msgstr "все"
 msgid "Car brand"
 msgstr "Марка автомобиля"
 
-#: templates/catalog/catalog_filter.html:47
+#: templates/catalog/catalog_filter.html:48
 msgid "Material"
 msgstr "Материал"
 
-#: templates/catalog/catalog_filter.html:50
+#: templates/catalog/catalog_filter.html:51
 msgid ""
 "<p><b>Metal</b> (die-cast) - Body, cab and axle components of large-scale "
 "models made by this technology, are made of metal, but rather a zinc alloy. "
@@ -378,7 +371,7 @@ msgstr ""
 "цинкового сплава. Остальные детали, как правило, отливаются из пластика и "
 "других материалов. Такие масштабные модели считаются традиционными.</p>"
 
-#: templates/catalog/catalog_filter.html:51
+#: templates/catalog/catalog_filter.html:52
 msgid ""
 "<p><b>Resin</b> (resin) - is a special model \"resin\". Model made from this "
 "material looks no different from the models of metal. However, the model "
@@ -392,11 +385,11 @@ msgstr ""
 "различныемелкие детали. Вследствие этого модели из «смолы» в основном имеют "
 "лучшую деталировку по сравнению с моделями из металла.</p>"
 
-#: templates/catalog/catalog_filter.html:63
+#: templates/catalog/catalog_filter.html:66
 msgid "Other"
 msgstr "Прочие"
 
-#: templates/catalog/catalog_filter.html:70
+#: templates/catalog/catalog_filter.html:74
 msgid "Show not available models"
 msgstr "Показывать модели, которых нет в наличии"
 
@@ -429,11 +422,11 @@ msgid "Q-ty"
 msgstr "Кол-во"
 
 #: templates/catalog/item.html:55 templates/catalog/item.html.py:66
-#: templates/catalog/item_card.html:28
+#: templates/catalog/item_card.html:33 templates/catalog/item_card.html:36
 msgid "r"
 msgstr "р"
 
-#: templates/catalog/item.html:67 templates/catalog/item_card.html:33
+#: templates/catalog/item.html:67 templates/catalog/item_card.html:41
 msgid "Buy"
 msgstr "Купить"
 
@@ -461,6 +454,20 @@ msgstr "Похожие модели"
 msgid "Scale models"
 msgstr "Масштабные модели"
 
-#: templates/catalog/search_form.html:4
+#: templates/catalog/search_form.html:5
 msgid "Find!"
 msgstr ""
+
+#: utils.py:58
+msgid "all"
+msgstr "все"
+
+#: views.py:111
+#, python-format
+msgid "Tag: %s"
+msgstr "Тег: %s"
+
+#: views.py:240
+#, python-format
+msgid "Change %s"
+msgstr "Изменить %s"

@@ -38,7 +38,6 @@ ITEM_STATUSES = {
 
 
 class ItemBase(models.Model):
-
     def __unicode__(self):
         return u'[%s] %s' % (self.article, self.name)
 
@@ -83,6 +82,8 @@ class Item(ItemBase):
     tags = models.ManyToManyField(ItemTag, verbose_name=_('tags'), blank=True, null=True)
     quantity = models.PositiveIntegerField(_('quantity'), null=True, blank=True)
     price = models.IntegerField(_('price'), null=True, blank=True)
+    pricebeforeaction = models.IntegerField(pgettext_lazy('the price before action or sale', 'price before action'),
+                                            null=True, blank=True)
     price_min = models.IntegerField(_('minimal price'), null=True, blank=True)
     new_before = models.CharField(_('new before'), max_length=256, null=True, blank=True)
     status_new = models.BooleanField(_('novelty'), default=False)
@@ -153,14 +154,14 @@ class Item(ItemBase):
 
     def get_similar(self):
         similar_number = 5
-        items = Item.objects\
-                    .filter(brand=self.brand, type=self.type)\
-                    .exclude(id=self.id)\
+        items = Item.objects \
+                    .filter(brand=self.brand, type=self.type) \
+                    .exclude(id=self.id) \
                     .order_by('?')[:similar_number]
         if items.count() < similar_number:
-            items_ext = Item.objects\
-                            .filter(series=self.series)\
-                            .exclude(id=self.id)[:similar_number-items.count()]
+            items_ext = Item.objects \
+                            .filter(series=self.series) \
+                            .exclude(id=self.id)[:similar_number - items.count()]
             items = list(chain(items, items_ext))
         return items
 

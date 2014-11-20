@@ -43,7 +43,7 @@ class ItemAdmin(TranslationTabMixin, AdminImageMixin, admin.ModelAdmin):
                        'color', 'material', 'weight', 'length', 'width', 'height')
         }),
         (_('tags'), {'fields': ('tags',), 'classes': ('collapse',)}),
-        (_('catalog'), {'fields': ('price', 'price_min', 'quantity')}),
+        (_('catalog'), {'fields': ('price', 'pricebeforeaction', 'price_min', 'quantity')}),
         (_('statuses'), {
             'fields': ('new_before', 'status_new', 'status_not_available', 'status_back_in_stock', 'status_action',
                        'status_sale', 'status_on_the_way'),
