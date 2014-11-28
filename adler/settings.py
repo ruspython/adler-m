@@ -86,6 +86,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.language.LanguageCookieMiddleware',
     'cuser.middleware.CuserMiddleware',
+    'public_files.middleware.PublicFileMiddleware',
 )
 
 
@@ -201,6 +202,7 @@ INSTALLED_APPS = (
     'server_connect',
     'yandex_money',
     'seo',
+    'public_files',
 )
 
 LANGUAGES = (
