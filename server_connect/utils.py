@@ -17,7 +17,7 @@ def get_1c_time(time=None):
         return 0
 
 
-def request2server(method='get'):
+def request2server(method='get', article=''):
     last_updated_obj, created = ConnectSetting.objects.get_or_create(key='catalog_updated')
     if created:
         last_updated = 0
@@ -34,6 +34,7 @@ def request2server(method='get'):
     <soap:Body>
         <wsn:{{ method }}>
             <wsn:numb>{{ data }}</wsn:numb>
+            <wsn:article>{{ article }}</wsn:article>
         </wsn:{{ method }}>
     </soap:Body>
 </soap:Envelope>
@@ -43,6 +44,7 @@ def request2server(method='get'):
         'port': port,
         'method': method,
         'data': last_updated,
+        'article': article,
     })
     server_url = "http://%s:%s/%s" % (ip, port, path)
     content_type = 'application/soap+xml;charset=UTF-8;action="http://%s:%s/wsNomenEx#wsNomenExchange:get"' % (ip, port)

@@ -65,6 +65,8 @@ class ItemAdmin(TranslationTabMixin, AdminImageMixin, admin.ModelAdmin):
                                   name='xml_import_success'),
                               url(r'^request2server/$', self.admin_site.admin_view(SOAPImport.as_view()),
                                   name='soap_import'),
+                              url(r'^(?P<pk>\d+)/update/$', self.admin_site.admin_view(ItemUpdate.as_view()),
+                                  name='item_update'),
                               )
         return extra_urls + urls
 

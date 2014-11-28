@@ -317,6 +317,20 @@ class SOAPImport(TemplateView):
         return context
 
 
+class ItemUpdate(DetailView):
+    template_name = 'admin/catalog/item_update.html'
+    model = Item
+    context_object_name = 'item'
+
+    def get_context_data(self, **kwargs):
+        context = super(ItemUpdate, self).get_context_data(**kwargs)
+        context['app'] = Item._meta
+        context['article'] = self.get_object().article
+        context['xml'] = force_text(request2server(article=context['article']))
+        context['result'] = data_import(context['xml'])
+        return context
+
+
 class YMLView(ListView):
     model = Item
     context_object_name = 'items'
