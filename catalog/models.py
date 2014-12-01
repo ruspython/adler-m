@@ -190,7 +190,7 @@ class Item(ItemBase):
         args_dict['item'] = self
         args_dict['item_images'] = ItemImage.objects.filter(item=self)
         response = render_to_string('admin/catalog/items_to_1C.html', args_dict)
-        print(response)
+        # print(response)
         super(Item, self).save(*args, **kwargs)
 
     class Meta:

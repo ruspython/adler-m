@@ -1,0 +1,15 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+{% block content_title %}<h1>{{ item.name }}</h1>{% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:app_list' app_label=app.app_label %}">{{ app.verbose_name_plural|capfirst|escape }}</a>
+</div>
+{% endblock %}
+{% block content %}
+    <div id="content-main">
+        <h4>Обновлено успешно</h4>
+        <a href="{% url "admin:catalog_item_change" item.pk %}">вернуться</a>
+    </div>
+{% endblock %}

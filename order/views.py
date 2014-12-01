@@ -24,6 +24,7 @@ import re
 from django.utils.translation import ugettext_lazy as _
 
 from django import forms
+from email_templates.utils import send_templated_email
 
 
 class MyOrdersView(ListView):
@@ -106,7 +107,6 @@ class OrderCreateView(CreateView):
 
     def form_valid(self, form):
         form_data = form.save(commit=False)
-        print('warning: ', self.request.POST['delivery'])
         form_data.order_status = 'new'
         form_data.delivery_method = self.request.POST['delivery']
         form_data.carrier = _('Pochta Rossii') if form_data.delivery_method == 'post' else ''
@@ -124,11 +124,11 @@ class OrderCreateView(CreateView):
         self.object = form.save()
         order_id = self.object.id
 
-        # try:
-        #     sms_message = SMSMessage.objects.get(slug='order_created').message % order_id
-        #     send_sms(form_data.phone, sms_message)
-        # except:
-        #     pass
+        try:
+            sms_message = SMSMessage.objects.get(slug='order_created').message % order_id
+            send_sms(form_data.phone, sms_message)
+        except:
+            pass
 
         for cart_item in cart_items:
             item = cart_item.item
@@ -144,6 +144,13 @@ class OrderCreateView(CreateView):
             )
             order_item.save()
         cart_items.delete()
+        send_templated_email('new_order', {
+            'add_time': form_data.add_time,
+            'data': form_data
+        })
+        send_templated_email('new_order_4client', {
+            'data': form_data
+        }, form.cleaned_data['email'])
         return redirect(reverse("order:go_pay", args=[str(order_id)]))
         # return redirect(self.get_success_url(order_id))
 
